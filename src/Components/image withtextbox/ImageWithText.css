@@ -1,0 +1,68 @@
+.image-text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 60vh;
+    position: relative;
+  }
+  
+  .center-image {
+    max-width: 60%;
+    height: auto;
+  }
+  
+  .text-box {
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px;
+    text-align: center;
+    width: 80%; 
+  }
+  
+  .text-box-top {
+    position: absolute;
+    top: 10px; 
+  }
+  
+  .text-box-bottom {
+    position: absolute;
+    bottom: 10px; 
+  }
+  
+  
+  .center-image {
+    max-width: 100%; 
+  }
+  .round-box1 {
+    background: #FAF0F7;
+    border-radius: 100px;
+    filter: blur(100px);
+    height: 20rem;
+    position: absolute;
+    width: 20rem;
+    bottom: 24rem;
+    left: 12rem;
+  }
+  
+  
+  
+  @media (max-width: 768px) {
+    .text-box {
+      width: 90%; 
+    }
+  
+    .center-image {
+      max-width: 90%; 
+    }
+  
+    .text-box-top {
+      top: 5px; 
+    }
+  
+    .text-box-bottom {
+      bottom: 5px; 
+    }
+  }
+  

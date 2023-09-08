@@ -1,0 +1,22 @@
+.end-image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 70vh;
+    margin-left: 1rem;
+  }
+  
+  .center-logo {
+    width: auto;
+    height: 60px;
+    margin-bottom: 10px; 
+    margin-top: 12rem;
+  }
+  
+  .lorem-text {
+    font-size: 18px; 
+    font-weight: bold;
+    color: gray;
+  }
+  

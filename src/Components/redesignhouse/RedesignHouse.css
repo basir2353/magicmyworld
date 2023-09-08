@@ -1,0 +1,49 @@
+
+.redesign-house {
+    width: 1022px;
+    height: 424px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 3rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.redesign-house-heading {
+    position: absolute;
+    font-size: 41px;
+    font-weight: bold;
+    width: 343px;
+    height: 216px;
+    flex-direction: column;
+    display: flex;
+    margin-right: 38rem;
+}
+
+.redesign-house-description {
+    font-size: 1rem;
+    margin-top: 9rem;
+    width: 23rem;
+    margin-right: 4rem;
+    margin-top: 9rem;
+    width: 23rem;
+}
+
+.redesign-house-images {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    padding-right: 1rem;
+}
+
+.redesign-house-images img {
+    margin-right: 1rem; 
+}
+.overlay-image {
+    position: absolute;
+    top: 227px;
+    left: 218px;
+}

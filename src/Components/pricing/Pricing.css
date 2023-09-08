@@ -1,0 +1,148 @@
+.home-container1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 30rem;
+}
+
+.background-gradient1 {
+  background-color: #fbf3f8;
+  width: 119px;
+  margin-left: 16rem;
+  border-radius: 69px;
+  align-items: center;
+}
+
+.main-text1 {
+  color: black;
+  -webkit-background-clip: text;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 19rem;
+}
+
+
+.sub-heading1 {
+  font-size: 54px;
+  font-weight: bold;
+  margin-right: 2rem;
+}
+
+.sub-text1 {
+  font-size: 16px;
+  font-weight: bold;
+  color: gray;
+  margin-top: 10px;
+}
+.box1 {
+  width: 20rem;
+  height: 20rem;
+  background-color: #fff;
+  border-radius: 35px;
+
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+.box2 {
+  width: 20rem;
+  height: 20rem;
+  background-color: #fff;
+  border-radius: 35px;
+
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+.box3 {
+  width: 20rem;
+  height: 30rem;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+.price-heading {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  margin-top: 3rem;
+  margin-left: 19px;
+  font-size: 36px;
+  font-weight: 700;
+}
+.pac {
+  margin-left: 12px;
+  margin-top: 12px;
+}
+.box-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 2rem;
+}
+
+.price-description {
+  font-size: 23px;
+  margin-left: 15px;
+}
+.pay-button {
+  background: linear-gradient(to right, #bd0c80, #861b82);
+  color: white;
+  border: none;
+  border-radius: 80px;
+  padding: 10px 134px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-top: 29px;
+  margin-left: 13px;
+}
+.pay-button:hover {
+  background: linear-gradient(to bottom, #f66d90, #ff6b6b);
+}
+.list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  margin-left: 2rem;
+}
+.list-item {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+.list1 {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 9rem;
+  margin-left: 12rem;
+}
+.list-item {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+.circle {
+  width: 20rem;
+  border-radius: 100px;
+  background-color: #FAF1F8;
+  position: absolute;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  margin-top: 6rem;
+  filter: blur(100px);
+  height: 14rem;
+  position: absolute;
+}
+
+.left-top {
+  top: 1rem;
+  left: 3rem;
+}
+
+.right-top {
+  top: 1rem;
+  right: 3rem;
+}
+
+.left-bottom {
+  bottom: 2rem;
+  left: 3rem;
+}
+
+.bottom {
+  bottom: 2rem;
+  right: 3rem;
+}

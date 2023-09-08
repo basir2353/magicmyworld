@@ -1,0 +1,38 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #F5F5F5;
+  padding: 10px 20px;
+  position: relative;
+}
+.round-box {
+  position: absolute;
+  left: 0;
+  bottom: 3rem;
+  background: #FAF0F7;
+  border-radius: 100px;
+  filter: blur(100px);
+  height: 20rem;
+  position: absolute;
+  width: 20rem;
+}
+
+  
+  .copyright {
+    font-weight: bold;
+    color: gray;
+    margin-left: 7rem;
+  }
+  
+  .login-link a {
+    text-decoration: none;
+    color: #0074e4;
+    font-weight: bold;
+    margin-right: 3rem;
+  }
+  
+  .login-link a:hover {
+    text-decoration: underline;
+  }
+  
