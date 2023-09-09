@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 70vh;
+    height: 50vh;
     margin-left: 1rem;
   }
   
@@ -15,8 +15,10 @@
   }
   
   .lorem-text {
+    margin-top: 5px;
+    text-align: center;
     font-size: 18px; 
-    font-weight: bold;
+    font-family: 'Poppins';
     color: gray;
   }
   

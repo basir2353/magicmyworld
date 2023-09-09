@@ -1,5 +1,5 @@
 .home-container1 {
-  display: flex;
+  display: grid;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -9,76 +9,72 @@
 .background-gradient1 {
   background-color: #fbf3f8;
   width: 119px;
-  margin-left: 16rem;
+  margin-left: 19rem;
   border-radius: 69px;
   align-items: center;
 }
 
 .main-text1 {
-  color: black;
+  color: #bd0c80;
   -webkit-background-clip: text;
-  font-weight: bold;
+font-family: Popins-Bold;
   text-align: center;
   margin-top: 19rem;
 }
 
 
 .sub-heading1 {
-  font-size: 54px;
-  font-weight: bold;
-  margin-right: 2rem;
+  font-size: 45px;
+  align-items: center;
+   text-align: center;
+   font-family: 'Popins-Bold';
 }
 
 .sub-text1 {
-  font-size: 16px;
-  font-weight: bold;
+  font-size: 14px;
   color: gray;
+  font-family: "Popins";
   margin-top: 10px;
+  text-align: center;
 }
 .box1 {
-  width: 20rem;
-  height: 20rem;
+  width: 330px;
+  height: 300px;
   background-color: #fff;
   border-radius: 35px;
-
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 .box2 {
-  width: 20rem;
-  height: 20rem;
+  width: 330px;
+  height: 300px;
   background-color: #fff;
-  border-radius: 35px;
-
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-}
-.box3 {
-  width: 20rem;
-  height: 30rem;
-  background-color: #fff;
-  border-radius: 10px;
+  border-radius: 25px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 .price-heading {
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-  margin-top: 3rem;
-  margin-left: 19px;
-  font-size: 36px;
-  font-weight: 700;
+  /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); */
+  margin-top: 2rem;
+  margin-left: 27px;
+  font-size: 34px;
 }
 .pac {
-  margin-left: 12px;
-  margin-top: 12px;
+  margin-left: 38px;
+  margin-top: 22px;
+  display: flex;
 }
 .box-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  margin-top: 2rem;
+  justify-content:space-between;
+  align-items: center;
+  
 }
 
 .price-description {
-  font-size: 23px;
-  margin-left: 15px;
+  font-size: 14px;
+  margin-left: 30px;
+  margin-top: 2rem;
+margin-bottom: 2rem;
 }
 .pay-button {
   background: linear-gradient(to right, #bd0c80, #861b82);
@@ -89,36 +85,22 @@
   font-size: 16px;
   cursor: pointer;
   transition: background 0.3s ease;
-  margin-top: 29px;
-  margin-left: 13px;
+  /* margin-top: 29px; */
+  margin-left: 18px;
 }
-.pay-button:hover {
-  background: linear-gradient(to bottom, #f66d90, #ff6b6b);
-}
-.list {
-  display: flex;
-  flex-direction: column;
-  margin-top: 1rem;
-  margin-left: 2rem;
-}
-.list-item {
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
-}
+
+
 .list1 {
   display: flex;
   flex-direction: column;
   margin-bottom: 9rem;
   margin-left: 12rem;
 }
-.list-item {
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
-}
+
 .circle {
   width: 20rem;
   border-radius: 100px;
-  background-color: #FAF1F8;
+  background-color: #f7dcf1;
   position: absolute;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   margin-top: 6rem;

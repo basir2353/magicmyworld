@@ -35,7 +35,7 @@ const SignupForm = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container" style={{    boxShadow: '0px 5px 10px rgba(0, 0, 0, 0.2)',width:"50rem",height:"30rem" }}>
       <div className="row">
         <div className="col-md-6 offset-md-3 mt-5">
           <h2>Signup</h2>
@@ -49,6 +49,7 @@ const SignupForm = () => {
               <label htmlFor="username">Username</label>
               <input
               required
+              
                 type="text"
                 className="form-control"
                 id="username"
@@ -85,7 +86,7 @@ const SignupForm = () => {
             </div>
             <button
               type="button"
-              className="btn btn-primary"
+              className="btn btn-primary newb1"
               onClick={handleSignup}
             >
               Signup

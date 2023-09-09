@@ -10,8 +10,8 @@ const EndImage = () => {
         className="center-logo"
         
       />
-      <p className="lorem-text">Capture a house photo and see it transform into 8+ themes instantly. Join our satisfied<br/>
-customers and revamp your space today!</p>
+      <p className="lorem-text">Capture a house photo and see it transform into 8+ themes instantly. Join our satisfied
+customers and <br/>revamp your space today!</p>
     </div>
   );
 };

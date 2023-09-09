@@ -9,8 +9,8 @@
 .round-box {
   position: absolute;
   left: 0;
-  bottom: 3rem;
-  background: #FAF0F7;
+  bottom: 4rem;
+  background: #f3d9eb;
   border-radius: 100px;
   filter: blur(100px);
   height: 20rem;
@@ -20,19 +20,17 @@
 
   
   .copyright {
-    font-weight: bold;
+    /* font-weight: bold; */
     color: gray;
     margin-left: 7rem;
   }
   
   .login-link a {
     text-decoration: none;
-    color: #0074e4;
+    color: black;
     font-weight: bold;
     margin-right: 3rem;
   }
   
-  .login-link a:hover {
-    text-decoration: underline;
-  }
+ 
   

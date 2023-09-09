@@ -4,8 +4,8 @@ import EndImage from "../endlogo/endimage";
 import Footer from "../footer/footer";
 function Pricing() {
   return (
-    <div>
-      <div className="home-container1">
+    <div >
+      <div className="home-container1" style={{display:"flex", flexDirection:'column',marginBottom:'10rem', justifyContent:'center',alignItems:'center '}}>
         <div className="circle left-top"></div>
         <div className="text-container1">
           <div className="background-gradient1">
@@ -19,11 +19,12 @@ function Pricing() {
           <div className="circle right-top"></div>
 
           <div className="box-container">
-            <div className="box1">
+            <div className="box1" style={{margin:'2rem',marginRight:'2rem'}}>
               <div className="pac">1 Month Package</div>
               <div className="price-heading">$9.99</div>
               <div className="price-description">
-                Unlimted credit <br /> credits for
+                Unlimted credit 
+                 credits for <br />For a duration of 1 month
               </div>
               <button className="pay-button">Pay</button>
             </div>
@@ -32,8 +33,8 @@ function Pricing() {
               <div className="pac">6 Month Package</div>
               <div className="price-heading">$24.99</div>
               <div className="price-description">
-                Unlimted Credit
-                <br /> credits for
+                Unlimted Credit credits for
+                <br />For a duration of 6 month
               </div>
               <button className="pay-button">Pay</button>
             </div>
@@ -41,19 +42,20 @@ function Pricing() {
 
           <div
             style={{
-              marginLeft: "3rem",
-              marginTop: "2rem",
-              display: "flow",
+              marginLeft: "2rem",
+              display: "flex",
+              flexDirection:'column',
+              justifyContent:'center',
               position: "absolute",
             }}
           >
-            <p>
+            <p >
               {" "}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                style={{ justifyContent: "space-between" }}
+                width="20"
+                height="20"
+                style={{ justifyContent: "space-between" ,marginRight:'10px'}}
                 fill="currentColor"
                 class="bi bi-check2-circle"
                 viewBox="0 0 16 16"
@@ -66,9 +68,9 @@ function Pricing() {
             <p>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                style={{ justifyContent: "space-between" }}
+                width="20"
+                height="20"
+                style={{ justifyContent: "space-between" ,marginRight:'10px'}}
                 fill="currentColor"
                 class="bi bi-check2-circle"
                 viewBox="0 0 16 16"
@@ -81,9 +83,9 @@ function Pricing() {
             <p>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                style={{ justifyContent: "space-between" }}
+                width="20"
+                height="20"
+                style={{ justifyContent: "space-between" ,marginRight:'10px'}}
                 fill="currentColor"
                 class="bi bi-check2-circle"
                 viewBox="0 0 16 16"
@@ -94,13 +96,13 @@ function Pricing() {
               Commercial usage of photos
             </p>
           </div>
-          <div style={{ marginLeft: "26rem", marginTop: "2rem" }}>
+          <div style={{ marginLeft: "25rem", }}>
             <p>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                style={{ justifyContent: "space-between" }}
+                width="20"
+                height="20"
+                style={{ justifyContent: "space-between" ,marginRight:'10px'}}
                 fill="currentColor"
                 class="bi bi-check2-circle"
                 viewBox="0 0 16 16"
@@ -113,9 +115,9 @@ function Pricing() {
             <p>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                style={{ justifyContent: "space-between" }}
+                width="20"
+                height="20"
+                style={{ justifyContent: "space-between" ,marginRight:'10px'}}
                 fill="currentColor"
                 class="bi bi-check2-circle"
                 viewBox="0 0 16 16"
@@ -128,9 +130,9 @@ function Pricing() {
             <p>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                style={{ justifyContent: "space-between" }}
+                width="20"
+                height="20"
+                style={{ justifyContent: "space-between" ,marginRight:'10px'}}
                 fill="currentColor"
                 class="bi bi-check2-circle"
                 viewBox="0 0 16 16"
@@ -147,17 +149,19 @@ function Pricing() {
         <div
           style={{
             border: "1px solid black",
-            width: "27rem",
-            borderRadius: "19px",
+            width: "35rem",
+            borderRadius: "15px",
             marginTop: "2rem",
           }}
         >
           <p
             style={{
-              marginLeft: "24px",
-              fontSize: "10px",
-              marginTop: 0,
-              marginBottom: "0px",
+              marginLeft: "14px",
+              fontSize: "13px",
+              marginTop: '1px',
+              marginBottom: '3px'
+              , fontWeight:'bold'
+          
             }}
           >
             Interested in team or bulk pricing? Email : info@magicmyhouse.com or

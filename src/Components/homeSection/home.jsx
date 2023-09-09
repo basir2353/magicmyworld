@@ -7,18 +7,18 @@ const Home = () => {
       <div className="text-container">
         <div className="background-gradient">
           <p className="main-text">
-            Already Generated More Than 1 Million House
+          ALREADY GENERATED MORE THAN 1 MILLION DESIGNS
           </p>
         </div>
-        <h2 className="sub-heading">
+        <h2 className="sub-heading" style={{textAlign:'center'}}>
           Transform Houses
           <br />
           in Seconds using ai
         </h2>
-        <p className="sub-text">
+        <p className="sub-text" style={{textAlign:'center',fontFamily:'Poppins-Regular'}}>
           Capture a house Photo and see it Transform into 8+ themes instantly.
-          <br />  Join
-          Our Satisfied customers and revamp your space today!
+          Join
+          Our Satisfied customers   <br /> and revamp your space today!
         </p>
       </div>
       <div className="button-container">

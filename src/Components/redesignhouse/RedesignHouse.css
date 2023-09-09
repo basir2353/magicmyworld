@@ -1,8 +1,7 @@
-
 .redesign-house {
-    width: 1022px;
+    width: 1061px;
     height: 424px;
-    background-color: white;
+    background-color: transparent;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     border-radius: 3rem;
     display: flex;
@@ -11,39 +10,31 @@
     justify-content: center;
     margin: 0 auto;
 }
-
 .redesign-house-heading {
     position: absolute;
-    font-size: 41px;
-    font-weight: bold;
-    width: 343px;
-    height: 216px;
+    font-size: 50px;
+    font-family: 'Popins-Bold';
+    height: 200px;
     flex-direction: column;
     display: flex;
     margin-right: 38rem;
 }
-
 .redesign-house-description {
     font-size: 1rem;
+    font-family: "Popins-Regular";
     margin-top: 9rem;
-    width: 23rem;
-    margin-right: 4rem;
+    margin-right: 36rem;
     margin-top: 9rem;
     width: 23rem;
 }
-
 .redesign-house-images {
-    position: relative;
+    position: absolute;
     display: flex;
     justify-content: space-between;
-    padding-right: 1rem;
-}
-
-.redesign-house-images img {
-    margin-right: 1rem; 
+    margin-left: 27rem;
 }
 .overlay-image {
     position: absolute;
     top: 227px;
-    left: 218px;
+    left: 249px;
 }

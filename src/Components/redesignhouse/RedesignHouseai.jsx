@@ -32,14 +32,14 @@ const RedesignComponent = () => {
             marginLeft: "19px",
             marginRight: "15rem",
             paddingBottom: "34px",
-            borderRadius: '2rem',
+            borderRadius: '10px',
             borderStyle:'dashed',
           }}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
+            width="25"
+            height="25"
             fill="currentColor"
             class="bi bi-cloud-upload"
             viewBox="0 0 16 16"
@@ -64,14 +64,14 @@ const RedesignComponent = () => {
             Upload Photo
           </button>
         </div>
-        <span style={{marginBottom:'10rem,'}}> Select Room type</span>
+        <span> Select Room type</span>
         {selectedImage && (
           <div  className="uploaded-image">
             <img
               src={selectedImage}
               alt="Uploaded"
               className="bordered-image"
-              style={{width:'20rem'}}
+              style={{width:'12rem'}}
             />
           </div>
         )}
@@ -86,31 +86,31 @@ const RedesignComponent = () => {
           </select>
         </div>
         <span style={{marginLeft:'1rem,'}}>Selected almost four: </span>
-        <div className="image-grid">
+        <div className="image-grid" style={{display:'flex',position:'absolute',    marginTop:'26rem',marginRight: '13rem'}}>
          
           {selectedOption === "Show 9 Images" ? (
             <>
-              <img src={process.env.PUBLIC_URL + "/image5.png"} alt="Image 1" /><span style={{position:"absolute",marginTop:'5.8rem',marginLeft:'1rem'}}>Modern</span><br/>
-              <img src={process.env.PUBLIC_URL + "/image6.png"} alt="Image 2" /><span style={{position:"absolute",marginTop:'5.8rem',marginLeft:'8rem'}}>Minimalist</span><br/>
-              <img src={process.env.PUBLIC_URL + "/image7.png"} alt="Image 1" /><span style={{position:"absolute",marginTop:'5.8rem',marginLeft:'14rem'}}>Professional</span><br/>
-              <img src={process.env.PUBLIC_URL + "/image 8.png"} alt="Image 2" /><span style={{position:"absolute",marginTop:'13.3rem',marginLeft:'1rem'}}>Tropical</span><br/>
-              <img src={process.env.PUBLIC_URL + "/image 9.png"} alt="Image 3" /><span style={{position:"absolute",marginTop:'13.3rem',marginLeft:'8rem'}}>Coastal</span><br/>
-              <img src={process.env.PUBLIC_URL + "/image10.png"} alt="Image 4" /><span style={{position:"absolute",marginTop:'13.3rem',marginLeft:'15rem'}}>Vintage</span><br/>
-              <img src={process.env.PUBLIC_URL + "/image11.png"} alt="Image 1" /><span style={{position:"absolute",marginTop:'20.8rem',marginLeft:'1rem'}}>Industrial</span><br/>
-              <img src={process.env.PUBLIC_URL + "/image12.png"} alt="Image 2" /><span style={{position:"absolute",marginTop:'20.8rem',marginLeft:'8rem'}}>Neoclassic</span><br/>
-              <img src={process.env.PUBLIC_URL + "/image7.png"} alt="Image 3" /><span style={{position:"absolute",marginTop:'20.8rem',marginLeft:'15rem'}}>Tribal</span><br/>
+              <img src={process.env.PUBLIC_URL + "/image5.png"} alt="Image 1" /><span style={{position:"absolute",marginTop:'6.2rem',marginLeft:'1rem'}}>Modern</span><br/>
+              <img src={process.env.PUBLIC_URL + "/image6.png"} alt="Image 2" /><span style={{position:"absolute",marginTop:'6.2rem',marginLeft:'8rem'}}>Minimalist</span><br/>
+              <img src={process.env.PUBLIC_URL + "/image7.png"} alt="Image 1" /><span style={{position:"absolute",marginTop:'6.2rem',marginLeft:'14rem'}}>Professional</span><br/>
+              <img src={process.env.PUBLIC_URL + "/image 8.png"} alt="Image 2" /><span style={{position:"absolute",marginTop:'14.4rem',marginLeft:'1rem'}}>Tropical</span><br/>
+              <img src={process.env.PUBLIC_URL + "/image 9.png"} alt="Image 3" /><span style={{position:"absolute",marginTop:'14.4rem',marginLeft:'8rem'}}>Coastal</span><br/>
+              <img src={process.env.PUBLIC_URL + "/image10.png"} alt="Image 4" /><span style={{position:"absolute",marginTop:'14.4rem',marginLeft:'15rem'}}>Vintage</span><br/>
+              <img src={process.env.PUBLIC_URL + "/image11.png"} alt="Image 1" /><span style={{position:"absolute",marginTop:'22.6rem',marginLeft:'1rem'}}>Industrial</span><br/>
+              <img src={process.env.PUBLIC_URL + "/image12.png"} alt="Image 2" /><span style={{position:"absolute",marginTop:'22.6rem',marginLeft:'8rem'}}>Neoclassic</span><br/>
+              <img src={process.env.PUBLIC_URL + "/image7.png"} alt="Image 3" /><span style={{position:"absolute",marginTop:'22.6rem',marginLeft:'15rem'}}>Tribal</span><br/>
             </>
           ) : (
             <>
-              <img src={process.env.PUBLIC_URL + "/image5.png"} alt="Image 1" /><span style={{position:"absolute",marginTop:'5.8rem',marginLeft:'1rem'}}>Modern</span><br/>
-              <img src={process.env.PUBLIC_URL + "/image6.png"} alt="Image 2" /><span style={{position:"absolute",marginTop:'5.8rem',marginLeft:'8rem'}}>Minimalist</span><br/>
-              <img src={process.env.PUBLIC_URL + "/image7.png"} alt="Image 1" /><span style={{position:"absolute",marginTop:'5.8rem',marginLeft:'14rem'}}>Professional</span><br/>
-              <img src={process.env.PUBLIC_URL + "/image 8.png"} alt="Image 2" /><span style={{position:"absolute",marginTop:'13.3rem',marginLeft:'1rem'}}>Tropical</span><br/>
-              <img src={process.env.PUBLIC_URL + "/image 9.png"} alt="Image 3" /><span style={{position:"absolute",marginTop:'13.3rem',marginLeft:'8rem'}}>Coastal</span><br/>
-              <img src={process.env.PUBLIC_URL + "/image10.png"} alt="Image 4" /><span style={{position:"absolute",marginTop:'13.3rem',marginLeft:'15rem'}}>Vintage</span><br/>
+              <img src={process.env.PUBLIC_URL + "/image5.png"} alt="Image 1" /><span style={{position:"absolute",marginTop:'6.2rem',marginLeft:'1rem'}}>Modern</span><br/>
+              <img src={process.env.PUBLIC_URL + "/image6.png"} alt="Image 2" /><span style={{position:"absolute",marginTop:'6.2rem',marginLeft:'8rem'}}>Minimalist</span><br/>
+              <img src={process.env.PUBLIC_URL + "/image7.png"} alt="Image 1" /><span style={{position:"absolute",marginTop:'6.2rem',marginLeft:'14rem'}}>Professional</span><br/>
+              <img src={process.env.PUBLIC_URL + "/image 8.png"} alt="Image 2" /><span style={{position:"absolute",marginTop:'14.4rem',marginLeft:'1rem'}}>Tropical</span><br/>
+              <img src={process.env.PUBLIC_URL + "/image 9.png"} alt="Image 3" /><span style={{position:"absolute",marginTop:'14.4rem',marginLeft:'8rem'}}>Coastal</span><br/>
+              <img src={process.env.PUBLIC_URL + "/image10.png"} alt="Image 4" /><span style={{position:"absolute",marginTop:'14.4rem',marginLeft:'15rem'}}>Vintage</span><br/>
             </>
           )}
-          <button className="bo">RENDER DESIGNS</button> <span style={{marginTop:'5px'}}>Cost : 3 Credits</span>
+          <button className="bo">RENDER DESIGNS</button> <span style={{marginTop:'7px',alignItems:'center',display:"flex"}}>Cost : 3 Credits</span>
         </div>
       </div>
       <div className="right-box">

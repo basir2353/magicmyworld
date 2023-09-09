@@ -8,29 +8,34 @@
 
 .background-gradient {
   background-color: #fbf3f8;
-  width: 370px;
-  margin-left: 3rem;
+  width: 400px;
+  margin-left: 5rem;
   border-radius: 69px;
 }
 
 .main-text {
-  color: black;
+  font-size: 13px;
+  color:#861b82 ;
   -webkit-background-clip: text;
   font-weight: bold;
   text-align: center;
+  font-family: 'Poppins-Medium';
 }
 
 .sub-heading {
-  font-size: 54px;
-  font-weight: bold;
+  font-size: 62px;
+  /* font-weight: bold; */
   margin-right: 2rem;
+  font-family: 'Microsoft Sans Serif';
+  align-items: center;
 }
 
 .sub-text {
   font-size: 16px;
-  font-weight: bold;
+  /* font-weight: bold; */
+  font-family: 'Poppins';
   color: gray;
-  margin-top: 10px;
+  /* margin-top: 10px; */
 }
 
 
@@ -45,7 +50,7 @@
 }
 
 .round-background {
-  background: #fbf2f9;
+  background: #efdfec;
   border-radius: 100px;
   -webkit-filter: blur(100px);
   filter: blur(100px);
@@ -60,10 +65,10 @@
   border: none;
   border-radius: 25px;
   padding: 10px 20px;
-
+font-weight: bold;
   color: white;
   cursor: pointer;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 .log-button:hover {
   background-color: #00a5e4;
