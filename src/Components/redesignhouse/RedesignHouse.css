@@ -12,8 +12,9 @@
 }
 .redesign-house-heading {
     position: absolute;
-    font-size: 50px;
-    font-family: 'Popins-Bold';
+    font-size: 45px;
+    font-weight: bold;
+    font-family:inherit;
     height: 200px;
     flex-direction: column;
     display: flex;
@@ -21,7 +22,7 @@
 }
 .redesign-house-description {
     font-size: 1rem;
-    font-family: "Popins-Regular";
+    font-family:inherit;
     margin-top: 9rem;
     margin-right: 36rem;
     margin-top: 9rem;

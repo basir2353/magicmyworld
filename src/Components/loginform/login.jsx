@@ -31,7 +31,7 @@ const LoginForm = () => {
 
   return (
     <div className="container">
-      <div className="row" style={{ boxShadow: '0px 5px 10px rgba(0, 0, 0, 0.2)', width: "40rem", height: "25rem", alignItems: 'center', marginLeft: '12rem' }}>
+      <div className="row" style={{ boxShadow: '0px 5px 10px rgba(0, 0, 0, 0.2)', width: "40rem", height: "25rem", alignItems: 'center', marginLeft: '12rem',borderRadius:'2rem' }}>
         <div className="col-md-6 offset-md-3 mt-5">
           <h2>Login</h2>
           <form>

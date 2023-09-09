@@ -86,7 +86,7 @@ const RedesignComponent = () => {
           </select>
         </div>
         <span style={{marginLeft:'1rem,'}}>Selected almost four: </span>
-        <div className="image-grid" style={{display:'flex',position:'absolute',    marginTop:'26rem',marginRight: '13rem'}}>
+        <div className="image-grid" style={{display:'flex',marginRight: '13rem'}}>
          
           {selectedOption === "Show 9 Images" ? (
             <>

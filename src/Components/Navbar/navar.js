@@ -40,7 +40,7 @@ const Navbar = () => {
       {isLoggedIn && (
         <>
           <Link to='/pricing' className='el'>Pricing</Link>
-          <Link to='/designing' className='el1'>Redesign</Link>
+          <Link to='/desiging' className='el1'>Redesign</Link>
         </>
       )}
       <div className="navbar-login">

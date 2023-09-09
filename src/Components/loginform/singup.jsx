@@ -35,7 +35,7 @@ const SignupForm = () => {
   };
 
   return (
-    <div className="container" style={{    boxShadow: '0px 5px 10px rgba(0, 0, 0, 0.2)',width:"50rem",height:"30rem" }}>
+    <div className="container" style={{    boxShadow: '0px 5px 10px rgba(0, 0, 0, 0.2)',width:"45rem",height:"30rem",borderRadius:"2rem" }}>
       <div className="row">
         <div className="col-md-6 offset-md-3 mt-5">
           <h2>Signup</h2>
