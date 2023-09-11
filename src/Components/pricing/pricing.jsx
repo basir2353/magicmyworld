@@ -1,11 +1,125 @@
-import React from "react";
+
 import "./Pricing.css";
 import EndImage from "../endlogo/endimage";
 import Footer from "../footer/footer";
+import React, { useState } from "react";
+import { makePayment } from "./paymentapi";
+
 function Pricing() {
+  const [paymentData, setPaymentData] = useState(null);
+  const [newStringState, setNewStringState] = useState("");
+
+  async function dataPayment(amount) {
+    try {
+      const response = await makePayment({ amount }); // Pass amount as an object
+      console.log('Payment Response:', response); // Log the response for debugging
+      setPaymentData(response?.data?.amount?.value);
+      
+      const amountValue = response?.data?.amount?.value;
+      setNewStringState(amountValue ? String(amountValue) : "");
+console.log(response?.data)
+
+      const popupContent = `
+      <html>
+        <head>
+          <title>Payment Response</title>
+          <!-- Include Bootstrap CSS -->
+          <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css"
+          />
+          <!-- Custom CSS for the "Pay" button -->
+          <style>
+            .dark-pink-gradient-button {
+              background: linear-gradient(to bottom, #ff1493, #c71585);
+              color: #fff;
+            }
+            .dark-pink-gradient-button:hover {
+              background: linear-gradient(to bottom, #c71585, #ff1493);
+              color: #fff;
+            }
+          </style>
+        </head>
+        <body>
+          <!-- Create a Bootstrap modal -->
+          <div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="paymentModalLabel">Payment Response</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <div>
+                  <h2>Amount: ${response.amount.value}</h2>
+
+                    <p>Description: ${response.description}</p>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn dark-pink-gradient-button" onclick="closePopup()">Pay</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <script>
+            function closePopup() {
+              window.close(); // Close the popup window when the button is clicked
+            }
+            
+            // Show the Bootstrap modal when the page loads
+            document.addEventListener("DOMContentLoaded", function() {
+              var myModal = new bootstrap.Modal(document.getElementById("paymentModal"), {
+                backdrop: "static",
+                keyboard: false
+              });
+              myModal.show();
+            });
+          </script>
+          
+          <!-- Include Bootstrap JavaScript -->
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.min.js"></script>
+        </body>
+      </html>
+    `;
+    
+     
+
+      const blob = new Blob([popupContent], { type: "text/html" });
+
+      const popupURL = URL.createObjectURL(blob);
+
+      const popupWindow = window.open(
+        popupURL,
+        "_blank",
+        `width=500,height=500,left=${(window.screen.width - 500) / 2},top=${
+          (window.screen.height - 500) / 2
+        }`
+      );
+
+      if (popupWindow) {
+        popupWindow.focus();
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+
   return (
-    <div >
-      <div className="home-container1" style={{display:"flex", flexDirection:'column',marginBottom:'10rem', justifyContent:'center',alignItems:'center '}}>
+    <div>
+      <div
+        className="home-container1"
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          marginBottom: "10rem",
+          justifyContent: "center",
+          alignItems: "center ",
+        }}
+      >
         <div className="circle left-top"></div>
         <div className="text-container1">
           <div className="background-gradient1">
@@ -19,14 +133,24 @@ function Pricing() {
           <div className="circle right-top"></div>
 
           <div className="box-container">
-            <div className="box1" style={{margin:'2rem',marginRight:'2rem'}}>
+            <div
+              className="box1"
+              style={{ margin: "2rem", marginRight: "2rem" }}
+            >
               <div className="pac">1 Month Package</div>
               <div className="price-heading">$9.99</div>
               <div className="price-description">
-                Unlimted credit 
-                 credits for <br />For a duration of 1 month
+                Unlimted credit credits for <br />
+                For a duration of 1 month
               </div>
-              <button className="pay-button">Pay</button>
+              <button
+                className="pay-button"
+                onClick={() => {
+                  dataPayment(9);
+                }}
+              >
+                Pay
+              </button>
             </div>
 
             <div className="box2">
@@ -34,9 +158,12 @@ function Pricing() {
               <div className="price-heading">$24.99</div>
               <div className="price-description">
                 Unlimted Credit credits for
-                <br />For a duration of 6 month
+                <br />
+                For a duration of 6 month
               </div>
-              <button className="pay-button">Pay</button>
+              <button className="pay-button"  onClick={() => {
+                  dataPayment(24);
+                }}>Pay</button>
             </div>
           </div>
 
@@ -44,18 +171,18 @@ function Pricing() {
             style={{
               marginLeft: "2rem",
               display: "flex",
-              flexDirection:'column',
-              justifyContent:'center',
+              flexDirection: "column",
+              justifyContent: "center",
               position: "absolute",
             }}
           >
-            <p >
+            <p>
               {" "}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"
                 height="20"
-                style={{ justifyContent: "space-between" ,marginRight:'10px'}}
+                style={{ justifyContent: "space-between", marginRight: "10px" }}
                 fill="currentColor"
                 class="bi bi-check2-circle"
                 viewBox="0 0 16 16"
@@ -70,7 +197,7 @@ function Pricing() {
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"
                 height="20"
-                style={{ justifyContent: "space-between" ,marginRight:'10px'}}
+                style={{ justifyContent: "space-between", marginRight: "10px" }}
                 fill="currentColor"
                 class="bi bi-check2-circle"
                 viewBox="0 0 16 16"
@@ -85,7 +212,7 @@ function Pricing() {
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"
                 height="20"
-                style={{ justifyContent: "space-between" ,marginRight:'10px'}}
+                style={{ justifyContent: "space-between", marginRight: "10px" }}
                 fill="currentColor"
                 class="bi bi-check2-circle"
                 viewBox="0 0 16 16"
@@ -96,13 +223,13 @@ function Pricing() {
               Commercial usage of photos
             </p>
           </div>
-          <div style={{ marginLeft: "25rem", }}>
+          <div style={{ marginLeft: "25rem" }}>
             <p>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"
                 height="20"
-                style={{ justifyContent: "space-between" ,marginRight:'10px'}}
+                style={{ justifyContent: "space-between", marginRight: "10px" }}
                 fill="currentColor"
                 class="bi bi-check2-circle"
                 viewBox="0 0 16 16"
@@ -117,7 +244,7 @@ function Pricing() {
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"
                 height="20"
-                style={{ justifyContent: "space-between" ,marginRight:'10px'}}
+                style={{ justifyContent: "space-between", marginRight: "10px" }}
                 fill="currentColor"
                 class="bi bi-check2-circle"
                 viewBox="0 0 16 16"
@@ -132,7 +259,7 @@ function Pricing() {
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"
                 height="20"
-                style={{ justifyContent: "space-between" ,marginRight:'10px'}}
+                style={{ justifyContent: "space-between", marginRight: "10px" }}
                 fill="currentColor"
                 class="bi bi-check2-circle"
                 viewBox="0 0 16 16"
@@ -158,10 +285,9 @@ function Pricing() {
             style={{
               marginLeft: "14px",
               fontSize: "13px",
-              marginTop: '1px',
-              marginBottom: '3px'
-              , fontWeight:'bold'
-          
+              marginTop: "1px",
+              marginBottom: "3px",
+              fontWeight: "bold",
             }}
           >
             Interested in team or bulk pricing? Email : info@magicmyhouse.com or

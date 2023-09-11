@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from './Components/Navbar/navar';
 import Home from './Components/homeSection/home';
 import ImageWithText from './Components/image withtextbox/imagewithTextbbox';
@@ -12,22 +12,29 @@ import Pricing from './Components/pricing/pricing';
 import RedesignHouse from './Components/redesignhouse/redesignhouse';
 
 function App() {
+  const [userCredit, setUserCredit] = useState(3); // Initial credit count
+
+  // Function to update user's credit
+  const updateUserCredit = (newCredit) => {
+    setUserCredit(newCredit);
+  };
   return (
     <BrowserRouter>
       <div className='app'>
-        <Navbar />
+        <Navbar userCredit={userCredit}/>
 
 
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<LoginForm />} />
           <Route path="/signup" element={<SignupForm />} />
-          <Route path='pricing' element={<Pricing/>}> </Route>
+          <Route path='pricing' element={<Pricing updateUserCredit={updateUserCredit}/>}> </Route>
           <Route path='/desiging' element={<RedesignHouse/>}></Route>
         </Routes>
         
         <Routes>
           <Route path="/" element={<ImageWithText />} />
+
         </Routes>
         
         

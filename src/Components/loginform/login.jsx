@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { GoogleLogin } from "@react-oauth/google";
 import "./loginform.css";
+import jwt_decode from "jwt-decode";
 
 const LoginForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [profile, setProfile] = useState({});
   const navigate = useNavigate();
 
   const handleLogin = () => {
@@ -12,15 +15,13 @@ const LoginForm = () => {
 
     if (savedUser) {
       const parsedUser = JSON.parse(savedUser);
-      if (parsedUser.username === username && parsedUser.password === password) {
+      if (
+        parsedUser.username === username &&
+        parsedUser.password === password
+      ) {
         console.log("Login successful");
-
-        // Refresh the tab
-        navigate('/')
+        navigate("/");
         window.location.reload();
-
-        // You can also navigate to a different route after login if needed
-        // navigate("/");
       } else {
         console.log("Invalid username or password");
       }
@@ -28,10 +29,37 @@ const LoginForm = () => {
       console.log("User not found");
     }
   };
+  const responseMessage = (response) => {
+    const accessToken = response.credential;
+    const user = jwt_decode(accessToken);
+  
+    
+    // Convert the user object to a JSON string before storing it in local storage
+    localStorage.setItem("user", JSON.stringify(user));
+  
+    console.log(user);
+    navigate("/");
+    window.location.reload();
+
+  };
+  
+  const errorMessage = (error) => {
+    console.log(error, ":error");
+  };
 
   return (
     <div className="container">
-      <div className="row" style={{ boxShadow: '0px 5px 10px rgba(0, 0, 0, 0.2)', width: "40rem", height: "25rem", alignItems: 'center', marginLeft: '12rem',borderRadius:'2rem' }}>
+      <div
+        className="row"
+        style={{
+          boxShadow: "0px 5px 10px rgba(0, 0, 0, 0.2)",
+          width: "40rem",
+          height: "25rem",
+          alignItems: "center",
+          marginLeft: "12rem",
+          borderRadius: "2rem",
+        }}
+      >
         <div className="col-md-6 offset-md-3 mt-5">
           <h2>Login</h2>
           <form>
@@ -51,7 +79,7 @@ const LoginForm = () => {
               <label htmlFor="password">Password</label>
               <input
                 type="password"
-                re
+                required
                 className="form-control"
                 id="password"
                 placeholder="Enter your password"
@@ -77,6 +105,11 @@ const LoginForm = () => {
               Signup
             </Link>
           </form>
+
+          {/* Google Login button */}
+          <div className="mt-8">
+            <GoogleLogin onSuccess={responseMessage} onError={errorMessage} />
+          </div>
         </div>
       </div>
     </div>

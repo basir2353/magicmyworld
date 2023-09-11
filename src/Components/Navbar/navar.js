@@ -1,60 +1,87 @@
-import React, { useState, useEffect } from 'react';
-import './Navbar.css';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import "./Navbar.css";
+import { Link } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({ userData }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userName, setUserName] = useState('');
-  const [roundBoxColor, setRoundBoxColor] = useState('');
-
+  const [userName, setUserName] = useState("");
+  const [roundBoxColor, setRoundBoxColor] = useState("");
+  const [showLoggedInText, setShowLoggedInText] = useState(false);
   useEffect(() => {
-    // Check if the user is logged in based on your authentication logic
-    const savedUser = localStorage.getItem('user');
-    if (savedUser) {
-      const parsedUser = JSON.parse(savedUser);
+    // Check if the user is logged in
+    const savedUser = localStorage.getItem("user");
+  
+    if (userData && userData.given_name) {
+      setUserName(userData.given_name);
       setIsLoggedIn(true);
-      setUserName(parsedUser.username);
-      setRoundBoxColor(getRandomColor());
+      localStorage.setItem("user", JSON.stringify(userData)); // Save the user data to localStorage
+    } else if (savedUser) {
+      const parsedUser = JSON.parse(savedUser);
+      setUserName(parsedUser.given_name || "A");
+      setIsLoggedIn(true);
     } else {
+      setUserName("Guest");
       setIsLoggedIn(false);
-      setUserName('');
-      setRoundBoxColor('');
     }
-  }, []);
-
-  const getRandomColor = () => {
-    const letters = '0123456789ABCDEF';
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-  };
+  }, [userData]);
+  
+  useEffect(() => {
+    setShowLoggedInText(isLoggedIn);
+  }, [isLoggedIn]);
   
 
   return (
     <nav className="navbar">
-      <Link to='/' className="navbar-logo">
-        <img src={process.env.PUBLIC_URL + '/MMH_logo.png'} alt="Logo" />
+      <Link to="/" className="navbar-logo">
+        <img src={process.env.PUBLIC_URL + "/MMH_logo.png"} alt="Logo" />
       </Link>
       {isLoggedIn && (
         <>
-          <Link to='/pricing' className='el'>Pricing</Link>
-          <Link to='/desiging' className='el1'>Redesign</Link>
+          <Link to="/desiging" className="el1">
+            Redesign
+          </Link>
+          <Link to="/pricing" className="el">
+            Pricing
+          </Link>
         </>
       )}
-      <div className="navbar-login">
-        {isLoggedIn ? (
+
+      <div
+        className="navbar-login"
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        {showLoggedInText && (
+          <div
+            style={{
+              backgroundColor: "black",
+              borderRadius: "23px",
+              marginRight: "2rem",
+            }}
+          >
+            <div
+              className="loggedInText"
+              style={{ padding: "5px 19px", color: "white" }}
+            >
+              Your Credit : {3}
+            </div>
+          </div>
+        )}
+        {!isLoggedIn && (
+          <Link to="/login" className="btn btn-login">
+            Login
+          </Link>
+        )}
+        {isLoggedIn && (
           <div
             className="user-round-box btn btn-login"
             style={{ backgroundColor: roundBoxColor }}
           >
-            {userName.charAt(0).toUpperCase()}
+            {userName ? userName.charAt(0).toUpperCase() : ""}
           </div>
-        ) : (
-          <Link to="/login" className="btn btn-login">
-            Login
-          </Link>
         )}
       </div>
     </nav>

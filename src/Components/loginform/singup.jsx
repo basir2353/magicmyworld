@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const SignupForm = () => {
   const [signupData, setSignupData] = useState({
@@ -8,7 +9,8 @@ const SignupForm = () => {
   });
   
   const [showAlert, setShowAlert] = useState(false);
-
+  
+  useNavigate('/')
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setSignupData({
@@ -82,6 +84,7 @@ const SignupForm = () => {
                 placeholder="Enter your password"
                 value={signupData.password}
                 onChange={handleInputChange}
+                required
               />
             </div>
             <button

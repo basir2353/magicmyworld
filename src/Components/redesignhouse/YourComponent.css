@@ -3,7 +3,7 @@
   border-radius: 6rem;
   margin-top: 40px;
   display: flex;
-  width: 1540px;
+  width: 1518px;
   height: 1000px;
 }
 
@@ -23,7 +23,7 @@
   border: none;
   position: sticky;
   border-radius: 25px;
-  padding: 10px 30px;
+  padding: 10px 6px;
   margin-top: 5px;
   color: white;
   cursor: pointer;
@@ -34,7 +34,7 @@
 
 
 .dropdown {
-  padding: 12px 112px;
+  padding: 12px 91px;
   border: 1px solid #ccc;
   margin-left: -1rem;
 }
