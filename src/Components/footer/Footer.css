@@ -1,3 +1,4 @@
+/* Default styles for the footer */
 .footer {
   display: flex;
   justify-content: space-between;
@@ -6,6 +7,7 @@
   padding: 10px 20px;
   position: relative;
 }
+
 .round-box {
   position: absolute;
   left: 0;
@@ -14,23 +16,37 @@
   border-radius: 100px;
   filter: blur(100px);
   height: 20rem;
-  position: absolute;
   width: 20rem;
 }
 
-  
+.copyright {
+  color: gray;
+  margin-left: 7rem;
+}
+
+.login-link a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  margin-right: 3rem;
+}
+
+/* Responsive styles for smaller screens */
+@media screen and (max-width: 768px) {
+  .footer {
+    width: 100%;
+    flex-direction: row;
+    text-align: center;
+  }
+
   .copyright {
-    /* font-weight: bold; */
-    color: gray;
-    margin-left: 7rem;
+    width: 200px;
+    margin: 10px ;
   }
-  
-  .login-link a {
-    text-decoration: none;
-    color: black;
-    font-weight: bold;
-    margin-right: 3rem;
+.round-box{
+  display: none;
+}
+  .login-link {
+    margin-top: 10px;
   }
-  
- 
-  
+}

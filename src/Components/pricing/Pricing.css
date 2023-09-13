@@ -1,9 +1,10 @@
 .home-container1 {
-  display: grid;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   height: 30rem;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10rem;
+  justify-content: center;
+  align-items: center;
 }
 
 .background-gradient1 {
@@ -13,7 +14,26 @@
   border-radius: 69px;
   align-items: center;
 }
-
+.text-muted {
+  display: contents;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  font-size: 12px;
+}
+.ok123 {
+  border: 1px solid black;
+  width: 33rem;
+  border-radius: 15px;
+  margin-top: 2rem;
+}
+.x12 {
+  margin-left: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+}
 .main-text1 {
   color: #bd0c80;
   -webkit-background-clip: text;
@@ -21,11 +41,10 @@
   margin-top: 19rem;
 }
 
-
 .sub-heading1 {
   font-size: 45px;
   align-items: center;
-   text-align: center;
+  text-align: center;
 }
 
 .sub-text1 {
@@ -40,6 +59,8 @@
   background-color: #fff;
   border-radius: 35px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  margin: 2rem;
+  margin-right: 2rem;
 }
 .box2 {
   width: 330px;
@@ -62,16 +83,15 @@
 .box-container {
   display: flex;
   flex-direction: row;
-  justify-content:space-between;
+  justify-content: space-between;
   align-items: center;
-  
 }
 
 .price-description {
   font-size: 14px;
   margin-left: 30px;
   margin-top: 2rem;
-margin-bottom: 2rem;
+  margin-bottom: 2rem;
 }
 .pay-button {
   background: linear-gradient(to right, #bd0c80, #861b82);
@@ -85,7 +105,6 @@ margin-bottom: 2rem;
   /* margin-top: 29px; */
   margin-left: 18px;
 }
-
 
 .list1 {
   display: flex;
@@ -153,3 +172,72 @@ margin-bottom: 2rem;
   border: none;
   cursor: pointer;
 }
+/* Default styles */
+.home-container1 {
+  height: 30rem;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10rem;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ... (other styles) ... */
+
+/* Media query for screens with a maximum width of 768px */
+@media (max-width: 768px) {
+  
+  .circle{
+    display: none;
+  }
+  .home-container1{
+    margin-top: 10rem;
+    margin-bottom: 29rem;
+  }
+  .list1 {
+    margin-left: 0; /* Remove the left margin */
+  }
+  .sub-text1 {
+    align-items: center;
+    width: 50%;
+    margin-left: 10rem;
+}
+
+
+  .sub-heading1 {
+    width: 50%;
+    font-size: 22px;
+    margin-left: 10rem;
+  }
+  .background-gradient1 {
+margin-right: 19rem;
+  }
+  .box-container {
+    flex-direction: column; /* Change to column direction */
+    align-items: center; /* Center-align items */
+  }
+
+  /* Adjust box styles for smaller screens */
+  .box1,
+  .box2 {
+    width: 45%; /* Full width for boxes */
+    margin: 1rem 0; /* Add spacing between boxes */
+  }
+  .ok123{
+margin-top: 9rem;
+width: 20rem;
+  }
+  .text-muted{
+    font-size: 12px;
+  margin-left: 2rem;
+  }
+  .x12{
+    display: flex;
+    margin-left: 16rem;
+  }
+  .svg123{
+    display: none;
+  }
+}
+
+/* Add more media queries as needed for different screen sizes */

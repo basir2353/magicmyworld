@@ -5,6 +5,7 @@
   display: flex;
   width: 1518px;
   height: 1000px;
+ 
 }
 
 .upload-button {
@@ -29,6 +30,7 @@
   color: white;
   cursor: pointer;
   font-weight: bold;
+  margin-left: 2rem
 }
 
 .dropdown {
@@ -56,14 +58,26 @@
   margin-left: 16rem;
   align-items: center;
 }
+.order123{
 
+    height:12rem;
+    align-items: center;
+    border: 8px solid black;
+    margin-right: 11.4rem;
+    padding-top: 31px;
+    border-radius:10px;
+    border-style: dashed;
+    width: 19rem;
+  }
 .left-box > div {
   margin-left: 35px;
   margin-right: 134px;
   /* padding: 1rem; */
   text-align: center;
 }
-
+.left-box >p{
+  margin-right:9rem;
+}
 .right-box {
   width: 50%;
   display: flex;
@@ -76,6 +90,7 @@
 .image-row {
   display: flex;
   justify-content: space-between;
+  margin-left: 2rem;
   /* margin-bottom: 10px; */
 }
 
@@ -117,4 +132,121 @@
   left: 87px;
   transform: translate(-50%, -50%);
   z-index: 1; /* Ensure the SVG is on top */
+}
+.roomtype{
+
+  margin-right:19rem;
+  margin-bottom:7px;
+  margin-top:7px;
+}
+.bordered-image{
+ width: 18rem;
+  height:12rem;
+  width:19rem;
+  height:12rem;
+  marginRight:3rem;
+  marginBottom: 2rem;
+}
+.fourselected{
+  margin-right:17rem ;
+  margin-bottom:7px;
+  margin-top:7px;
+}
+.render{
+  
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+.credits{
+    align-items:center;
+    display: flex;
+    margin-left: 8px;
+  
+}
+.select123{
+  
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 5rem;
+    padding-bottom:2rem;
+  
+}
+.imgseelected-image{
+    width: 18rem;
+    height: 12rem;
+    margin-top: 0.5rem
+  
+}
+
+.left-box {
+  width: 36%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 16rem;
+  align-items: center;
+}
+
+.right-box {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  margin-left: 36rem;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .container1 {
+    flex-direction: column; /* Stack left and right boxes */
+    align-items: center; /* Center both boxes */
+    width: auto;
+    margin-bottom: 62rem;
+  }
+  .select123 {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 2rem;
+    padding-bottom: 2rem;
+    margin-top: 62rem;
+
+  }
+  .left-box {
+    padding-left: 6rem;
+    width: 100%; /* Make left box take full width */
+    margin-left:0rem ; /* Remove margin to center the left box */
+  }
+  .fourselected {
+    margin-right: 6rem;
+    margin-bottom: 7px;
+    margin-top: 6px;
+}
+.roomtype {
+  margin-right: 9rem;
+  margin-bottom: 7px;
+  margin-top: 7px;
+}
+.imgseelected-image{
+  width: 10rem;
+  height: 10rem;
+  margin-top: 0.5rem
+
+}
+ .left-box >p {
+  margin-right: -3rem;
+  margin-left: -10rem;}
+  .image-row {
+      display: flex;
+      justify-content: space-between;
+      /* margin-bottom: 10px; */
+      margin-right: 3rem;}
+  
+  .right-box {
+    width: 100%; /* Make right box take full width */
+    margin: 20px 0; /* Add margin to separate the boxes */
+  }
 }

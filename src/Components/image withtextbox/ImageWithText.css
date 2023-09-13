@@ -49,6 +49,9 @@
   
   
   @media (max-width: 768px) {
+    .image-text-container{
+width: 100%;
+    }
     .text-box {
       width: 90%; 
     }
@@ -60,7 +63,9 @@
     .text-box-top {
       top: 5px; 
     }
-  
+    .round-box1{
+      display: none;
+    }
     .text-box-bottom {
       bottom: 5px; 
     }

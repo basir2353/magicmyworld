@@ -16,7 +16,7 @@ const Home = () => {
           <br />
           in Seconds using ai
         </h2>
-        <p className="sub-text" style={{textAlign:'center',fontFamily:'Poppins-Regular'}}>
+        <p className="sub-text" >
           Capture a house Photo and see it Transform into 8+ themes instantly.
           Join
           Our Satisfied customers   <br /> and revamp your space today!

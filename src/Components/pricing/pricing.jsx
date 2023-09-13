@@ -153,15 +153,7 @@ function Pricing() {
   return (
     <div>
       <div
-        className="home-container1"
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          marginBottom: "10rem",
-          justifyContent: "center",
-          alignItems: "center ",
-        }}
-      >
+        className="home-container1" >
         <div className="circle left-top"></div>
         <div className="text-container1">
           <div className="background-gradient1">
@@ -177,7 +169,7 @@ function Pricing() {
           <div className="box-container">
             <div
               className="box1"
-              style={{ margin: "2rem", marginRight: "2rem" }}
+         
             >
               <div className="pac">1 Month Package</div>
               <div className="price-heading">$9.99</div>
@@ -215,13 +207,7 @@ function Pricing() {
           </div>
 
           <div
-            style={{
-              marginLeft: "2rem",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              position: "absolute",
-            }}
+           className='x12'
           >
             <p>
               <svg
@@ -269,7 +255,7 @@ function Pricing() {
               Commercial usage of photos
             </p>
           </div>
-          <div style={{ marginLeft: "25rem" }}>
+          <div style={{ marginLeft: "25rem" }} className="svg123">
             <p>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -320,20 +306,10 @@ function Pricing() {
         <div className="circle bottom"></div>
         <div className="circle left-bottom"></div>
         <div
-          style={{
-            border: "1px solid black",
-            width: "34rem",
-            borderRadius: "15px",
-            marginTop: "2rem",
-          }}
+        className='ok123'
         >
           <p
-            style={{
-              marginLeft: "14px",
-              fontSize: "12px",
-              marginTop: "1px",
-              marginBottom: "3px",
-            }}
+          className="text-muted"
           >
             Interested in team or bulk pricing? Email : info@magicmyhouse.com or
             KVK : 08214009

@@ -11,8 +11,7 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
-    // Your code to check user login and update state goes here...
-    // For this example, I'm simulating login state changes
+ 
     setTimeout(() => {
       setIsLoggedIn(true);
     }, 3000);
@@ -101,23 +100,14 @@ const Navbar = () => {
 
         <div
           className="navbar-login flex items-center"
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
+         
         >
           {showLoggedInText && (
-            <div
-              style={{
-                backgroundColor: "black",
-                borderRadius: "23px",
-                marginRight: "2rem",
-              }}
+            <div className="logedtext"
             >
               <div
                 className="loggedInText px-4 py-2 text-white"
-                style={{ padding: "5px 19px", color: "white" }}
+              
               >
                 Your Credit: {credit}
               </div>

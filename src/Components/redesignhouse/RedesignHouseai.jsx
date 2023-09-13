@@ -103,13 +103,12 @@ const RedesignComponent = () => {
   return (
     <div className="container1">
       <div className="left-box">
-        <p style={{marginRight:'9rem'}}>
+        <p >
           You have no credits left. Buy more here to
           <br />
           generate your house.
         </p>
-        <div
-          style={{
+        <div     style={{
             height:'12rem',
             alignItems: "center",
             border: "1px solid black",
@@ -119,8 +118,7 @@ const RedesignComponent = () => {
             borderStyle: "dashed",
             width: "19rem",
           
-          }}
-        >
+          }}  >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="30"
@@ -156,14 +154,14 @@ const RedesignComponent = () => {
           </button>
         </div>
 
-        <span style={{marginRight:'19rem',marginBottom:'7px',marginTop:'7px' }}> Select Room type</span>
+        <span className='roomtype'> Select Room type</span>
         {selectedImage && (
           <div className="uploaded-image">
             <img
               src={selectedImage}
               alt="Uploaded"
               className="bordered-image"
-              style={{ width: "18rem", height: "12rem",width:'19rem',height: '12rem',marginRight:'3rem' ,marginBottom: '2rem'}}
+             
             />
           </div>
         )}
@@ -182,7 +180,7 @@ const RedesignComponent = () => {
             <option value="Gaming Room">Gaming Room </option>
           </select>
         </div>
-        <span style={{ marginRight:'17rem' ,marginBottom:'7px',marginTop:'7px'}}>Selected almost four: </span>
+        <span className='fourselected'>Selected almost four: </span>
         <div className="image-grid">
           {rows.map((row, rowIndex) => (
             <div key={rowIndex} className="image-row">
@@ -222,21 +220,9 @@ const RedesignComponent = () => {
             </div>
           ))}
 
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "center",
-            }}
-          >
+          <div className='render'>
             <button className="bo">RENDER DESIGNS</button>{" "}
-            <span
-              style={{
-                alignItems: "center",
-                display: "flex",
-                marginLeft: "8px",
-              }}
-            >
+            <span className='credits'  >
               Cost : 3 Credits
             </span>
           </div>
@@ -244,14 +230,7 @@ const RedesignComponent = () => {
       </div>
       <div className="right-box">
         <div className="image-row">
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              marginLeft: "5rem",
-              paddingBottom: "2rem",
-            }}
-          >
+          <div className='select123'>
             {selectedImagesPreview.map((imageData) => (
               <div key={imageData.id} className="selected-image">
                 <img

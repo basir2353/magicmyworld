@@ -9,7 +9,7 @@
 .background-gradient {
   background-color: #fbf3f8;
   width: 400px;
-  margin-left: 5rem;
+  margin-left: 12rem;
   border-radius: 69px;
 }
 
@@ -32,7 +32,7 @@
   font-size: 16px;
   /* font-weight: bold; */
   color: gray;
-  /* margin-top: 10px; */
+text-align: center;
 }
 
 
@@ -80,14 +80,17 @@ font-weight: bold;
   }
 
   .background-gradient {
-    width: 80%;
-    margin-left: 0;
+    width: 100%;
+    font-size: 2px;
+    margin-left: 2px;
     text-align: center;
+    
   }
 
   .main-text {
-    font-size: 18px;
+    font-size: 14px;
   }
+  
 
   .sub-heading {
     font-size: 40px;
@@ -96,8 +99,11 @@ font-weight: bold;
 
   .sub-text {
     font-size: 14px;
+    text-align: center;
   }
-
+  .round-background{
+    display: none;
+  }
   .log-button {
     font-size: 16px;
   }
