@@ -9,12 +9,17 @@
   max-height: 40px;
   margin-left: 6rem;
 }
+.navbar-login{
+  display: flex;
+  justify-self: center;
+  align-items: center,
+}
 .el{
   color: #bd0c80;
   text-decoration: none;
   font-size: 17px;
   position: relative;
-  margin-right: 37rem;
+  margin-right: 29rem;
   
 }
 .el1{

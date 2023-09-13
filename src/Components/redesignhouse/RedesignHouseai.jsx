@@ -3,7 +3,93 @@ import "./YourComponent.css";
 
 const RedesignComponent = () => {
   const [selectedImage, setSelectedImage] = useState(null);
-  const [selectedOption, setSelectedOption] = useState("Show 9 Images");
+  const [selectedImages, setSelectedImages] = useState([]);
+  const [selectedImagesPreview, setSelectedImagesPreview] = useState([]);
+  const [selectedRoomType, setSelectedRoomType] = useState("");
+
+ 
+
+  const [imageGridData, setImageGridData] = useState(
+    [
+      {
+        id: "Image 1",
+        src: process.env.PUBLIC_URL + "/image5.png",
+        name: "Modern",
+      },
+      {
+        id: "Image 2",
+        src: process.env.PUBLIC_URL + "/image6.png",
+        name: "Minimalist",
+      },
+      {
+        id: "Image 3",
+        src: process.env.PUBLIC_URL + "/image7.png",
+        name: "Professional",
+      },
+      {
+        id: "Image 4",
+        src: process.env.PUBLIC_URL + "/image 8.png",
+        name: "Tropical",
+      },
+      {
+        id: "Image 5",
+        src: process.env.PUBLIC_URL + "/image 9.png",
+        name: "Coastal",
+      },
+      {
+        id: "Image 6",
+        src: process.env.PUBLIC_URL + "/image10.png",
+        name: "Vintage",
+      },
+      {
+        id: "Image 7",
+        src: process.env.PUBLIC_URL + "/image11.png",
+        name: "Industrial",
+      },
+      {
+        id: "Image 8",
+        src: process.env.PUBLIC_URL + "/image12.png",
+        name: "Neoclassic",
+      },
+      {
+        id: "Image 9",
+        src: process.env.PUBLIC_URL + "/image7.png",
+        name: "Tribal",
+      },
+    
+  ]);
+  
+
+  const toggleImageSelection = (imageId) => {
+    const updatedSelectedImages = [...selectedImages];
+    const updatedSelectedImagesPreview = [...selectedImagesPreview];
+
+    const imageIndex = updatedSelectedImages.indexOf(imageId);
+    const imageGridItem = imageGridData.find((data) => data.id === imageId);
+
+    if (imageIndex !== -1) {
+      // Image is already selected, remove it
+      updatedSelectedImages.splice(imageIndex, 1);
+      updatedSelectedImagesPreview.splice(imageIndex, 1);
+    } else {
+      // Image is not selected, add it if the limit is not reached
+      if (updatedSelectedImages.length < 4) {
+        updatedSelectedImages.push(imageId);
+        updatedSelectedImagesPreview.push(imageGridItem);
+      }
+    }
+
+    setSelectedImages(updatedSelectedImages);
+    setSelectedImagesPreview(updatedSelectedImagesPreview);
+  };
+  
+
+  
+  const rows = [];
+  for (let i = 0; i < imageGridData.length; i += 3) {
+    const row = imageGridData.slice(i, i + 3);
+    rows.push(row);
+  }
   const handleFileUpload = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -14,33 +100,32 @@ const RedesignComponent = () => {
       reader.readAsDataURL(file);
     }
   };
-  const handleDropdownChange = (e) => {
-    setSelectedOption(e.target.value);
-  };
   return (
     <div className="container1">
       <div className="left-box">
-        <p>
-          You have no credits left.
-         Buy more here to 
-         <br />generate your house.
+        <p style={{marginRight:'9rem'}}>
+          You have no credits left. Buy more here to
+          <br />
+          generate your house.
         </p>
         <div
           style={{
+            height:'12rem',
             alignItems: "center",
             border: "1px solid black",
-            marginLeft: "19px",
-            marginRight: "15rem",
-            paddingBottom: "34px",
-            borderRadius: '10px',
-            borderStyle:'dashed',
+            marginRight: "11.4rem",
+            paddingTop: "31px",
+            borderRadius: "10px",
+            borderStyle: "dashed",
+            width: "19rem",
+          
           }}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="25"
-            height="25"
-            fill="currentColor"
+            width="30"
+            height="30"
+            fill="#009FE3"
             class="bi bi-cloud-upload"
             viewBox="0 0 16 16"
           >
@@ -54,9 +139,15 @@ const RedesignComponent = () => {
             />
           </svg>{" "}
           <br />
-          Drag and drop <br />
+          Drag and drop  Your Image<br />
           or <br />
-          <input type="file" accept="image/*"  onChange={handleFileUpload} />
+          <input
+            type="file"
+            accept="image/*"
+            multiple
+            style={{ display: "none" }}
+            onChange={handleFileUpload}
+          />
           <button
             className="upload-button"
             onClick={() => document.querySelector('input[type="file"]').click()}
@@ -64,69 +155,124 @@ const RedesignComponent = () => {
             Upload Photo
           </button>
         </div>
-        <span> Select Room type</span>
+
+        <span style={{marginRight:'19rem',marginBottom:'7px',marginTop:'7px' }}> Select Room type</span>
         {selectedImage && (
-          <div  className="uploaded-image">
+          <div className="uploaded-image">
             <img
               src={selectedImage}
               alt="Uploaded"
               className="bordered-image"
-              style={{width:'12rem'}}
+              style={{ width: "18rem", height: "12rem",width:'19rem',height: '12rem',marginRight:'3rem' ,marginBottom: '2rem'}}
             />
           </div>
         )}
         <div className="dropdown-container">
-          <select
-            value={selectedOption}
-            onChange={handleDropdownChange}
-            className="dropdown"
-          >
-            <option value="Show 4 Images">Show 6 Images</option>
-            <option value="Show 9 Images">Show 9 Images</option>
+          <select className="dropdown" onChange={(e) => setSelectedRoomType(e.target.value)}
+>
+            <option value="Living Room">Living Room</option>
+            <option value="Dining Room">Dining Room</option>
+            <option value="BedRoom">BedRoom</option>
+            <option value="Bath Room">Bath Room</option>
+            <option value="Office">Office</option>
+            <option value="Kitchen">Kitchen</option>
+            <option value="Basement">Basement</option>
+            <option value="Arabian Majilis">Arabian Majilis</option>
+            <option value="Outdoor Patio">Outdoor Patio</option>
+            <option value="Gaming Room">Gaming Room </option>
           </select>
         </div>
-        <span style={{marginLeft:'1rem,'}}>Selected almost four: </span>
-        <div className="image-grid" style={{display:'flex',marginRight: '13rem'}}>
-         
-          {selectedOption === "Show 9 Images" ? (
-            <>
-              <img src={process.env.PUBLIC_URL + "/image5.png"} alt="Image 1" /><span style={{position:"absolute",marginTop:'5.2rem',marginLeft:'1rem'}}>Modern</span><br/>
-              <img src={process.env.PUBLIC_URL + "/image6.png"} alt="Image 2" /><span style={{position:"absolute",marginTop:'5.2rem',marginLeft:'6rem'}}>Minimalist</span><br/>
-              <img src={process.env.PUBLIC_URL + "/image7.png"} alt="Image 1" /><span style={{position:"absolute",marginTop:'5.2rem',marginLeft:'11.5rem'}}>Professional</span><br/>
-              <img src={process.env.PUBLIC_URL + "/image 8.png"} alt="Image 2" /><span style={{position:"absolute",marginTop:'12rem',marginLeft:'1rem'}}>Tropical</span><br/>
-              <img src={process.env.PUBLIC_URL + "/image 9.png"} alt="Image 3" /><span style={{position:"absolute",marginTop:'12rem',marginLeft:'6.2rem'}}>Coastal</span><br/>
-              <img src={process.env.PUBLIC_URL + "/image10.png"} alt="Image 4" /><span style={{position:"absolute",marginTop:'12rem',marginLeft:'12rem'}}>Vintage</span><br/>
-              <img src={process.env.PUBLIC_URL + "/image11.png"} alt="Image 1" /><span style={{position:"absolute",marginTop:'19rem',marginLeft:'0.5rem'}}>Industrial</span><br/>
-              <img src={process.env.PUBLIC_URL + "/image12.png"} alt="Image 2" /><span style={{position:"absolute",marginTop:'19rem',marginLeft:'6rem'}}>Neoclassic</span><br/>
-              <img src={process.env.PUBLIC_URL + "/image7.png"} alt="Image 3" /><span style={{position:"absolute",marginTop:'19rem',marginLeft:'13rem'}}>Tribal</span><br/>
-            </>
-          ) : (
-            <>
-              <img src={process.env.PUBLIC_URL + "/image5.png"} alt="Image 1" /><span style={{position:"absolute",marginTop:'5.2rem',marginLeft:'1rem'}}>Modern</span><br/>
-              <img src={process.env.PUBLIC_URL + "/image6.png"} alt="Image 2" /><span style={{position:"absolute",marginTop:'5.2rem',marginLeft:'6rem'}}>Minimalist</span><br/>
-              <img src={process.env.PUBLIC_URL + "/image7.png"} alt="Image 1" /><span style={{position:"absolute",marginTop:'5.2rem',marginLeft:'11.5rem'}}>Professional</span><br/>
-              <img src={process.env.PUBLIC_URL + "/image 8.png"} alt="Image 2" /><span style={{position:"absolute",marginTop:'12rem',marginLeft:'1rem'}}>Tropical</span><br/>
-              <img src={process.env.PUBLIC_URL + "/image 9.png"} alt="Image 3" /><span style={{position:"absolute",marginTop:'12rem',marginLeft:'6rem'}}>Coastal</span><br/>
-              <img src={process.env.PUBLIC_URL + "/image10.png"} alt="Image 4" /><span style={{position:"absolute",marginTop:'12rem',marginLeft:'12.5rem'}}>Vintage</span><br/>
-            </>
-          )}
-          <div style={{    display: 'flex',flexDirection: 'row',justifyContent: 'center'}}>
-          <button className="bo">RENDER DESIGNS</button> <span style={{alignItems:'center',display:"flex",marginLeft:'8px'}}>Cost : 3 Credits</span>
+        <span style={{ marginRight:'17rem' ,marginBottom:'7px',marginTop:'7px'}}>Selected almost four: </span>
+        <div className="image-grid">
+          {rows.map((row, rowIndex) => (
+            <div key={rowIndex} className="image-row">
+              {row.map((imageData) => (
+                <div key={imageData.id} className="image-container">
+                  <div className="image-wrapper">
+                    <img
+                      src={imageData.src}
+                      alt={imageData.name}
+                      onClick={() => toggleImageSelection(imageData.id)}
+                      style={{
+                        border: selectedImages.includes(imageData.id)
+                          ? "2px solid #861b82"
+                          : "2px solid transparent",
+                      }}
+                    />
+                                 {selectedImages.includes(imageData.id) && (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="white"
+                      className="svg-icon"
+                      style={{backgroundColor:'black',color:'white'}}
+                      
+                    >
+                      <path d="M0 0h24v24H0z" fill="none" />
+                      <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                    </svg>
+                  )}
+
+                    <div className="image-text">{imageData.name}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ))}
+
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "center",
+            }}
+          >
+            <button className="bo">RENDER DESIGNS</button>{" "}
+            <span
+              style={{
+                alignItems: "center",
+                display: "flex",
+                marginLeft: "8px",
+              }}
+            >
+              Cost : 3 Credits
+            </span>
           </div>
         </div>
       </div>
       <div className="right-box">
         <div className="image-row">
-          <img src={process.env.PUBLIC_URL + "/image1.png"} alt="Image 1" /><span style={{position:"absolute",marginTop:'15rem',marginLeft:'5rem'}}>Professional living room</span><br/>
-          <img src={process.env.PUBLIC_URL + "/image2.png"} alt="Image 2" /><span style={{position:"absolute",marginTop:'15rem',marginLeft:'25rem'}}>Vintage living room</span><br/>
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              marginLeft: "5rem",
+              paddingBottom: "2rem",
+            }}
+          >
+            {selectedImagesPreview.map((imageData) => (
+              <div key={imageData.id} className="selected-image">
+                <img
+                  src={imageData.src}
+                  alt={imageData.name}
+                  style={{
+                    width: "18rem",
+                    height: "12rem",
+                    marginTop: "0.5rem",
+                  }}
+                />
+             <div className="image-text" style={{ marginTop: "1.9rem" }}>
+            <span style={{marginLeft:'2px'}}>{imageData.name}</span> 
+          {selectedRoomType ? selectedRoomType : "Living Room"}
         </div>
-        <div className="image-row">
-          <img src={process.env.PUBLIC_URL + "/image3.png"} alt="Image 5" /><span style={{position:"absolute",marginTop:'15rem',marginLeft:'5rem'}}>Tropical living room</span><br/>
-          <img src={process.env.PUBLIC_URL + "/image4.png"} alt="Image 6" /><span style={{position:"absolute",marginTop:'15rem',marginLeft:'25rem'}}>Coastal living room</span><br/>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
   );
 };
-
 export default RedesignComponent;

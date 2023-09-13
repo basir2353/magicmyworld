@@ -10,38 +10,42 @@ const LoginForm = () => {
   const [profile, setProfile] = useState({});
   const navigate = useNavigate();
 
-  const handleLogin = () => {
-    const savedUser = localStorage.getItem("user");
+  // Inside the handleLogin function in LoginForm.js
+const handleLogin = () => {
+  const savedUser = localStorage.getItem("user");
 
-    if (savedUser) {
-      const parsedUser = JSON.parse(savedUser);
-      if (
-        parsedUser.username === username &&
-        parsedUser.password === password
-      ) {
-        console.log("Login successful");
-        navigate("/");
-        window.location.reload();
-      } else {
-        console.log("Invalid username or password");
-      }
+  if (savedUser) {
+    const parsedUser = JSON.parse(savedUser);
+    if (
+      parsedUser.username === username &&
+      parsedUser.password === password
+    ) {
+      console.log("Login successful");
+      // Store the user information for simple login users
+      localStorage.setItem("simpleUser", JSON.stringify(parsedUser));
+      navigate("/");
+      window.location.reload();
     } else {
-      console.log("User not found");
+      console.log("Invalid username or password");
     }
-  };
-  const responseMessage = (response) => {
-    const accessToken = response.credential;
-    const user = jwt_decode(accessToken);
-  
-    
-    // Convert the user object to a JSON string before storing it in local storage
-    localStorage.setItem("user", JSON.stringify(user));
-  
-    console.log(user);
-    navigate("/");
-    window.location.reload();
+  } else {
+    console.log("User not found");
+  }
+};
 
-  };
+ // Inside the responseMessage function in LoginForm.js
+const responseMessage = (response) => {
+  const accessToken = response.credential;
+  const user = jwt_decode(accessToken);
+
+  // Store the user information for Google OAuth users
+  localStorage.setItem("googleUser", JSON.stringify(user));
+
+  console.log(user);
+  navigate("/");
+  window.location.reload();
+};
+
   
   const errorMessage = (error) => {
     console.log(error, ":error");

@@ -15,7 +15,7 @@ const RedesignHouse = () => {
             selecting themes, and clicking Render designs.
             </p>
             <div className="redesign-house-images">
-                <div className="image-container">
+                <div className="image-container1">
                     <img width='558px' height='558px' src={process.env.PUBLIC_URL + '/Mediamodifier.png'} alt="Image 1" />
                     <img className="overlay-image" width='60px' height='60px' src={process.env.PUBLIC_URL + '/crop.png'} alt="Image 2" />
                 </div>

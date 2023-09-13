@@ -10,6 +10,7 @@ import LoginForm from './Components/loginform/login';
 import SignupForm from './Components/loginform/singup';
 import Pricing from './Components/pricing/pricing';
 import RedesignHouse from './Components/redesignhouse/redesignhouse';
+import '@fontsource/poppins';
 
 function App() {
   const [userCredit, setUserCredit] = useState(3); // Initial credit count
@@ -17,6 +18,12 @@ function App() {
   // Function to update user's credit
   const updateUserCredit = (newCredit) => {
     setUserCredit(newCredit);
+  };
+  const [credits, setCredits] = useState("unlimited"); // Initialize credits state
+
+  // Function to update credits
+  const updateCredits = (newCredits) => {
+    setCredits(newCredits);
   };
   return (
     <BrowserRouter>
@@ -28,8 +35,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<LoginForm />} />
           <Route path="/signup" element={<SignupForm />} />
-          <Route path='pricing' element={<Pricing updateUserCredit={updateUserCredit}/>}> </Route>
-          <Route path='/desiging' element={<RedesignHouse/>}></Route>
+          <Route path='pricing' element={<Pricing updateUserCredit={updateUserCredit} updateCredits={updateCredits} />}> </Route>
+          <Route path='/desiging' element={<RedesignHouse  credits={credits} />}></Route>
         </Routes>
         
         <Routes>

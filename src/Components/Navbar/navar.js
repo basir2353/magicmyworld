@@ -2,90 +2,143 @@ import React, { useState, useEffect } from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
 
-const Navbar = ({ userData }) => {
+const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userName, setUserName] = useState("");
   const [roundBoxColor, setRoundBoxColor] = useState("");
   const [showLoggedInText, setShowLoggedInText] = useState(false);
+  const [credit, setCredit] = useState(3); // Assuming an initial credit of 3
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   useEffect(() => {
-    // Check if the user is logged in
-    const savedUser = localStorage.getItem("user");
-  
-    if (userData && userData.given_name) {
-      setUserName(userData.given_name);
+    // Your code to check user login and update state goes here...
+    // For this example, I'm simulating login state changes
+    setTimeout(() => {
       setIsLoggedIn(true);
-      localStorage.setItem("user", JSON.stringify(userData)); // Save the user data to localStorage
-    } else if (savedUser) {
-      const parsedUser = JSON.parse(savedUser);
-      setUserName(parsedUser.given_name || "A");
-      setIsLoggedIn(true);
-    } else {
-      setUserName("Guest");
-      setIsLoggedIn(false);
-    }
-  }, [userData]);
-  
+    }, 3000);
+  }, []);
+
   useEffect(() => {
     setShowLoggedInText(isLoggedIn);
   }, [isLoggedIn]);
-  
 
-  return (
-    <nav className="navbar">
-      <Link to="/" className="navbar-logo">
-        <img src={process.env.PUBLIC_URL + "/MMH_logo.png"} alt="Logo" />
-      </Link>
-      {isLoggedIn && (
-        <>
-          <Link to="/desiging" className="el1">
-            Redesign
-          </Link>
-          <Link to="/pricing" className="el">
-            Pricing
-          </Link>
-        </>
-      )}
+  useEffect(() => {
+    window.addEventListener("message", handleMessage);
 
-      <div
-        className="navbar-login"
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        {showLoggedInText && (
-          <div
-            style={{
-              backgroundColor: "black",
-              borderRadius: "23px",
-              marginRight: "2rem",
-            }}
-          >
-            <div
-              className="loggedInText"
-              style={{ padding: "5px 19px", color: "white" }}
-            >
-              Your Credit : {3}
-            </div>
-          </div>
-        )}
-        {!isLoggedIn && (
-          <Link to="/login" className="btn btn-login">
-            Login
-          </Link>
-        )}
+    return () => {
+      window.removeEventListener("message", handleMessage);
+    };
+  }, []);
+
+  function handleMessage(event) {
+    if (event.data === "payment_successful") {
+      // Update the user's credit to "Unlimited" when payment is successful
+      setCredit("Unlimited");
+      setShowLoggedInText(true);
+    }
+  }
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+    useEffect(() => {
+      const googleUser = localStorage.getItem("googleUser");
+      if (googleUser) {
+        const parsedGoogleUser = JSON.parse(googleUser);
+        setUserName(parsedGoogleUser.given_name || "Guest");
+        setIsLoggedIn(true);
+        setRoundBoxColor("color-for-google-users");
+      } else {
+        const simpleUser = localStorage.getItem("simpleUser");
+        if (simpleUser) {
+          const parsedSimpleUser = JSON.parse(simpleUser);
+          setUserName(parsedSimpleUser.username || "Guest");
+          setIsLoggedIn(true);
+          setRoundBoxColor("color-for-simple-login-users");
+        } else {
+          setUserName("Guest");
+          setIsLoggedIn(false);
+        }
+      }
+    }, []);
+
+    useEffect(() => {
+      setShowLoggedInText(isLoggedIn);
+    }, [isLoggedIn]);
+
+    useEffect(() => {
+      window.addEventListener('message', handleMessage);
+
+      return () => {
+        window.removeEventListener('message', handleMessage);
+      };
+    }, []);
+
+    function handleMessage(event) {
+      if (event.data === 'payment_successful') {
+        // Update the user's credit to "Unlimited" when payment is successful
+        setCredit("Unlimited");
+        setShowLoggedInText(true);
+      }
+    }
+
+    return (
+      <nav className="navbar bg-gray-900 p-4">
+        <Link to="/" className="navbar-logo">
+          <img src={process.env.PUBLIC_URL + "/MMH_logo.png"} alt="Logo"  className="max-h-10 ml-6 md:max-h-8 md:ml-0" />
+        </Link>
         {isLoggedIn && (
-          <div
-            className="user-round-box btn btn-login"
-            style={{ backgroundColor: roundBoxColor }}
-          >
-            {userName ? userName.charAt(0).toUpperCase() : ""}
-          </div>
+          <>
+            <Link to="/desiging" className="el1">
+              Redesign
+            </Link>
+            <Link to="/pricing" className="el">
+              Pricing
+            </Link>
+          </>
         )}
-      </div>
-    </nav>
-  );
-};
 
-export default Navbar;
+        <div
+          className="navbar-login flex items-center"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          {showLoggedInText && (
+            <div
+              style={{
+                backgroundColor: "black",
+                borderRadius: "23px",
+                marginRight: "2rem",
+              }}
+            >
+              <div
+                className="loggedInText px-4 py-2 text-white"
+                style={{ padding: "5px 19px", color: "white" }}
+              >
+                Your Credit: {credit}
+              </div>
+            </div>
+          )}
+          {!isLoggedIn && (
+            <Link to="/login" className="btn btn-login">
+              Login
+            </Link>
+          )}
+          {isLoggedIn && (
+            <div
+              className={`user-round-box btn btn-login ${roundBoxColor}`}
+              style={{ backgroundColor: roundBoxColor }}
+            >
+              {userName ? userName.charAt(0).toUpperCase() : ""}
+            </div>
+          )}
+        </div>
+      </nav>
+    );
+  };
+
+  export default Navbar;

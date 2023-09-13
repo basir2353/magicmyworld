@@ -17,8 +17,9 @@
   font-weight: bold;
   margin-right: rem;
   margin-top: 20px;
+  
 }
-.bo{
+.bo {
   background: linear-gradient(to right, #bd0c80, #861b82);
   border: none;
   position: sticky;
@@ -28,76 +29,92 @@
   color: white;
   cursor: pointer;
   font-weight: bold;
-
 }
 
-
-
 .dropdown {
-  padding: 12px 91px;
+  padding: 12px 77px;
+  /* width: 99px; */
   border: 1px solid #ccc;
-  margin-left: -1rem;
+  margin-left: -3rem;
 }
 
 .image-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-left: 35px;
-    margin-right: 134px;
-    padding: 1rem;
-    text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 2px 2px;
 }
 .image-grid img {
-    width: calc(33.33% - 10px); 
-    height: auto;
-    margin-bottom:30px;
+  height: auto;
+  margin-bottom: 30px;
 }
 .left-box {
   width: 36%;
-  /* padding: 1rem; */
   position: absolute;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 17.5rem;
-  align-items: baseline;
-  font-family: 'Popins-Regular  ';
+  margin-left: 16rem;
+  align-items: center;
+}
 
-  }
-  
-  .left-box > div {
-    margin-left: 35px;
-    margin-right: 134px;
-    padding: 1rem;
-    text-align: center;
-  }
-  
-  .right-box {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: absolute;
-    margin-left: 36rem;
-  }
-  
-  .image-row {
-    display: flex;
-    justify-content: space-between;
-    /* margin-bottom: 10px; */
-  }
-  
-  .image-row img {
-    width: 290px;
-    height: 260px;
-    margin-left: 10px;
-  }
-  
-  .image-row img::after {
-    content: attr(alt);
-    display: block;
-    font-size: 1.1rem;
-    margin-top: 5px;
-  }
-  
+.left-box > div {
+  margin-left: 35px;
+  margin-right: 134px;
+  /* padding: 1rem; */
+  text-align: center;
+}
+
+.right-box {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  margin-left: 36rem;
+}
+
+.image-row {
+  display: flex;
+  justify-content: space-between;
+  /* margin-bottom: 10px; */
+}
+
+.image-row img {
+  width: 290px;
+  height: 260px;
+  margin-left: 10px;
+}
+
+.image-row img::after {
+  content: attr(alt);
+  display: block;
+  font-size: 1.1rem;
+}
+.image-wrapper {
+  position: relative;
+  margin-bottom: -25px;
+}
+
+.image-wrapper img {
+  max-width: 94px;
+  height: auto;
+  display: block;
+}
+
+.image-text {
+  position: relative;
+  bottom: 11px;
+  left: 0;
+  bottom: 28px;
+  right: 0;
+
+  padding: 5px;
+  text-align: center;
+}
+.svg-icon {
+  position: absolute;
+  top: 14px;
+  left: 87px;
+  transform: translate(-50%, -50%);
+  z-index: 1; /* Ensure the SVG is on top */
+}

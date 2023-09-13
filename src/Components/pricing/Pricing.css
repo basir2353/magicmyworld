@@ -17,7 +17,6 @@
 .main-text1 {
   color: #bd0c80;
   -webkit-background-clip: text;
-font-family: Popins-Bold;
   text-align: center;
   margin-top: 19rem;
 }
@@ -27,13 +26,11 @@ font-family: Popins-Bold;
   font-size: 45px;
   align-items: center;
    text-align: center;
-   font-family: 'Popins-Bold';
 }
 
 .sub-text1 {
   font-size: 14px;
   color: gray;
-  font-family: "Popins";
   margin-top: 10px;
   text-align: center;
 }
