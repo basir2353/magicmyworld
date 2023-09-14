@@ -3,37 +3,39 @@ import { Link, useNavigate } from "react-router-dom";
 import { GoogleLogin } from "@react-oauth/google";
 import "./loginform.css";
 import jwt_decode from "jwt-decode";
+import axios from "axios";
 
 const LoginForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [profile, setProfile] = useState({});
   const navigate = useNavigate();
 
-  // Inside the handleLogin function in LoginForm.js
-const handleLogin = () => {
-  const savedUser = localStorage.getItem("user");
+  const handleLogin = async () => {
+    const userCredentials = {
+      username: username,
+      password: password,
+    };
 
-  if (savedUser) {
-    const parsedUser = JSON.parse(savedUser);
-    if (
-      parsedUser.username === username &&
-      parsedUser.password === password
-    ) {
-      console.log("Login successful");
-      // Store the user information for simple login users
-      localStorage.setItem("simpleUser", JSON.stringify(parsedUser));
-      navigate("/");
-      window.location.reload();
-    } else {
-      console.log("Invalid username or password");
+    try {
+      const response = await axios.post("http://localhost:5000/login", userCredentials);
+
+      if (response.status === 200) {
+        // Authentication successful
+        const data = response.data;
+        console.log("Login successful");
+        // Store user data as needed
+        localStorage.setItem("simpleUser", JSON.stringify(data.user));
+        navigate("/");
+        window.location.reload();
+      } else {
+        // Authentication failed
+        console.log("Invalid username or password");
+      }
+    } catch (error) {
+      console.error("An error occurred while logging in:", error);
     }
-  } else {
-    console.log("User not found");
-  }
-};
-
- // Inside the responseMessage function in LoginForm.js
+  };
+    
 const responseMessage = (response) => {
   const accessToken = response.credential;
   const user = jwt_decode(accessToken);
@@ -46,7 +48,7 @@ const responseMessage = (response) => {
   window.location.reload();
 };
 
-  
+
   const errorMessage = (error) => {
     console.log(error, ":error");
   };

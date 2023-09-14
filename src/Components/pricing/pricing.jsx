@@ -1,18 +1,27 @@
 import "./Pricing.css";
 import EndImage from "../endlogo/endimage";
 import Footer from "../footer/footer";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { makePayment } from "./paymentapi";
 import { useNavigate } from "react-router-dom";
 function Pricing() {
   const [paymentData, setPaymentData] = useState(null);
   const [newStringState, setNewStringState] = useState("");
-  const [isSubscribed9, setIsSubscribed9] = useState(false);
-  const [isSubscribed24, setIsSubscribed24] = useState(false);
+  // const [notificationMessage, setNotificationMessage] = useState("");
+  const [isSubscribed9, setIsSubscribed9] = useState(
+    localStorage.getItem("isSubscribed9") === "true"
+  );
+  const [isSubscribed24, setIsSubscribed24] = useState(
+    localStorage.getItem("isSubscribed24") === "true"
+  );
   const [notificationMessage, setNotificationMessage] = useState("");
 
-
   const navigate = useNavigate();
+
+  useEffect(() => {
+    localStorage.setItem("isSubscribed9", isSubscribed9);
+    localStorage.setItem("isSubscribed24", isSubscribed24);
+  }, [isSubscribed9, isSubscribed24]);
 
   async function dataPayment(amount) {
     try {
@@ -134,36 +143,39 @@ function Pricing() {
           (window.screen.height - 500) / 2
         }`
       );
-
+  
       if (popupWindow) {
         popupWindow.focus();
-
-        window.addEventListener("message", (event) => {
+  
+        window.addEventListener("message", async (event) => {
           if (event.data === "payment_successful") {
-            popupWindow.close();
-          
-            showNotification("Payment Successful");
-              if (amount === 9) {
+            if (amount === 9) {
               setIsSubscribed9(true);
             } else if (amount === 24) {
               setIsSubscribed24(true);
             }
+  
+            popupWindow.close();
+  
             navigate("/");
+
+            showNotification("Payment Successful");
+            await new Promise((resolve) => setTimeout(resolve, 2000));
+  
+         
+            // Wait for a few seconds (you can adjust the time) before navigating
+  
+            // Now, navigate after showing the success message
           }
         });
-      }
-      if (amount === 9) {
-        setIsSubscribed9(true);
-      } else if (amount === 24) {
-        setIsSubscribed24(true);
       }
     } catch (error) {
       console.error(error);
     }
   }
-
   function showNotification(message) {
     setNotificationMessage(message);
+    alert(message);
   }
   
 

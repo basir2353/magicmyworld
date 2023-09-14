@@ -9,13 +9,14 @@ const Navbar = () => {
   const [showLoggedInText, setShowLoggedInText] = useState(false);
   const [credit, setCredit] = useState(3); // Assuming an initial credit of 3
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  // const [showLogoutButton, setShowLogoutButton] = useState(false); // New state variable
 
-  useEffect(() => {
+  // useEffect(() => {
  
-    setTimeout(() => {
-      setIsLoggedIn(true);
-    }, 3000);
-  }, []);
+  //   setTimeout(() => {
+  //     setIsLoggedIn(true);
+  //   }, 3000);
+  // }, []);
 
   useEffect(() => {
     setShowLoggedInText(isLoggedIn);
@@ -45,18 +46,17 @@ const Navbar = () => {
       const googleUser = localStorage.getItem("googleUser");
       if (googleUser) {
         const parsedGoogleUser = JSON.parse(googleUser);
-        setUserName(parsedGoogleUser.given_name || "Guest");
+        setUserName(parsedGoogleUser.given_name);
         setIsLoggedIn(true);
         setRoundBoxColor("color-for-google-users");
       } else {
         const simpleUser = localStorage.getItem("simpleUser");
         if (simpleUser) {
           const parsedSimpleUser = JSON.parse(simpleUser);
-          setUserName(parsedSimpleUser.username || "Guest");
+          setUserName(parsedSimpleUser.username );
           setIsLoggedIn(true);
           setRoundBoxColor("color-for-simple-login-users");
         } else {
-          setUserName("Guest");
           setIsLoggedIn(false);
         }
       }
@@ -120,7 +120,7 @@ const Navbar = () => {
           )}
           {isLoggedIn && (
             <div
-              className={`user-round-box btn btn-login ${roundBoxColor}`}zzz
+              className={`user-round-box btn btn-login ${roundBoxColor}`}
               style={{ backgroundColor: roundBoxColor }}
             >
               {userName ? userName.charAt(0).toUpperCase() : ""}

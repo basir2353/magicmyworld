@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const SignupForm = () => {
@@ -7,10 +8,11 @@ const SignupForm = () => {
     email: '',
     password: '',
   });
-  
+
   const [showAlert, setShowAlert] = useState(false);
-  
-  useNavigate('/')
+
+  const navigate = useNavigate();
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setSignupData({
@@ -20,24 +22,35 @@ const SignupForm = () => {
   };
 
   const handleSignup = () => {
-  
-    localStorage.setItem('user', JSON.stringify(signupData));
+    // Create a request body with the signupData
+    const requestBody = {
+      username: signupData.username,
+      email: signupData.email,
+      password: signupData.password,
+    };
 
-
-    setShowAlert(true);
-
-    setSignupData({
-      username: '',
-      email: '',
-      password: '',
-    });
-
-    
-    console.log('Signup successful', signupData);
+    // Make a POST request to your API
+    axios
+      .post('http://localhost:5000/signup', requestBody)
+      .then((response) => {
+        // Handle a successful response, e.g., show a success message
+        setShowAlert(true);
+        setSignupData({
+          username: '',
+          email: '',
+          password: '',
+        });
+        console.log('Signup successful', response.data);
+        navigate('/'); // You can navigate to a different page on success
+      })
+      .catch((error) => {
+        // Handle errors, e.g., show an error message
+        console.error('Signup failed', error);
+      });
   };
 
   return (
-    <div className="container" style={{    boxShadow: '0px 5px 10px rgba(0, 0, 0, 0.2)',width:"45rem",height:"30rem",borderRadius:"2rem" }}>
+    <div className="container" style={{ boxShadow: '0px 5px 10px rgba(0, 0, 0, 0.2)', width: '45rem', height: '30rem', borderRadius: '2rem' }}>
       <div className="row">
         <div className="col-md-6 offset-md-3 mt-5">
           <h2>Signup</h2>
@@ -50,8 +63,7 @@ const SignupForm = () => {
             <div className="form-group">
               <label htmlFor="username">Username</label>
               <input
-              required
-              
+                required
                 type="text"
                 className="form-control"
                 id="username"
@@ -87,11 +99,7 @@ const SignupForm = () => {
                 required
               />
             </div>
-            <button
-              type="button"
-              className="btn btn-primary newb1"
-              onClick={handleSignup}
-            >
+            <button type="button" className="btn btn-primary newb1" onClick={handleSignup}>
               Signup
             </button>
           </form>
