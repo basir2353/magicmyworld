@@ -7,10 +7,13 @@ import { useNavigate } from "react-router-dom";
 function Pricing() {
   const [paymentData, setPaymentData] = useState(null);
   const [newStringState, setNewStringState] = useState("");
-  const [isPaymentSuccessful, setIsPaymentSuccessful] = useState(false);
+  const [isSubscribed9, setIsSubscribed9] = useState(false);
+  const [isSubscribed24, setIsSubscribed24] = useState(false);
+  const [notificationMessage, setNotificationMessage] = useState("");
 
 
   const navigate = useNavigate();
+
   async function dataPayment(amount) {
     try {
       const response = await makePayment({ amount });
@@ -138,11 +141,21 @@ function Pricing() {
         window.addEventListener("message", (event) => {
           if (event.data === "payment_successful") {
             popupWindow.close();
-            navigate("/");
+          
             showNotification("Payment Successful");
-            setIsPaymentSuccessful(true); // Set payment status to true
+              if (amount === 9) {
+              setIsSubscribed9(true);
+            } else if (amount === 24) {
+              setIsSubscribed24(true);
+            }
+            navigate("/");
           }
         });
+      }
+      if (amount === 9) {
+        setIsSubscribed9(true);
+      } else if (amount === 24) {
+        setIsSubscribed24(true);
       }
     } catch (error) {
       console.error(error);
@@ -150,8 +163,9 @@ function Pricing() {
   }
 
   function showNotification(message) {
-    alert(message);
+    setNotificationMessage(message);
   }
+  
 
   return (
     <div>
@@ -180,15 +194,20 @@ function Pricing() {
                 Unlimted credit credits for <br />
                 For a duration of 1 month
               </div>
-              <button
-  className="pay-button"
-  onClick={() => {
-    dataPayment(9); // You can pass the package amount as an argument
-  }}
-  disabled={isPaymentSuccessful} // Disable the button when payment is successful
->
-  {isPaymentSuccessful ? "Subscribed" : "Pay"} {/* Change button text */}
-</button>
+              {isSubscribed9 ? (
+  <button className="pay-button" style={{width:'18rem',textAlign:"center",paddingRight:'9rem',paddingLeft:'6rem'}}   disabled>
+    Subscribed
+  </button>
+) : (
+  <button
+    className="pay-button"
+    onClick={() => {
+      dataPayment(9);
+    }}
+  >
+    Pay
+  </button>
+)}
 
             </div>
 
@@ -200,14 +219,21 @@ function Pricing() {
                 <br />
                 For a duration of 6 month
               </div>
-              <button
-                className="pay-button"
-                onClick={() => {
-                  dataPayment(24);
-                }}
-              >
-                Pay
-              </button>
+              {isSubscribed24 ? (
+  <button className="pay-button"  style={{width:'18rem',textAlign:"center",paddingRight:'9rem',paddingLeft:'6rem'}}  disabled>
+    Subscribed
+  </button>
+) : (
+  <button
+    className="pay-button"
+    onClick={() => {
+      dataPayment(24);
+    }}
+  >
+    Pay
+  </button>
+)}
+
             </div>
           </div>
 
