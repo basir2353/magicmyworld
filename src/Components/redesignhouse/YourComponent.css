@@ -37,7 +37,7 @@
   padding: 12px 77px;
   /* width: 99px; */
   border: 1px solid #ccc;
-  margin-left: -3rem;
+  /* margin-right: 1rem; */
 }
 
 .image-grid {
@@ -55,8 +55,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 16rem;
-  align-items: center;
+  margin-left: 15rem;
 }
 .order123{
 
@@ -76,7 +75,8 @@
   text-align: center;
 }
 .left-box >p{
-  margin-right:9rem;
+  margin-right:6rem;
+  font-size: 14px;
 }
 .right-box {
   width: 50%;
@@ -84,13 +84,13 @@
   flex-direction: column;
   align-items: center;
   position: absolute;
-  margin-left: 36rem;
+  margin-left: 32rem;
 }
 
 .image-row {
   display: flex;
   justify-content: space-between;
-  margin-left: 2rem;
+  margin-left: 3.8rem;
   /* margin-bottom: 10px; */
 }
 
@@ -144,8 +144,8 @@
   height:12rem;
   width:19rem;
   height:12rem;
-  marginRight:3rem;
-  marginBottom: 2rem;
+  margin-right:3rem;
+  margin-bottom: 2rem;
 }
 .fourselected{
   margin-right:17rem ;
@@ -157,7 +157,13 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
+    margin-left: 3rem;
 
+}
+.fourselected {
+  margin-right: 14rem;
+  margin-bottom: 7px;
+  margin-top: 6px;
 }
 .credits{
     align-items:center;
@@ -180,24 +186,13 @@
   
 }
 
-.left-box {
-  width: 36%;
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-left: 16rem;
-  align-items: center;
+
+.roomtype {
+  margin-right: 16rem;
+  margin-bottom: 7px;
+  margin-top: 7px;
 }
 
-.right-box {
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: absolute;
-  margin-left: 36rem;
-}
 
 /* Media query for smaller screens */
 @media (max-width: 768px) {
@@ -216,14 +211,19 @@
 
   }
   .left-box {
-    padding-left: 6rem;
-    width: 100%; /* Make left box take full width */
-    margin-left:0rem ; /* Remove margin to center the left box */
-  }
+    padding-left: 3rem;
+    width: 100%;
+    margin-left: 0rem;
+    align-items: center;
+}
   .fourselected {
     margin-right: 6rem;
     margin-bottom: 7px;
     margin-top: 6px;
+}
+.dropdown {
+  margin-right: -3rem;
+
 }
 .roomtype {
   margin-right: 9rem;
@@ -236,6 +236,10 @@
   margin-top: 0.5rem
 
 }
+.ee123{
+  margin-right: 9.4rem;
+}
+
  .left-box >p {
   margin-right: -3rem;
   margin-left: -10rem;}
@@ -243,7 +247,8 @@
       display: flex;
       justify-content: space-between;
       /* margin-bottom: 10px; */
-      margin-right: 3rem;}
+      }
+      
   
   .right-box {
     width: 100%; /* Make right box take full width */

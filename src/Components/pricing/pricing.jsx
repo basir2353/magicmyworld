@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom";
 function Pricing() {
   const [paymentData, setPaymentData] = useState(null);
   const [newStringState, setNewStringState] = useState("");
+  const [isPaymentSuccessful, setIsPaymentSuccessful] = useState(false);
+
 
   const navigate = useNavigate();
   async function dataPayment(amount) {
@@ -136,8 +138,9 @@ function Pricing() {
         window.addEventListener("message", (event) => {
           if (event.data === "payment_successful") {
             popupWindow.close();
-            showNotification("Payment Successful");
             navigate("/");
+            showNotification("Payment Successful");
+            setIsPaymentSuccessful(true); // Set payment status to true
           }
         });
       }
@@ -178,13 +181,15 @@ function Pricing() {
                 For a duration of 1 month
               </div>
               <button
-                className="pay-button"
-                onClick={() => {
-                  dataPayment(9);
-                }}
-              >
-                Pay
-              </button>
+  className="pay-button"
+  onClick={() => {
+    dataPayment(9); // You can pass the package amount as an argument
+  }}
+  disabled={isPaymentSuccessful} // Disable the button when payment is successful
+>
+  {isPaymentSuccessful ? "Subscribed" : "Pay"} {/* Change button text */}
+</button>
+
             </div>
 
             <div className="box2">

@@ -54,7 +54,7 @@
   border-radius: 25px;
   padding: 10px 30px;
   color: white;
-  cursor: pointer;
+  cursor: pinter;
   font-weight: bold;
   margin-right: 6rem;
 }
@@ -80,24 +80,47 @@
     max-height: 30px;
     margin-left: 0.5rem;
   }
-  .logedtext{
-    width: 160px;
+  .logedtext {
+    display: flex;
+    justify-content: center;
+    border-radius: 20px;
+    /* margin-right: 1rem; */
+    width: 120px;
+    background-color: black;
+  }
+  .loggedInText{
+    font-size: 10px;
+
   }
   .menu-icon {
     display: flex;
     flex-direction: column;
     position: relative;
   }
-
+  .lloggedInText {
+    padding: 2px 2px;
+    /* color: white; */
+    /* background-color: black; */
+  }
   .btn-login {
     padding: 8px 16px;
     margin-right: 0.5rem;
   }
-
+  .navbar-logo{
+    /* width: 25px; */
+  }
+  .navbar-logo img {
+    max-height: 30px;
+    width: 75px;
+    margin-left: 10px;
+  }
   /* Adjusting margins for smaller screens */
   .el {
-    margin-right: 1rem;
-    display: none;
+    font-size: 12px;
+    width: 12px;
+    margin-right: 2rem;
+    /* position: relative; */
+    display: flexbox;
   }
 
   .el1 {

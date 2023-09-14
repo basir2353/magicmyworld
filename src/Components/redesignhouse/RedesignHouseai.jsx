@@ -100,6 +100,22 @@ const RedesignComponent = () => {
       reader.readAsDataURL(file);
     }
   };
+  const containerStyle = {
+    height: '12rem',
+    alignItems: 'center',
+    border: '1px solid black',
+    marginRight: '8.4rem',
+    paddingTop: '31px',
+    borderRadius: '10px',
+    borderStyle: 'dashed',
+    width: '19rem',
+  };
+  
+  const responsiveContainerStyle = {
+    ...containerStyle, // Copy the original styles
+    width: '80%', // Adjust the width for small screens
+    marginRight: '5.4rem', // Remove the right margin for small screens
+  };
   return (
     <div className="container1">
       <div className="left-box">
@@ -108,17 +124,7 @@ const RedesignComponent = () => {
           <br />
           generate your house.
         </p>
-        <div     style={{
-            height:'12rem',
-            alignItems: "center",
-            border: "1px solid black",
-            marginRight: "11.4rem",
-            paddingTop: "31px",
-            borderRadius: "10px",
-            borderStyle: "dashed",
-            width: "19rem",
-          
-          }}  >
+        <div style={window.innerWidth <= 768 ? responsiveContainerStyle : containerStyle}  >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="30"
