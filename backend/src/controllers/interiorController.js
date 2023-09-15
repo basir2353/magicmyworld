@@ -37,7 +37,7 @@ function makeRequest(image, prompt) {
 }
 const transformRoom=catchAsync(async (req,res,next)=>{
 let {room,themes,image}=req.body
-console.log(image);
+console.log(image,themes,room);
 let output_images=[]
 if(typeof themes==="string")
 themes=JSON.parse(themes)
