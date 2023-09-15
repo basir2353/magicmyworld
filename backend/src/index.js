@@ -14,4 +14,4 @@ routes(app);
 // Connect to the database
 connectDB();
 
-Populate();
+// Populate();
