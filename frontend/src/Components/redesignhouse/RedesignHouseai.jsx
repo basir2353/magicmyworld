@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import "./YourComponent.css";
-
+import { Row, Col, Button, Container } from 'react-bootstrap';
+import apiClient from "../../api/apiClient";
+import useApi from "../../hooks/useApi";
+import LoadingOverlay from "../LoadingOverlay";
 const RedesignComponent = () => {
   const [selectedImage, setSelectedImage] = useState(null);
+  const [uploadedImage, setuploadedImage] = useState(null);
   const [selectedImages, setSelectedImages] = useState([]);
   const [selectedImagesPreview, setSelectedImagesPreview] = useState([]);
   const [selectedRoomType, setSelectedRoomType] = useState("");
@@ -65,7 +69,7 @@ const RedesignComponent = () => {
     const updatedSelectedImagesPreview = [...selectedImagesPreview];
 
     const imageIndex = updatedSelectedImages.indexOf(imageId);
-    const imageGridItem = imageGridData.find((data) => data.id === imageId);
+    const imageGridItem = imageGridData.find((data) => data.name === imageId);
 
     if (imageIndex !== -1) {
       // Image is already selected, remove it
@@ -78,9 +82,10 @@ const RedesignComponent = () => {
         updatedSelectedImagesPreview.push(imageGridItem);
       }
     }
-
+console.log(updatedSelectedImages,"sel");
     setSelectedImages(updatedSelectedImages);
     setSelectedImagesPreview(updatedSelectedImagesPreview);
+    setResultData(null)
   };
   
 
@@ -92,6 +97,7 @@ const RedesignComponent = () => {
   }
   const handleFileUpload = (e) => {
     const file = e.target.files[0];
+    setuploadedImage(file)
     if (file) {
       const reader = new FileReader();
       reader.onload = (e) => {
@@ -100,6 +106,18 @@ const RedesignComponent = () => {
       reader.readAsDataURL(file);
     }
   };
+  const {request,loading}=useApi((data)=>apiClient.post("/interior",data))
+
+const [resultData,setResultData]=useState()
+ async function handleSubmit(){
+  const formdata=new FormData()
+  formdata.append("image",uploadedImage)
+  formdata.append("themes",JSON.stringify(selectedImages))
+  formdata.append("room",selectedRoomType)
+const result=await request(formdata)
+console.log(result.data);
+setResultData(result.data.result)
+  }
   const containerStyle = {
     height: '12rem',
     alignItems: 'center',
@@ -118,13 +136,16 @@ const RedesignComponent = () => {
   };
   return (
     <div className="container1">
-      <div className="left-box">
+      <LoadingOverlay open={loading}/>
+      <div className="left-box ">
         <p >
           You have no credits left. Buy more here to
           <br />
           generate your house.
         </p>
         <div style={window.innerWidth <= 768 ? responsiveContainerStyle : containerStyle}  >
+          <div className="mb-5">
+            
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="30"
@@ -158,19 +179,20 @@ const RedesignComponent = () => {
           >
             Upload Photo
           </button>
-        </div>
-
-        <span className='roomtype'> Select Room type</span>
-        {selectedImage && (
-          <div className="uploaded-image">
+          </div>
+          {selectedImage && (
+          <div className="uploaded-image  mb-2 rounded">
             <img
               src={selectedImage}
               alt="Uploaded"
-              className="bordered-image"
+              style={{width:"100%"}}
+              className="rounded"
              
             />
           </div>
         )}
+        <span > Select Room type</span>
+      
         <div className="dropdown-container">
           <select className="dropdown" onChange={(e) => setSelectedRoomType(e.target.value)}
 >
@@ -186,78 +208,124 @@ const RedesignComponent = () => {
             <option value="Gaming Room">Gaming Room </option>
           </select>
         </div>
-        <span className='fourselected'>Selected almost four: </span>
-        <div className="image-grid">
-          {rows.map((row, rowIndex) => (
-            <div key={rowIndex} className="image-row">
-              {row.map((imageData) => (
-                <div key={imageData.id} className="image-container">
-                  <div className="image-wrapper">
-                    <img
-                      src={imageData.src}
-                      alt={imageData.name}
-                      onClick={() => toggleImageSelection(imageData.id)}
-                      style={{
-                        border: selectedImages.includes(imageData.id)
-                          ? "2px solid #861b82"
-                          : "2px solid transparent",
-                      }}
-                    />
-                                 {selectedImages.includes(imageData.id) && (
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="white"
-                      className="svg-icon"
-                      style={{backgroundColor:'black',color:'white'}}
-                      
-                    >
-                      <path d="M0 0h24v24H0z" fill="none" />
-                      <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
-                    </svg>
-                  )}
-
-                    <div className="image-text">{imageData.name}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          ))}
-
-          <div className='render'>
-            <button className="bo">RENDER DESIGNS</button>{" "}
-            <span className='credits'  >
-              Cost : 3 Credits
-            </span>
-          </div>
+        <span className=''>Selected almost four: </span>
+       <ImageGrid rows={rows} selectedImages={selectedImages} handleSubmit={handleSubmit} toggleImageSelection={toggleImageSelection}/>
         </div>
+
       </div>
       <div className="right-box">
-        <div className="image-row">
-          <div className='select123'>
-            {selectedImagesPreview.map((imageData) => (
-              <div key={imageData.id} className="selected-image">
+    <Container>
+      <Row>
+        {selectedImagesPreview.map((imageData,index) => (
+          <Col key={imageData.id} sm={6} >
+            <div className="selected-image">
+             {resultData?.length>0?
                 <img
-                  src={imageData.src}
-                  alt={imageData.name}
-                  style={{
-                    width: "18rem",
-                    height: "12rem",
-                    marginTop: "0.5rem",
-                  }}
-                />
-             <div className="image-text" style={{ marginTop: "1.9rem" }}>
-            <span style={{marginLeft:'2px'}}>{imageData.name}</span> 
-          {selectedRoomType ? selectedRoomType : "Living Room"}
-        </div>
+                src={resultData[index]||""}
+                alt={"Image "+(index+1)}
+                className="img-fluid"
+                style={{
+                  width: "100%",
+                  height: "18rem",
+                  marginTop: "0.5rem",
+                }}
+              />
+             : <div 
+              
+              className="d-flex justify-content-center align-items-center bg-dark rounded"
+              style={{ width: "100%",
+              height: "18rem",
+              marginTop: "0.5rem",}}
+              >
+
+              <img
+                src={"https://www.roomgpt.io/couch.svg"}
+                alt={imageData.name}
+                className="img-fluid"
+                style={{
+                  width: "2rem",
+                }}
+              />
+              </div>}
+              <div className="image-text" style={{ marginTop: "1.9rem" }}>
+                <span style={{ marginLeft: '2px' }}>{imageData.name+" "}</span>
+                {selectedRoomType ? selectedRoomType : "Living Room"}
               </div>
-            ))}
-          </div>
-        </div>
-      </div>
+            </div>
+          </Col>
+        ))}
+        {/* {resultData.map((imageData,index) => (
+          <Col key={index} sm={6} >
+            <div className="selected-image">
+              <img
+                src={imageData||""}
+                alt={"Image "+(index+1)}
+                className="img-fluid"
+                style={{
+                  width: "100%",
+                  height: "18rem",
+                  marginTop: "0.5rem",
+                }}
+              />
+              <div className="image-text" style={{ marginTop: "1.9rem" }}>
+                <span style={{ marginLeft: '2px' }}>{imageData.name}</span>
+                {selectedRoomType ? selectedRoomType : "Living Room"}
+              </div>
+            </div>
+          </Col>
+        ))} */}
+      </Row>
+    </Container>
+  </div>
     </div>
   );
 };
 export default RedesignComponent;
+
+
+const ImageGrid = ({ rows, selectedImages, toggleImageSelection,handleSubmit }) => (
+  <div className="image-grid">
+    {rows.map((row, rowIndex) => (
+      <Row key={rowIndex} className="image-row">
+        {row.map((imageData) => (
+          <Col key={imageData.id} sm={4} className="image-container">
+            <div className="image-wrapper">
+              <img
+                src={imageData.src}
+                alt={imageData.name}
+                onClick={() => toggleImageSelection(imageData.name)}
+                className={`position-relative img-fluid ${selectedImages?.includes(imageData.name) ? 'selected-image' : ''}`}
+              />
+              {selectedImages?.includes(imageData.name) && (
+                 <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="white"
+                  className="svg-icon"
+                  style={{ backgroundColor: 'black', color: 'white' }}
+                >
+                  <path d="M0 0h24v24H0z" fill="none" />
+                  <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                </svg>
+             
+              )}
+              <div className="image-text">{imageData.name}</div>
+            </div>
+          </Col>
+        ))}
+      </Row>
+    ))}
+
+    <Row className='render'>
+      <Col>
+        <Button onClick={handleSubmit} className="bo">RENDER DESIGNS</Button>
+        <span className='credits'>
+          Cost : 3 Credits
+        </span>
+      </Col>
+    </Row>
+  </div>
+);
+
