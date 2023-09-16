@@ -124,7 +124,7 @@ const RedesignComponent = () => {
           <br />
           generate your house.
         </p>
-        <div style={window.innerWidth <= 768 ? responsiveContainerStyle : containerStyle}  >
+        <div className="xqe1" style={window.innerWidth <= 768 ? responsiveContainerStyle : containerStyle}  >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="30"

@@ -1,14 +1,14 @@
-/* Common styles for all screen sizes */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
+
+/* Navbar.css */
+.custom-toggler {
+  background-color: black; /* Background color for the button */
+  border: none; /* Remove border if needed */
+  color: white; /* Text color */
 }
 
-.navbar-logo img {
-  max-height: 40px;
-  margin-left: 6rem;
+.custom-toggler:hover {
+  background-color: black; /* Change color on hover if needed */
+  color: white; /* Text color on hover */
 }
 
 .el {
@@ -18,36 +18,9 @@
   position: relative;
   margin-right: 29rem;
 }
-
-.el1 {
+.nav-item {
   color: black;
-  text-decoration: none;
-  font-size: 17px;
-  position: absolute;
-  margin-left: 18rem;
 }
-
-.navbar-login {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.lloggedInText {
-  padding: 5px 19px;
-  color: white;
-  background-color: black;
-}
-
-.logedtext {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 20px;
-  margin-right: 1rem;
-  background-color: black;
-}
-
 .btn-login {
   background: linear-gradient(to right, #bd0c80, #861b82);
   border: none;
@@ -59,74 +32,4 @@
   
   margin-right: 1rem;
 
-}
-
-.btn-login:hover {
-  background-color: #ff8e61;
-  color: #ffffff;
-}
-
-.el:hover {
-  text-decoration: none;
-  color: #861b82;
-}
-
-.el1:hover {
-  text-decoration: none;
-  color: black;
-}
-
-/* Responsive styles for screens <= 768px */
-@media (max-width: 770px) {
-  .navbar-logo img {
-    max-height: 30px;
-    margin-left: 0.5rem;
-  }
-  .logedtext {
-    display: flex;
-    justify-content: center;
-    border-radius: 20px;
-    /* margin-right: 1rem; */
-    width: 120px;
-    background-color: black;
-  }
-  .loggedInText{
-    font-size: 10px;
-
-  }
-  .menu-icon {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-  }
-  .lloggedInText {
-    padding: 2px 2px;
-    /* color: white; */
-    /* background-color: black; */
-  }
-  .btn-login {
-    padding: 8px 16px;
-    margin-right: 0.5rem;
-  }
-  .navbar-logo{
-    /* width: 25px; */
-  }
-  .navbar-logo img {
-    max-height: 30px;
-    width: 75px;
-    margin-left: 10px;
-  }
-  /* Adjusting margins for smaller screens */
-  .el {
-    font-size: 12px;
-    width: 12px;
-    margin-right: 2rem;
-    /* position: relative; */
-    display: flexbox;
-  }
-
-  .el1 {
-    margin-left: 0.5rem;
-    display: none;
-  }
 }

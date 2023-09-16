@@ -8,8 +8,8 @@ const Navbar = () => {
   const [roundBoxColor, setRoundBoxColor] = useState("");
   const [showLoggedInText, setShowLoggedInText] = useState(false);
   const [credit, setCredit] = useState(3); // Assuming an initial credit of 3
+  const [showLogoutButton, setShowLogoutButton] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [showLogoutButton, setShowLogoutButton] = useState(false); // New state variable
 
   useEffect(() => {
     const googleUser = localStorage.getItem("googleUser");
@@ -63,60 +63,79 @@ const Navbar = () => {
     setCredit(3); // Reset credit to 3
     setRoundBoxColor(""); // Reset round box color
     setShowLogoutButton(false); // Hide the logout button
-    alert('You Logged Out')
+    alert("You Logged Out");
   };
 
   return (
-    <nav className="navbar bg-gray-900 p-4">
-      <Link to="/" className="navbar-logo">
-        <img
-          src={process.env.PUBLIC_URL + "/MMH_logo.png"}
-          alt="Logo"
-          className="max-h-10 ml-6 md:max-h-8 md:ml-0"
-        />
-      </Link>
-      {isLoggedIn && (
-        <>
-          <Link to="/designing" className="el1">
-            Redesign
-          </Link>
-          <Link to="/pricing" className="el">
-            Pricing
-          </Link>
-        </>
-      )}
+    <div className="navbar-container">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-gray p-4 text-black">
+        <Link to="/" className="navbar-brand">
+          <img
+            src={process.env.PUBLIC_URL + "/MMH_logo.png"}
+            alt="Logo"
+            className="img-fluid max-h-12 ml-6 ml-md-0"
+            style={{ maxWidth: "100px" }}
+          />
+        </Link>
+        <button
+          className="navbar-toggler bg-black custom-toggler"
+          type="button"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
 
-      <div className="navbar-login flex items-center">
-        {showLoggedInText && (
-          <div className="logedtext">
-            <div className="loggedInText px-4 py-2 text-white">
-              Your Credit: {credit}
-            </div>
-          </div>
-        )}
-        {!isLoggedIn && (
-          <Link to="/login" className="btn btn-login">
-            Login
-          </Link>
-        )}
-        {isLoggedIn && (
-          <>
-            <button
-              className={`user-round-box btn btn-login ${roundBoxColor}`}
-              style={{ backgroundColor: roundBoxColor }}
-              onClick={handleLogout}
-            >
-              {userName ? userName.charAt(0).toUpperCase() : ""}
-            </button>
-            {showLogoutButton && (
-              <button className={`user-round-box btn btn-login ${roundBoxColor}`}onClick={handleLogout}>
-                Logout
-              </button>
+        <div className={`collapse navbar-collapse ${isMenuOpen ? "show" : ""}`} id="navbarNav">
+          <ul className="navbar-nav">
+            {isLoggedIn && (
+              <>
+                <li className="nav-item">
+                  <Link to="/designing" className="nav-link" style={{ color: "black" }}>
+                    Redesign
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/pricing" className="nav-link" style={{ color: "#861b82" }}>
+                    Pricing
+                  </Link>
+                </li>
+            
+              </>
             )}
-          </>
-        )}
-      </div>
-    </nav>
+          </ul>
+          <div className="navbar-login ml-auto">
+            {showLoggedInText && (
+              <div className="loggedtext">
+                <div className="loggedInText px-4 py-2 text-white">
+                  Your Credit: {credit}
+                </div>
+              </div>
+            )}
+            {!isLoggedIn && (
+              <Link to="/login" className="btn btn-login">
+                Login
+              </Link>
+            )}
+            {isLoggedIn && (
+              <>
+                <button
+                  className={`user-round-box btn btn-login ${roundBoxColor}`}
+                  style={{ backgroundColor: roundBoxColor }}
+                  onClick={handleLogout}
+                >
+                  {userName ? userName.charAt(0).toUpperCase() : ""}
+                </button>
+                {showLogoutButton && (
+                  <button className={`user-round-box btn btn-login ${roundBoxColor}`} onClick={handleLogout}>
+                    Logout
+                  </button>
+                )}
+              </>
+            )}
+          </div>
+        </div>
+      </nav>
+    </div>
   );
 };
 

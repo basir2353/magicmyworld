@@ -36,7 +36,7 @@ function App() {
           <Route path="/login" element={<LoginForm />} />
           <Route path="/signup" element={<SignupForm />} />
           <Route path='pricing' element={<Pricing updateUserCredit={updateUserCredit} updateCredits={updateCredits} />}> </Route>
-          <Route path='/desiging' element={<RedesignHouse  credits={credits} />}></Route>
+          <Route path='/designing' element={<RedesignHouse  credits={credits} />}></Route>
         </Routes>
         
         <Routes>
