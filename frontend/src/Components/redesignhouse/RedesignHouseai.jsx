@@ -3,6 +3,8 @@ import "./YourComponent.css";
 import { Row, Col, Button, Container } from "react-bootstrap";
 import apiClient from "../../api/apiClient";
 import useApi from "../../hooks/useApi";
+import { ToastContainer, toast } from "react-toastify"; // Import toast from react-toastify
+import "react-toastify/dist/ReactToastify.css";
 import LoadingOverlay from "../LoadingOverlay";
 const RedesignComponent = () => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -103,12 +105,21 @@ const RedesignComponent = () => {
   const { request, loading } = useApi((data) =>
     apiClient.post("/interior", data)
   );
-
+  const handleAlert = (message) => {
+    toast.error(message, {
+      position: "top-right",
+      autoClose: 3000, // Close the toast after 3 seconds
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    });
+  };
   const [resultData, setResultData] = useState();
   async function handleSubmit() {
     if (selectedImages.length === 0) {
       // No image is selected, show an alert or take appropriate action
-      alert("Please select at least one photo before rendering designs.");
+      handleAlert("Please select at least one photo before rendering designs.");
       return;
     }
     const formdata = new FormData();
@@ -371,11 +382,12 @@ const ImageGrid = ({
     <Row className="render">
       <Col>
       
-        <Button onClick={handleSubmit} className="bo">
+        <Button onClick={handleSubmit}  className="bo">
           RENDER DESIGNS
         </Button>
         <span className="credits">Cost : 3 Credits</span>
       </Col>
+        <ToastContainer />
     </Row>
   </div>
 );
