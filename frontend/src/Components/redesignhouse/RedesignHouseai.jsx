@@ -4,10 +4,6 @@ import { Row, Col, Button, Container } from 'react-bootstrap';
 import apiClient from "../../api/apiClient";
 import useApi from "../../hooks/useApi";
 import LoadingOverlay from "../LoadingOverlay";
-import { Row, Col, Button, Container } from 'react-bootstrap';
-import apiClient from "../../api/apiClient";
-import useApi from "../../hooks/useApi";
-import LoadingOverlay from "../LoadingOverlay";
 const RedesignComponent = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [uploadedImage, setuploadedImage] = useState(null);
