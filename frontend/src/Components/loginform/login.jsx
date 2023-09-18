@@ -85,7 +85,9 @@ const responseMessage =async (response) => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
-              </div>
+                </div>
+              <p>Don't  have an account? <a href="/signup">Sign up</a></p>
+                
               <button
                 type="button"
                 className=" newb1"
@@ -93,7 +95,7 @@ const responseMessage =async (response) => {
               >
                 Login
               </button>
-              <Link
+              {/* <Link
                 to="/signup"
                 className="  signup-button"
                 onClick={() => {
@@ -101,12 +103,17 @@ const responseMessage =async (response) => {
                 }}
               >
                 Signup
-              </Link>
+              </Link> */}
             </form>
 
             {/* Google Login button */}
-            <div className="mt-4">
-              <GoogleLogin onSuccess={responseMessage} onError={errorMessage} />
+              <div className="mt-4">
+                <div className="row">
+                  <div className="col-lg-12 col-md-12 col-sm-12">
+                  <GoogleLogin onSuccess={responseMessage} onError={errorMessage} />
+
+                  </div>
+                </div>
             </div>
           </div>
         </div>

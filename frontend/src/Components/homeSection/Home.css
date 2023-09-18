@@ -8,30 +8,43 @@
 
 .background-gradient {
   background-color: #fbf3f8;
-  width: 400px;
-  margin-left: 12rem;
+  width: 64%;
+  /* margin-left: 12rem; */
   border-radius: 69px;
+  margin: auto;
 }
 
 .main-text {
-  font-size: 13px;
-  color:#861b82 ;
-  -webkit-background-clip: text;
-  font-weight: bold;
-  text-align: center;
+  font-size: 12px;
+    color: rgba(230,0,126,1);
+    -webkit-background-clip: text;
+    /* font-weight: bold; */
+    text-align: center;
+    letter-spacing: 2px;
+    /* text-shadow: 0px 0px 0px #E6007E, -3px 0 0px #662483, 2px 1px 0 #eee; */
+}
+.main-text1 {
+  font-size: 12px;
+    color: rgba(230,0,126,1);
+    -webkit-background-clip: text;
+    /* font-weight: bold; */
+    text-align: center;
+    letter-spacing: 2px;
+    
 }
 
 .sub-heading {
-  font-size: 59px;
-  /* font-weight: bold; */
+  font-weight: 300;
+  font-size: 47px;
+  font-family: 'Poppins', sans-serif !important;
   margin-right: 2rem;
   align-items: center;
 }
 
 .sub-text {
-  font-size: 16px;
+  font-size: 12px;
   /* font-weight: bold; */
-  color: gray;
+  color: #5D5D5D;
 text-align: center;
 }
 
@@ -47,34 +60,38 @@ text-align: center;
 }
 
 .round-background {
-  background: #efdfec;
+  background: #bf8db373;
   border-radius: 100px;
-  -webkit-filter: blur(100px);
-  filter: blur(100px);
-  height: 20rem;
-  right: 5rem;
+  filter: blur(79px);
+  /* height: 20rem; */
+  right: -4rem;
   position: absolute;
-  width: 20rem;
-  z-index: 1;
+  /* width: 20rem; */
+  top: 2rem;
+  height: 13rem;
+  width: 14rem;
 }
 
 .log-button {
-  background: linear-gradient(to right, #bd0c80, #861b82);
+  background: linear-gradient(90deg, rgba(230,0,126,1) 0%, rgba(102,36,131,1) 73%);
   border: none;
   border-radius: 25px;
   padding: 10px 20px;
-font-weight: bold;
+  font-family: 'Poppins', sans-serif !important;
   color: white;
   cursor: pointer;
   margin-top: 10px;
   text-decoration: none;
+  font-weight: 100;
 }
 .log-button:hover {
   background-color:  white;
   text-decoration: none;
 }
-
-@media (max-width: 1000px) {
+ a:hover{
+color: #ffd0ef !important;
+}
+@media (max-width: 768px) {
   .home-container {
     height: auto;
     padding: 20px;
@@ -108,4 +125,9 @@ font-weight: bold;
   .log-button {
     font-size: 16px;
   }
+}
+
+.button-container{
+  text-align: center;
+  margin-top: 4rem;
 }

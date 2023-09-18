@@ -10,6 +10,7 @@ import LoginForm from './Components/loginform/login';
 import SignupForm from './Components/loginform/singup';
 import Pricing from './Components/pricing/pricing';
 import RedesignHouse from './Components/redesignhouse/redesignhouse';
+
 import '@fontsource/poppins';
 
 function App() {
@@ -36,7 +37,7 @@ function App() {
           <Route path="/login" element={<LoginForm />} />
           <Route path="/signup" element={<SignupForm />} />
           <Route path='pricing' element={<Pricing updateUserCredit={updateUserCredit} updateCredits={updateCredits} />}> </Route>
-          <Route path='/designing' element={<RedesignHouse  credits={credits} />}></Route>
+          <Route path='/desiging' element={<RedesignHouse  credits={credits} />}></Route>
         </Routes>
         
         <Routes>
