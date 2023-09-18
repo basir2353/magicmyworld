@@ -8,7 +8,7 @@
 
 .navbar-logo img {
   max-height: 40px;
-  margin-left: 6rem;
+  margin-left: 3rem;
 }
 
 .el {
@@ -38,7 +38,9 @@
   color: white;
   background-color: black;
 }
-
+.navbar-dark .navbar-nav .nav-link {
+  color: white !important;
+}
 .logedtext {
   display: flex;
   justify-content: center;
@@ -47,18 +49,30 @@
   margin-right: 1rem;
   background-color: black;
 }
+.navbar-dark .navbar-nav .nav-link1{
+  color: #CB0D7F !important;
+  margin-left: 1rem;
+}
 
+.margin-left{
+margin-left: 1rem;
+}
+.navbar-dark .navbar-toggler{
+  color: black !important;
+  border-color: black !important;
+}
 .btn-login {
-  background: linear-gradient(to right, #bd0c80, #861b82);
+  background: linear-gradient(90deg, rgba(230,0,126,1) 0%, rgba(102,36,131,1) 73%);
   border: none;
   border-radius: 25px;
-  padding: 10px 30px;
+  padding: 10px 30px !important;
   color: white;
   cursor: pinter;
-  font-weight: bold;
-  
-  margin-right: 1rem;
-
+  /* font-weight: bold; */
+  font-family: 'Poppins', sans-serif !important;
+  margin-right: 3rem;
+/* width: 40%; */
+font: 100;
 }
 
 .btn-login:hover {
@@ -129,4 +143,26 @@
     margin-left: 0.5rem;
     display: none;
   }
+}
+/* Add this CSS to your Navbar.css or your preferred stylesheet */
+
+
+/* Hide the drawer on larger screens */
+@media (min-width: 992px) {
+  .drawer {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: -70px; /* Initially hidden to the right */
+    height: 100%;
+    width: 70px;
+    background-color: #333; /* Background color for the drawer */
+    overflow-x: hidden;
+    transition: right 0.3s; /* Transition effect to slide in/out */
+    z-index: 1; 
+  }
+  .drawer.open {
+    right: 0; /* Slide in when the "open" class is added */
+  }
+  
 }

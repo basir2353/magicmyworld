@@ -18,9 +18,9 @@
 .lorem-text {
   margin-top: 5px;
   text-align: center;
-  font-size: 18px;
+  font-size: 12px;
   font-family: 'Poppins';
-  color: gray;
+  color: #5D5D5D;
 }
 
 /* Responsive adjustments for smaller screens */
