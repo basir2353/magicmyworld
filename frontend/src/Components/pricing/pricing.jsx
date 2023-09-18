@@ -139,14 +139,13 @@ function Pricing() {
       const popupWindow = window.open(
         popupURL,
         "_blank",
-        `width=500,height=500,left=${(window.screen.width - 500) / 2},top=${
-          (window.screen.height - 500) / 2
+        `width=500,height=500,left=${(window.screen.width - 500) / 2},top=${(window.screen.height - 500) / 2
         }`
       );
-  
+
       if (popupWindow) {
         popupWindow.focus();
-  
+
         window.addEventListener("message", async (event) => {
           if (event.data === "payment_successful") {
             if (amount === 9) {
@@ -154,17 +153,17 @@ function Pricing() {
             } else if (amount === 24) {
               setIsSubscribed24(true);
             }
-  
+
             popupWindow.close();
-  
+
             navigate("/");
 
             showNotification("Payment Successful");
             await new Promise((resolve) => setTimeout(resolve, 2000));
-  
-         
+
+
             // Wait for a few seconds (you can adjust the time) before navigating
-  
+
             // Now, navigate after showing the success message
           }
         });
@@ -177,188 +176,229 @@ function Pricing() {
     setNotificationMessage(message);
     alert(message);
   }
-  
+
 
   return (
     <div>
-      <div
-        className="home-container1" >
-        <div className="circle left-top"></div>
-        <div className="text-container1">
-          <div className="background-gradient1">
-            <p className="main-text1">Pricing Plan</p>
+      <div className="container">
+        <div className="row">
+          <div className="col-xl-1  col-lg-1  col-md-12 col-sm-12 col-xs-12">
+            </div>
+          <div className="col-xl-10 m-auto col-lg-8  col-md-12 col-sm-12 col-xs-12">
+            <div className="background-gradient1">
+              <p className="main-text main-text133"><span className="main-text1">PRI</span>CING PLAN</p>
+            </div>
+            <h2 className="sub-heading1">Buy MagicMyHouse Credits</h2>
+            <p className="sub-text1">
+              You have 10 credits. Join thousands of happy customers. Explore more
+              options below.
+            </p>
           </div>
-          <h2 className="sub-heading1">Buy MagicMyHouse Credits</h2>
-          <p className="sub-text1">
-            You have 10 credits. Join thousands of happy customers. Explore more
-            options below.
-          </p>
-          <div className="circle right-top"></div>
+          <div className="col-xl-1  col-lg-1  col-md-12 col-sm-12 col-xs-12">
+            </div>
+        </div>
+        <div className="row mt-5">
+          <div className="col-xl-1 col-lg-1  col-md-12 col-sm-12 col-xs-12">
+          </div>
+          <div className="col-xl-5 col-lg-5  col-md-12 col-sm-12 col-xs-12">
+            <div className="">
+              <div
+                className="box1"
 
-          <div className="box-container">
+              >
+                <div className="pac">1 Month Package</div>
+                <div className="price-heading">$9.99</div>
+                <div className="price-description">
+                  Unlimted credit credits for <br />
+                 <span className="colorrr">      For a duration of 6 month</span>
+                </div>
+                {isSubscribed9 ? (
+                  <button className="pay-button" style={{ width: '18rem', textAlign: "center", paddingRight: '9rem', paddingLeft: '6rem' }} disabled>
+                    Subscribed
+                  </button>
+                ) : (
+                  <button
+                    className="pay-button"
+                    onClick={() => {
+                      dataPayment(9);
+                    }}
+                  >
+                    Pay
+                  </button>
+                )}
+
+              </div>
+            </div>
+
+          </div>
+          <div className="col-xl-5  col-lg-5  col-md-12 col-sm-12 col-xs-12">
+            <div className="">
+              <div className="box2">
+                <div className="pac">6 Month Package</div>
+                <div className="price-heading">$24.99</div>
+                <div className="price-description">
+                  Unlimted credit credits for <br />
+                 <span className="colorrr">      For a duration of 6 month</span>
+                </div>
+                {isSubscribed24 ? (
+                  <button className="pay-button" style={{ width: '18rem', textAlign: "center", paddingRight: '9rem', paddingLeft: '6rem' }} disabled>
+                    Subscribed
+                  </button>
+                ) : (
+                  <button
+                    className="pay-button"
+                    onClick={() => {
+                      dataPayment(24);
+                    }}
+                  >
+                    Pay
+                  </button>
+                )}
+
+              </div>
+            </div>
+          </div>
+          <div className="col-xl-1 col-lg-1  col-md-12 col-sm-12 col-xs-12">
+          </div>
+        </div>
+        <div className="row mt-5">
+          <div className="col-xl-1 col-lg-1  col-md-12 col-sm-12 col-xs-12">
+          </div>
+          <div className="col-xl-5 col-lg-5  col-md-12 col-sm-12 col-xs-12">
             <div
-              className="box1"
-         
+              className='x12'
             >
-              <div className="pac">1 Month Package</div>
-              <div className="price-heading">$9.99</div>
-              <div className="price-description">
-                Unlimted credit credits for <br />
-                For a duration of 1 month
-              </div>
-              {isSubscribed9 ? (
-  <button className="pay-button" style={{width:'18rem',textAlign:"center",paddingRight:'9rem',paddingLeft:'6rem'}}   disabled>
-    Subscribed
-  </button>
-) : (
-  <button
-    className="pay-button"
-    onClick={() => {
-      dataPayment(9);
-    }}
-  >
-    Pay
-  </button>
-)}
-
+              <p>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  style={{ justifyContent: "space-between", marginRight: "10px" }}
+                  fill="#009EE2"
+                  class="bi bi-check2-circle"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z" />
+                  <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z" />
+                </svg>
+                Onetime payments
+              </p>
+              <p>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  style={{ justifyContent: "space-between", marginRight: "10px" }}
+                  fill="#009EE2"
+                  class="bi bi-check2-circle"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z" />
+                  <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z" />
+                </svg>
+                Premium support by email
+              </p>
+              <p>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  style={{ justifyContent: "space-between", marginRight: "10px" }}
+                  fill="#009EE2"
+                  class="bi bi-check2-circle"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z" />
+                  <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z" />
+                </svg>
+                Commercial usage of photos
+              </p>
             </div>
 
-            <div className="box2">
-              <div className="pac">6 Month Package</div>
-              <div className="price-heading">$24.99</div>
-              <div className="price-description">
-                Unlimted Credit credits for
-                <br />
-                For a duration of 6 month
-              </div>
-              {isSubscribed24 ? (
-  <button className="pay-button"  style={{width:'18rem',textAlign:"center",paddingRight:'9rem',paddingLeft:'6rem'}}  disabled>
-    Subscribed
-  </button>
-) : (
-  <button
-    className="pay-button"
-    onClick={() => {
-      dataPayment(24);
-    }}
-  >
-    Pay
-  </button>
-)}
+          </div>
+          <div className="col-xl-5 col-lg-5  col-md-12 col-sm-12 col-xs-12">
+            <div
+              className='x12'
+            >
+              <p>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  style={{ justifyContent: "space-between", marginRight: "10px" }}
+                  fill="#009EE2"
+                  class="bi bi-check2-circle"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z" />
+                  <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z" />
+                </svg>
+                Onetime payments
+              </p>
+              <p>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  style={{ justifyContent: "space-between", marginRight: "10px" }}
+                  fill="#009EE2"
+                  class="bi bi-check2-circle"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z" />
+                  <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z" />
+                </svg>
+                Premium support by email
+              </p>
+              <p>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  style={{ justifyContent: "space-between", marginRight: "10px" }}
+                  fill="#009EE2"
+                  class="bi bi-check2-circle"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z" />
+                  <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z" />
+                </svg>
+                Commercial usage of photos
+              </p>
+            </div>
 
+          </div>
+
+          <div className="col-xl-1 col-lg-1  col-md-12 col-sm-12 col-xs-12">
+          </div>
+
+
+
+
+        </div>
+        <div className="row mt-5">
+          <div className="col-xl-8 m-auto col-lg-10  col-md-12 col-sm-12 col-xs-12">
+            <div
+              className='ok123'
+            >
+              <p 
+                className="main-text" style={{marginBottom:"0"}}
+              >
+                Interested in team or bulk pricing? Email : info@magicmyhouse.com or
+                KVK : 08214009
+              </p>
             </div>
           </div>
 
-          <div
-           className='x12'
-          >
-            <p>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                style={{ justifyContent: "space-between", marginRight: "10px" }}
-                fill="#009EE2"
-                class="bi bi-check2-circle"
-                viewBox="0 0 16 16"
-              >
-                <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z" />
-                <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z" />
-              </svg>
-              Onetime payments
-            </p>
-            <p>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                style={{ justifyContent: "space-between", marginRight: "10px" }}
-                fill="#009EE2"
-                class="bi bi-check2-circle"
-                viewBox="0 0 16 16"
-              >
-                <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z" />
-                <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z" />
-              </svg>
-              Premium support by email
-            </p>
-            <p>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                style={{ justifyContent: "space-between", marginRight: "10px" }}
-                fill="#009EE2"
-                class="bi bi-check2-circle"
-                viewBox="0 0 16 16"
-              >
-                <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z" />
-                <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z" />
-              </svg>
-              Commercial usage of photos
-            </p>
-          </div>
-          <div style={{ marginLeft: "25rem" }} className="svg123">
-            <p>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                style={{ justifyContent: "space-between", marginRight: "10px" }}
-                fill="#009EE2"
-                class="bi bi-check2-circle"
-                viewBox="0 0 16 16"
-              >
-                <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z" />
-                <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z" />
-              </svg>
-              Onetime payments
-            </p>
-            <p>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                style={{ justifyContent: "space-between", marginRight: "10px" }}
-                fill="#009EE2"
-                class="bi bi-check2-circle"
-                viewBox="0 0 16 16"
-              >
-                <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z" />
-                <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z" />
-              </svg>
-              Premium support by email
-            </p>
-            <p>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                style={{ justifyContent: "space-between", marginRight: "10px" }}
-                fill="#009EE2"
-                class="bi bi-check2-circle"
-                viewBox="0 0 16 16"
-              >
-                <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z" />
-                <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z" />
-              </svg>
-              Commercial usage of photos
-            </p>
-          </div>
+
+
+
+
         </div>
-        <div className="circle bottom"></div>
-        <div className="circle left-bottom"></div>
-        <div
-        className='ok123'
-        >
-          <p
-          className="text-muted"
-          >
-            Interested in team or bulk pricing? Email : info@magicmyhouse.com or
-            KVK : 08214009
-          </p>
-        </div>
+        <div className="circle left-top"></div>
+        <div className="circle right-top"></div>
       </div>
+
       <EndImage />
       <Footer />
     </div>
