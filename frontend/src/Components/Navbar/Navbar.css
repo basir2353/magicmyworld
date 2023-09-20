@@ -125,6 +125,9 @@ font: 100;
   .navbar-logo{
     /* width: 25px; */
   }
+  .ml-bvv{
+    margin-top: 3rem;
+  }
   .navbar-logo img {
     max-height: 30px;
     width: 75px;

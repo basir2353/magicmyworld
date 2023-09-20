@@ -60,11 +60,10 @@
   /* height: 300px; */
   background-color: #fff;
   border-radius: 35px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 11px 6px rgba(0, 0, 0, 0.1);
   /* margin: 2rem; */
   /* margin-right: 2rem; */
   padding: 1rem 1rem;
-  border: 1px solid grey;
 }
 
 .box2 {
@@ -72,9 +71,8 @@
   /* height: 300px; */
   background-color: #fff;
   border-radius: 25px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 11px 6px rgba(0, 0, 0, 0.1);
   padding: 1rem 1rem;
-  border: 1px solid grey;
 
 }
 
@@ -115,8 +113,8 @@
   cursor: pointer;
   transition: background 0.3s ease;
   /* margin-top: 29px; */
-  /* margin-left: 18px; */
-  width: 100%;
+  margin-left: 21px;
+  width: 90%;
   height: 40px;
 }
 
@@ -243,33 +241,22 @@
 
   .sub-text1 {
     align-items: center;
-    width: 50%;
-    margin-left: 10rem;
   }
 
 
   .sub-heading1 {
-    width: 50%;
     font-size: 22px;
-    margin-left: 10rem;
   }
 
  
-
+.background-gradient1{
+  width: 80%;
+}
   .box-container {
     flex-direction: column;
     /* Change to column direction */
     align-items: center;
     /* Center-align items */
-  }
-
-  /* Adjust box styles for smaller screens */
-  .box1,
-  .box2 {
-    width: 45%;
-    /* Full width for boxes */
-    margin: 1rem 0;
-    /* Add spacing between boxes */
   }
 
   .ok123 {

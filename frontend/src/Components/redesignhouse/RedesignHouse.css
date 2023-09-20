@@ -68,13 +68,26 @@
     .redesign-house-heading {
         margin-top: 2rem;
         position: static;
-        font-size: 36px;
+        font-size: 35px;
         height: auto;
         margin-right: 0;
         text-align: center;
     }
+    .redesign-house-description{
+        font-size: 12px;
+        text-align: center;
 
-
+        
+    }
+    .redesign-house{
+        padding: 2rem 1rem;
+    }
+    .left-box > div{
+        width: 100% !important;
+    }
+    .left-box > div > div{
+        width: 100% !important;
+    }
 
 
     .redesign-house-images {

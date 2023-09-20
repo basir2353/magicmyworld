@@ -143,7 +143,7 @@ const RedesignComponent = () => {
 
   const responsiveContainerStyle = {
     ...containerStyle, // Copy the original styles
-    width: "80%", // Adjust the width for small screens
+    width: "100%", // Adjust the width for small screens
     marginRight: "5.4rem", // Remove the right margin for small screens
   };
   return (
@@ -176,18 +176,25 @@ const RedesignComponent = () => {
                       <img
                         src={selectedImage}
                         alt="Uploaded"
-                        style={{ width: "100%" }}
+                        style={{ width: "100%",padding: "32px 10px 10px 10px" }}
                         className="rounded"
                       />
                       {uploadedImage && (
-                        <button
+                        <>
+                           <button
                           className="delete-image-button"
-                          style={{ position: "absolute" }}
+                          style={{ position: "absolute", 
+                          right: "25px",
+                          top: "61px",
+                          background: "none",
+                          border: "none",
+                          color: "red"}}
                           onClick={() => {
                             setSelectedImage(null);
                             setuploadedImage(null);
                           }}
                         >
+                          
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="16"
@@ -198,7 +205,12 @@ const RedesignComponent = () => {
                           >
                             <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
                           </svg>
-                        </button>
+                          </button>
+                          <p   style={{ position: "absolute", 
+                          left: "34px",
+                          top: "61px"}}>Original Room</p>
+                        </>
+                        
                       )}
                     </div>
                   ) : (

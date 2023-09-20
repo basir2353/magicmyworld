@@ -49,6 +49,9 @@
   display: flex;
   flex-wrap: wrap;
   padding: 2px 2px;
+  align-content: space-between;
+  align-items: flex-end;
+  flex-direction: column;
 }
 .image-grid img {
   height: auto;
@@ -214,8 +217,12 @@
     margin-left: 2rem;
     padding-bottom: 2rem;
     margin-top: 62rem;
-
   }
+  .svg-icon {
+    position: absolute;
+    left: 16rem;
+
+}
   .left-box {
     /* padding-left: 3rem; */
     width: 100%;
@@ -261,7 +268,7 @@
 }
 .bo{
   margin-left: 0;
-  margin-right: 4rem;
+  margin-right: 10px;
 }
   .image-row {
       display: flex;

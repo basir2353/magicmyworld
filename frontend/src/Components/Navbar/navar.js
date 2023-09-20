@@ -78,8 +78,8 @@ const Navbar = () => {
     <button
       className="navbar-toggler"
       type="button"
-      data-toggle="collapse"
-      data-target="#navbarNav"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
       aria-controls="navbarNav"
       aria-expanded="false"
       aria-label="Toggle navigation"
@@ -91,7 +91,7 @@ const Navbar = () => {
         {isLoggedIn && (
           <>
             <li className="nav-item">
-              <Link to="/designing"  className="nav-link nav-link1">
+              <Link to="/desiging"  className="nav-link nav-link1">
                 Redesign
               </Link>
             </li>
@@ -113,7 +113,7 @@ const Navbar = () => {
             </div>
           )}
         </li>
-        <li className="nav-item">
+        <li className="nav-item ml-bvv">
           {!isLoggedIn && (
             <Link to="/login" className="btn btn-login nav-link">
               LOG IN
