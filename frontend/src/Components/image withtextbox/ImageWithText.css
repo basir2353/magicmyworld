@@ -35,7 +35,7 @@
   .center-image {
     max-width: 100%; 
   }
-  .round-box1 {
+  /* .round-box1 {
     background: #fffbfe;
     border-radius: 100px;
     filter: blur(100px);
@@ -44,7 +44,7 @@
     width: 20rem;
     bottom: 24rem;
     left: 12rem;
-  }
+  } */
   
   
   
@@ -56,9 +56,6 @@ width: 100%;
       width: 90%; 
     }
   
-    .center-image {
-      max-width: 90%; 
-    }
   
     .text-box-top {
       top: 5px; 

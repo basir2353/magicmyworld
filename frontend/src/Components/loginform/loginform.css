@@ -12,6 +12,7 @@
     color: white;
     cursor: pointer;
     font-weight: bold;
+    width: 100%;
   }
   
   .btn-login:hover {

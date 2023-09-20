@@ -63,60 +63,82 @@ const Navbar = () => {
     setCredit(3); // Reset credit to 3
     setRoundBoxColor(""); // Reset round box color
     setShowLogoutButton(false); // Hide the logout button
-    alert('You Logged Out')
+    alert("You Logged Out");
   };
 
   return (
-    <nav className="navbar bg-gray-900 p-4">
-      <Link to="/" className="navbar-logo">
-        <img
-          src={process.env.PUBLIC_URL + "/MMH_logo.png"}
-          alt="Logo"
-          className="max-h-10 ml-6 md:max-h-8 md:ml-0"
-        />
-      </Link>
-      {isLoggedIn && (
-        <>
-          <Link to="/designing" className="el1">
-            Redesign
-          </Link>
-          <Link to="/pricing" className="el">
-            Pricing
-          </Link>
-        </>
-      )}
-
-      <div className="navbar-login flex items-center">
-        {showLoggedInText && (
-          <div className="logedtext">
-            <div className="loggedInText px-4 py-2 text-white">
-              Your Credit: {credit}
-            </div>
-          </div>
-        )}
-        {!isLoggedIn && (
-          <Link to="/login" className="btn btn-login">
-            Login
-          </Link>
-        )}
+    <nav className="navbar navbar-expand-lg navbar-dark bg-gray-900 p-4">
+    <Link to="/" className="navbar-logo">
+      <img
+        src={process.env.PUBLIC_URL + "/MMH_logo.png"}
+        alt="Logo"
+        className="max-h-10 ml-2 ml-md-6 max-h-md-8 md:ml-0"
+      />
+    </Link>
+    <button
+      className="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+ <i class="fa-solid fa-bars"></i>
+    </button>
+    <div className="collapse navbar-collapse" id="navbarNav">
+      <ul className="navbar-nav">
         {isLoggedIn && (
           <>
-            <button
-              className={`user-round-box btn btn-login ${roundBoxColor}`}
-              style={{ backgroundColor: roundBoxColor }}
-              onClick={handleLogout}
-            >
-              {userName ? userName.charAt(0).toUpperCase() : ""}
-            </button>
-            {showLogoutButton && (
-              <button className={`user-round-box btn btn-login ${roundBoxColor}`}onClick={handleLogout}>
-                Logout
-              </button>
-            )}
+            <li className="nav-item">
+              <Link to="/desiging"  className="nav-link nav-link1">
+                Redesign
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/pricing" className="nav-link nav-link1">
+                Pricing
+              </Link>
+            </li>
           </>
         )}
-      </div>
-    </nav>
+      </ul>
+      <ul className="navbar-nav ml-auto">
+        <li className="nav-item">
+          {showLoggedInText && (
+            <div className="logedtext">
+              <div className="loggedInText px-4 py-2 text-white">
+                Your Credit: {credit}
+              </div>
+            </div>
+          )}
+        </li>
+        <li className="nav-item ml-bvv">
+          {!isLoggedIn && (
+            <Link to="/login" className="btn btn-login nav-link">
+              LOG IN
+            </Link>
+          )}
+          {isLoggedIn && (
+            <>
+              <button
+                className={`user-round-box btn btn-login ${roundBoxColor}`}
+                style={{ backgroundColor: roundBoxColor }}
+                onClick={handleLogout}
+              >
+                {userName ? userName.charAt(0).toUpperCase() : ""}
+              </button>
+              {showLogoutButton && (
+                <button className={`user-round-box btn btn-login ${roundBoxColor}`} onClick={handleLogout}>
+                  Logout
+                </button>
+              )}
+            </>
+          )}
+        </li>
+      </ul>
+    </div>
+  </nav>
   );
 };
 

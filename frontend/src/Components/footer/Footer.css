@@ -10,24 +10,57 @@
 
 .round-box {
   position: absolute;
-  left: 0;
-  bottom: 4rem;
-  background: #f3d9eb;
+  left: 4rem;
+  bottom: 41rem;
+  background: #bf8db373;
   border-radius: 100px;
   filter: blur(100px);
-  height: 20rem;
-  width: 20rem;
+ 
+  height: 13rem;
+  width: 11rem;
+
+}
+.round-box12 {
+  position: absolute;
+    left: 0rem;
+    bottom: 0rem;
+    background: #bf8db373;
+    border-radius: 100px;
+    filter: blur(100px);
+    height: 6rem;
+    width: 8rem;
+}
+.round-box13 {
+  position: absolute;
+  left: 6rem;
+  bottom: 6rem;
+  background: #bf8db373;
+  border-radius: 100px;
+  filter: blur(100px);
+  height: 8rem;
+  width: 11rem;
+  /* opacity: 5%; */
+}
+.round-box14 {
+  position: absolute;
+  right: 6rem;
+  bottom: 6rem;
+  background: #bf8db373;
+  border-radius: 100px;
+  filter: blur(71px);
+  height: 8rem;
+  width: 11rem;
 }
 
 .copyright {
-  color: gray;
-  margin-left: 7rem;
+  color: #000000;
+  margin-left: 4rem;
 }
 
 .login-link a {
   text-decoration: none;
   color: black;
-  font-weight: bold;
+  /* font-weight: bold; */
   margin-right: 3rem;
 }
 
@@ -44,6 +77,9 @@
     margin: 10px ;
   }
 .round-box{
+  display: none;
+}
+.round-box-none{
   display: none;
 }
   .login-link {
