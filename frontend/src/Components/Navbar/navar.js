@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
+import { useAuth } from "./AuthContext";
 
 const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -59,13 +60,15 @@ const Navbar = () => {
   const handleLogout = () => {
     localStorage.removeItem("googleUser");
     localStorage.removeItem("simpleUser");
+    localStorage.removeItem("token");
     setIsLoggedIn(false);
     setCredit(3); // Reset credit to 3
     setRoundBoxColor(""); // Reset round box color
     setShowLogoutButton(false); // Hide the logout button
     alert("You Logged Out");
   };
-
+const {user}=useAuth()
+console.log(user);
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-gray-900 p-4">
     <Link to="/" className="navbar-logo">
@@ -108,7 +111,7 @@ const Navbar = () => {
           {showLoggedInText && (
             <div className="logedtext">
               <div className="loggedInText px-4 py-2 text-white">
-                Your Credit: {credit}
+                Your Credit: {user?.subscription.status=="active"?"Unlimited":user?.subscription?.credits}
               </div>
             </div>
           )}

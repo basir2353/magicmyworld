@@ -36,8 +36,8 @@ const userSchema = new Schema({
   subscription: {
     status: {
       type: String,
-      enum: ['none','active', 'canceled', 'expired'],
-      default: 'none',
+      enum: ['trial','active', 'canceled', 'expired'],
+      default: 'trial',
     },
     type: {
       type: String,
@@ -48,6 +48,10 @@ const userSchema = new Schema({
       type: Boolean,
       default: false,
     },
+    credits:{
+      type:Number,
+      default:3
+    }
   },
 
 },{

@@ -4,7 +4,7 @@ import { GoogleLogin } from "@react-oauth/google";
 import "./loginform.css";
 import jwt_decode from "jwt-decode";
 import axios from "axios";
-import apiClient from "../../api/apiClient";
+import apiClient, { setAuthToken } from "../../api/apiClient";
 import { toast } from "react-toastify";
 
 const LoginForm = () => {
@@ -24,6 +24,8 @@ const LoginForm = () => {
       if (!response.ok) return toast.error("Invalid username or password");
    
         localStorage.setItem("simpleUser", JSON.stringify(response.data?.data));
+        localStorage.setItem("token", response.data?.token);
+        setAuthToken(response.data?.data.token)
         navigate("/");
         window.location.reload();
 
