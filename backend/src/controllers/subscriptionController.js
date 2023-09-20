@@ -17,7 +17,7 @@ const makePayment = catchAsync(async (req, res) => {
       value: amount.toFixed(2),
     },
     description: "Payment For Unlimited credits",
-    redirectUrl: "https://example.com", 
+    redirectUrl: process.env.REDIRECT_URL, 
     webhookUrl:process.env.WEBHOOK_URL,
     metadata: {
       userId: req.user.id,
