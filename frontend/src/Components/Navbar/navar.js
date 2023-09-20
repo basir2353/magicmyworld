@@ -119,22 +119,23 @@ const Navbar = () => {
               LOG IN
             </Link>
           )}
-          {isLoggedIn && (
-            <>
-              <button
-                className={`user-round-box btn btn-login ${roundBoxColor}`}
-                style={{ backgroundColor: roundBoxColor }}
-                onClick={handleLogout}
-              >
-                {userName ? userName.charAt(0).toUpperCase() : ""}
-              </button>
-              {showLogoutButton && (
-                <button className={`user-round-box btn btn-login ${roundBoxColor}`} onClick={handleLogout}>
-                  Logout
-                </button>
-              )}
-            </>
-          )}
+        {isLoggedIn && (
+  <>
+    <button
+      className={`user-round-box btn btn-login ${roundBoxColor}`}
+      style={{ backgroundColor: roundBoxColor }}
+      onClick={handleLogout}
+    >
+      {userName ? userName.split(' ')[0] : ""}
+    </button>
+    {showLogoutButton && (
+      <button className={`user-round-box btn btn-login ${roundBoxColor}`} onClick={handleLogout}>
+        Logout
+      </button>
+    )}
+  </>
+)}
+
         </li>
       </ul>
     </div>
