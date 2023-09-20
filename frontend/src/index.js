@@ -4,7 +4,11 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 import App from './App';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { AuthProvider } from './Components/Navbar/AuthContext';
 ReactDOM.render(
+    <AuthProvider>
+
+ 
     <GoogleOAuthProvider clientId='226594385688-7k0o6dqnvdd4osgt8liec3hsmnp6v9dh.apps.googleusercontent.com'>
    <ToastContainer
 position="top-right"
@@ -19,6 +23,7 @@ pauseOnHover
 theme="light"
 />
             <App />
-    </GoogleOAuthProvider>,
+    </GoogleOAuthProvider>
+    </AuthProvider>,
     document.getElementById('root')
 );

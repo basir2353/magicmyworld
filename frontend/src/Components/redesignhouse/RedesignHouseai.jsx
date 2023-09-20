@@ -4,6 +4,7 @@ import { Row, Col, Button, Container } from 'react-bootstrap';
 import apiClient from "../../api/apiClient";
 import useApi from "../../hooks/useApi";
 import LoadingOverlay from "../LoadingOverlay";
+import { useAuth } from "../Navbar/AuthContext";
 const RedesignComponent = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [uploadedImage, setuploadedImage] = useState(null);
@@ -109,6 +110,7 @@ console.log(updatedSelectedImages,"sel");
   const {request,loading}=useApi((data)=>apiClient.post("/interior",data))
 
 const [resultData,setResultData]=useState()
+const {user,setUser,refresh,setRefresh}=useAuth()
  async function handleSubmit(){
   const formdata=new FormData()
   formdata.append("image",uploadedImage)
@@ -117,6 +119,7 @@ const [resultData,setResultData]=useState()
 const result=await request(formdata)
 console.log(result.data);
 setResultData(result.data.result)
+setRefresh(true)
   }
   const containerStyle = {
     // height: '12rem',
@@ -278,7 +281,10 @@ setResultData(result.data.result)
 export default RedesignComponent;
 
 
-const ImageGrid = ({ rows, selectedImages, toggleImageSelection, handleSubmit }) => (
+const ImageGrid = ({ rows, selectedImages, toggleImageSelection, handleSubmit }) => {
+  const {user}=useAuth()
+  const isAllowed=user?.subscription.status=="active"||user?.subscription?.credits>=selectedImages.length
+  return(
   <div className="image-grid">
     {rows.map((row, rowIndex) => (
       <Row key={rowIndex} className="image-row">
@@ -315,12 +321,13 @@ const ImageGrid = ({ rows, selectedImages, toggleImageSelection, handleSubmit })
 
     <Row className='render'>
       <Col>
-        <Button onClick={handleSubmit} className="bo">RENDER DESIGNS</Button>
-        <span className='credits'>
-          Cost : 3 Credits
+        <Button onClick={handleSubmit} disabled={!isAllowed} className="bo">RENDER DESIGNS</Button>
+        <span className='credits' style={{color:!isAllowed?"red":""}}>
+          Cost : {selectedImages.length} Credits
         </span>
       </Col>
+      {!isAllowed&&"You need more credits or subscription"}
     </Row>
   </div>
-);
+)};
 

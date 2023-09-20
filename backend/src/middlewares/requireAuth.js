@@ -6,7 +6,6 @@ const User = mongoose.model('User');
 const { promisify } = require('util');
 module.exports = catchAsync(async (req, res, next) => {
     const { authorization } = req.headers;
-
   if (!authorization) {
     return res.status(401).send({ error: 'You must be logged in' });
   
