@@ -47,7 +47,7 @@ window.open(response.data._links.checkout.href,"_parent")
         <div className="row mt-5">
           <div className="col-xl-1 col-lg-1  col-md-12 col-sm-12 col-xs-12">
           </div>
-          <div className="col-xl-5 col-lg-5  col-md-12 col-sm-12 col-xs-12">
+          <div className="col-xl-5 mt-4 col-lg-5  col-md-12 col-sm-12 col-xs-12">
             <div className="">
               <div
                 className="box1"
@@ -78,7 +78,7 @@ window.open(response.data._links.checkout.href,"_parent")
             </div>
 
           </div>
-          <div className="col-xl-5  col-lg-5  col-md-12 col-sm-12 col-xs-12">
+          <div className="col-xl-5  mt-4 col-lg-5  col-md-12 col-sm-12 col-xs-12">
             <div className="">
               <div className="box2">
                 <div className="pac">6 Month Package</div>

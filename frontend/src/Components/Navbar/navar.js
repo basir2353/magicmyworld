@@ -94,7 +94,7 @@ console.log(user);
         {isLoggedIn && (
           <>
             <li className="nav-item">
-              <Link to="/designing"  className="nav-link nav-link1">
+              <Link to="/desiging"  className="nav-link nav-link1">
                 Redesign
               </Link>
             </li>
