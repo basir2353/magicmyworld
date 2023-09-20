@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
 import { useAuth } from "./AuthContext";
+import { useAuth } from "./AuthContext";
 
 const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -66,7 +67,6 @@ const Navbar = () => {
     setRoundBoxColor(""); // Reset round box color
     setShowLogoutButton(false); // Hide the logout button
     alert("You Logged Out");
-    alert("You Logged Out");
   };
 const {user}=useAuth()
 console.log(user);
@@ -82,8 +82,8 @@ console.log(user);
     <button
       className="navbar-toggler"
       type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarNav"
+      data-toggle="collapse"
+      data-target="#navbarNav"
       aria-controls="navbarNav"
       aria-expanded="false"
       aria-label="Toggle navigation"
@@ -112,12 +112,12 @@ console.log(user);
           {showLoggedInText && (
             <div className="logedtext">
               <div className="loggedInText px-4 py-2 text-white">
-                Your Credit: {credit}
+                Your Credit: {user?.subscription.status=="active"?"Unlimited":user?.subscription?.credits}
               </div>
             </div>
           )}
         </li>
-        <li className="nav-item ml-bvv">
+        <li className="nav-item">
           {!isLoggedIn && (
             <Link to="/login" className="btn btn-login nav-link">
               LOG IN
