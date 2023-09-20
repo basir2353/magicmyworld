@@ -9,7 +9,7 @@ ReactDOM.render(
     <AuthProvider>
 
  
-    <GoogleOAuthProvider clientId='226594385688-7k0o6dqnvdd4osgt8liec3hsmnp6v9dh.apps.googleusercontent.com'>
+    <GoogleOAuthProvider clientId='http://444710794299-90qrth72iv3rvcare5oa57lhkl7vm4tr.apps.googleusercontent.com'>
    <ToastContainer
 position="top-right"
 autoClose={5000}
