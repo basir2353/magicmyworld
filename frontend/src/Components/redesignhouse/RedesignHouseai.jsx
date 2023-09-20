@@ -3,9 +3,11 @@ import "./YourComponent.css";
 import { Row, Col, Button, Container } from "react-bootstrap";
 import apiClient from "../../api/apiClient";
 import useApi from "../../hooks/useApi";
+import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify"; // Import toast from react-toastify
 import "react-toastify/dist/ReactToastify.css";
 import LoadingOverlay from "../LoadingOverlay";
+import { useAuth } from "../Navbar/AuthContext";
 const RedesignComponent = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [uploadedImage, setuploadedImage] = useState(null);
@@ -116,7 +118,8 @@ const RedesignComponent = () => {
     });
   };
   const [resultData, setResultData] = useState();
-  async function handleSubmit() {
+ const {user,setUser,refresh,setRefresh}=useAuth()
+ async function handleSubmit() {
     if (selectedImages.length === 0) {
       // No image is selected, show an alert or take appropriate action
       handleAlert("Please select at least one photo before rendering designs.");
@@ -129,6 +132,7 @@ const RedesignComponent = () => {
     const result = await request(formdata);
     console.log(result.data);
     setResultData(result.data.result);
+setRefresh(true)
   }
   const containerStyle = {
     // height: '12rem',
@@ -143,7 +147,7 @@ const RedesignComponent = () => {
 
   const responsiveContainerStyle = {
     ...containerStyle, // Copy the original styles
-    width: "100%", // Adjust the width for small screens
+    width: "80%", // Adjust the width for small screens
     marginRight: "5.4rem", // Remove the right margin for small screens
   };
   return (
@@ -176,25 +180,18 @@ const RedesignComponent = () => {
                       <img
                         src={selectedImage}
                         alt="Uploaded"
-                        style={{ width: "100%",padding: "32px 10px 10px 10px" }}
+                        style={{ width: "100%" }}
                         className="rounded"
                       />
                       {uploadedImage && (
-                        <>
-                           <button
+                        <button
                           className="delete-image-button"
-                          style={{ position: "absolute", 
-                          right: "25px",
-                          top: "61px",
-                          background: "none",
-                          border: "none",
-                          color: "red"}}
+                          style={{ position: "absolute" }}
                           onClick={() => {
                             setSelectedImage(null);
                             setuploadedImage(null);
                           }}
                         >
-                          
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="16"
@@ -205,12 +202,7 @@ const RedesignComponent = () => {
                           >
                             <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
                           </svg>
-                          </button>
-                          <p   style={{ position: "absolute", 
-                          left: "34px",
-                          top: "61px"}}>Original Room</p>
-                        </>
-                        
+                        </button>
                       )}
                     </div>
                   ) : (
@@ -348,12 +340,11 @@ const RedesignComponent = () => {
 };
 export default RedesignComponent;
 
-const ImageGrid = ({
-  rows,
-  selectedImages,
-  toggleImageSelection,
-  handleSubmit,
-}) => (
+
+const ImageGrid = ({ rows, selectedImages, toggleImageSelection, handleSubmit }) => {
+  const {user}=useAuth()
+  const isAllowed=user?.subscription.status=="active"||user?.subscription?.credits>=selectedImages.length
+  return(
   <div className="image-grid">
     {rows.map((row, rowIndex) => (
       <Row key={rowIndex} className="image-row">
@@ -393,13 +384,13 @@ const ImageGrid = ({
 
     <Row className="render">
       <Col>
-      
-        <Button onClick={handleSubmit}  className="bo">
-          RENDER DESIGNS
-        </Button>
-        <span className="credits">Cost : 3 Credits</span>
+        <Button onClick={handleSubmit} disabled={!isAllowed} className="bo">RENDER DESIGNS</Button>
+        <span className='credits' style={{color:!isAllowed?"red":""}}>
+          Cost : {selectedImages.length} Credits
+        </span>
       </Col>
-        <ToastContainer />
+      {!isAllowed&&"You need more credits or subscription"}
     </Row>
   </div>
-);
+)};
+

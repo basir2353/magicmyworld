@@ -1,8 +1,9 @@
 const express = require("express");
 
 const {
-transformRoom
-} = require("../controllers/interiorController");
+makePayment, paymentConfirmationHook,
+
+} = require("../controllers/subscriptionController");
 const requireAuth = require("../middlewares/requireAuth");
 const restrictTo = require("../middlewares/restrictTo");
 const { uploadMulter, uploadToCloud, uploadHandler } = require("../utils/uploadHelper");
@@ -15,5 +16,6 @@ const router = express.Router();
 
 
 
-router.post('/',requireAuth,restrictTo("US"),uploadMulter.single("image"),uploadHandler, transformRoom);
+router.post('/',requireAuth,restrictTo("US"), makePayment);
+router.post('/webhook', paymentConfirmationHook);
 module.exports = router;
