@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
 import { useAuth } from "./AuthContext";
-import { useAuth } from "./AuthContext";
 
 const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);

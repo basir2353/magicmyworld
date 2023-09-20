@@ -24,7 +24,6 @@ const SignupForm = () => {
   };
 
   const handleSignup = async () => {
-  const handleSignup = async () => {
     // Create a request body with the signupData
     const requestBody = {
       username: signupData.username,
