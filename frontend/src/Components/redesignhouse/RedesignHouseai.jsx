@@ -1,17 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import "./YourComponent.css";
 import { Row, Col, Button, Container } from "react-bootstrap";
 import apiClient from "../../api/apiClient";
 import useApi from "../../hooks/useApi";
-import { ToastContainer, toast } from "react-toastify"; 
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import LoadingOverlay from "../LoadingOverlay";
+import { useDropzone } from 'react-dropzone';
 const RedesignComponent = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [uploadedImage, setuploadedImage] = useState(null);
   const [selectedImages, setSelectedImages] = useState([]);
   const [selectedImagesPreview, setSelectedImagesPreview] = useState([]);
   const [selectedRoomType, setSelectedRoomType] = useState("");
+
+
+  const onDrop = useCallback((acceptedFiles) => {
+    console.log(acceptedFiles);
+  }, []);
+
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+
+
 
   const [imageGridData, setImageGridData] = useState([
     {
@@ -215,7 +225,7 @@ const RedesignComponent = () => {
                       )}
                     </div>
                   ) : (
-                    <div className="mb-5">
+                    <div {...getRootProps()} className="mb-5">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="30"
@@ -239,6 +249,7 @@ const RedesignComponent = () => {
                       <br />
                       or <br />
                       <input
+                        {...getInputProps()}
                         type="file"
                         accept="image/*"
                         multiple
@@ -361,11 +372,10 @@ const ImageGrid = ({
                 src={imageData.src}
                 alt={imageData.name}
                 onClick={() => toggleImageSelection(imageData.name)}
-                className={`position-relative img-fluid ${
-                  selectedImages?.includes(imageData.name)
-                    ? "selected-image"
-                    : ""
-                }`}
+                className={`position-relative img-fluid ${selectedImages?.includes(imageData.name)
+                  ? "selected-image"
+                  : ""
+                  }`}
               />
               {selectedImages?.includes(imageData.name) && (
                 <svg
