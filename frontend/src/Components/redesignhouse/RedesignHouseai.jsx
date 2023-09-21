@@ -14,12 +14,28 @@ const RedesignComponent = () => {
   const [selectedImagesPreview, setSelectedImagesPreview] = useState([]);
   const [selectedRoomType, setSelectedRoomType] = useState("");
 
+  const [draggedImage, setDraggedImage] = useState(null);
 
-  const onDrop = useCallback((acceptedFiles) => {
-    console.log(acceptedFiles);
-  }, []);
-
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    onDrop: (acceptedFiles, e) => {
+      const file = acceptedFiles[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          // Check if the file type is an image before setting the draggedImage
+          if (file.type.startsWith("image/")) {
+            setDraggedImage(e.target.result);
+            setSelectedImage(e.target.result); // Show the dragged image
+            console.log("Dragged Image:", e.target.result);
+          } else {
+            toast.error("Invalid file type. Please upload an image.");
+          }
+        };
+        reader.readAsDataURL(file);
+      }
+    },
+    accept: "image/*", // Accept only image files
+  });
 
 
 
@@ -198,7 +214,7 @@ const RedesignComponent = () => {
                             }}
                             onClick={() => {
                               setSelectedImage(null);
-                              setuploadedImage(null);
+                              // setuploadedImage(null);
                             }}
                           >
                             <svg
