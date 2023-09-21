@@ -124,9 +124,8 @@ const Navbar = () => {
     <button
       className={`user-round-box btn btn-login ${roundBoxColor}`}
       style={{ backgroundColor: roundBoxColor }}
-      onClick={handleLogout}
     >
-      {userName ? userName.split(' ')[0] : ""}
+      {userName ? userName.split(' ')[0].toUpperCase() : ""}
     </button>
     {showLogoutButton && (
       <button className={`user-round-box btn btn-login ${roundBoxColor}`} onClick={handleLogout}>

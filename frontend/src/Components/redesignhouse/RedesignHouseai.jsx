@@ -3,7 +3,7 @@ import "./YourComponent.css";
 import { Row, Col, Button, Container } from "react-bootstrap";
 import apiClient from "../../api/apiClient";
 import useApi from "../../hooks/useApi";
-import { ToastContainer, toast } from "react-toastify"; // Import toast from react-toastify
+import { ToastContainer, toast } from "react-toastify"; 
 import "react-toastify/dist/ReactToastify.css";
 import LoadingOverlay from "../LoadingOverlay";
 const RedesignComponent = () => {
@@ -12,7 +12,6 @@ const RedesignComponent = () => {
   const [selectedImages, setSelectedImages] = useState([]);
   const [selectedImagesPreview, setSelectedImagesPreview] = useState([]);
   const [selectedRoomType, setSelectedRoomType] = useState("");
-  
 
   const [imageGridData, setImageGridData] = useState([
     {
@@ -70,11 +69,9 @@ const RedesignComponent = () => {
     const imageGridItem = imageGridData.find((data) => data.name === imageId);
 
     if (imageIndex !== -1) {
-      // Image is already selected, remove it
       updatedSelectedImages.splice(imageIndex, 1);
       updatedSelectedImagesPreview.splice(imageIndex, 1);
     } else {
-      // Image is not selected, add it if the limit is not reached
       if (updatedSelectedImages.length < 4) {
         updatedSelectedImages.push(imageId);
         updatedSelectedImagesPreview.push(imageGridItem);
@@ -108,7 +105,7 @@ const RedesignComponent = () => {
   const handleAlert = (message) => {
     toast.error(message, {
       position: "top-right",
-      autoClose: 3000, // Close the toast after 3 seconds
+      autoClose: 3000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -118,7 +115,6 @@ const RedesignComponent = () => {
   const [resultData, setResultData] = useState();
   async function handleSubmit() {
     if (selectedImages.length === 0) {
-      // No image is selected, show an alert or take appropriate action
       handleAlert("Please select at least one photo before rendering designs.");
       return;
     }
@@ -131,20 +127,16 @@ const RedesignComponent = () => {
     setResultData(result.data.result);
   }
   const containerStyle = {
-    // height: '12rem',
     alignItems: "center",
     border: "1px solid black",
-    // marginRight: '8.4rem',
-    // paddingTop: '31px',
     borderRadius: "10px",
     borderStyle: "dashed",
-    // width: '19rem',
   };
 
   const responsiveContainerStyle = {
-    ...containerStyle, // Copy the original styles
-    width: "100%", // Adjust the width for small screens
-    marginRight: "5.4rem", // Remove the right margin for small screens
+    ...containerStyle,
+    width: "100%",
+    marginRight: "5.4rem",
   };
   return (
     <div className="container">
@@ -176,41 +168,50 @@ const RedesignComponent = () => {
                       <img
                         src={selectedImage}
                         alt="Uploaded"
-                        style={{ width: "100%",padding: "32px 10px 10px 10px" }}
+                        style={{
+                          width: "100%",
+                          padding: "32px 10px 10px 10px",
+                        }}
                         className="rounded"
                       />
                       {uploadedImage && (
                         <>
-                           <button
-                          className="delete-image-button"
-                          style={{ position: "absolute", 
-                          right: "25px",
-                          top: "61px",
-                          background: "none",
-                          border: "none",
-                          color: "red"}}
-                          onClick={() => {
-                            setSelectedImage(null);
-                            setuploadedImage(null);
-                          }}
-                        >
-                          
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            fill="currentColor"
-                            class="bi bi-trash-fill"
-                            viewBox="0 0 16 16"
+                          <button
+                            className="delete-image-button"
+                            style={{
+                              position: "absolute",
+                              right: "25px",
+                              top: "61px",
+                              background: "none",
+                              border: "none",
+                              color: "red",
+                            }}
+                            onClick={() => {
+                              setSelectedImage(null);
+                              setuploadedImage(null);
+                            }}
                           >
-                            <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
-                          </svg>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="16"
+                              height="16"
+                              fill="currentColor"
+                              class="bi bi-trash-fill"
+                              viewBox="0 0 16 16"
+                            >
+                              <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
+                            </svg>
                           </button>
-                          <p   style={{ position: "absolute", 
-                          left: "34px",
-                          top: "61px"}}>Original Room</p>
+                          <p
+                            style={{
+                              position: "absolute",
+                              left: "34px",
+                              top: "61px",
+                            }}
+                          >
+                            Original Room
+                          </p>
                         </>
-                        
                       )}
                     </div>
                   ) : (
@@ -340,10 +341,6 @@ const RedesignComponent = () => {
         </div>
       </div>
     </div>
-
-    // <div className="container1">
-
-    // </div>
   );
 };
 export default RedesignComponent;
@@ -393,13 +390,12 @@ const ImageGrid = ({
 
     <Row className="render">
       <Col>
-      
-        <Button onClick={handleSubmit}  className="bo">
+        <Button onClick={handleSubmit} className="bo">
           RENDER DESIGNS
         </Button>
         <span className="credits">Cost : 3 Credits</span>
       </Col>
-        <ToastContainer />
+      <ToastContainer />
     </Row>
   </div>
 );

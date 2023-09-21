@@ -210,7 +210,7 @@ function Pricing() {
                 <div className="price-heading">$9.99</div>
                 <div className="price-description">
                   Unlimted credit credits for <br />
-                 <span className="colorrr">      For a duration of 6 month</span>
+                 <span className="colorrr">      For a duration of 1 month</span>
                 </div>
                 {isSubscribed9 ? (
                   <button className="pay-button" style={{ width: '18rem', textAlign: "center", paddingRight: '9rem', paddingLeft: '6rem' }} disabled>
