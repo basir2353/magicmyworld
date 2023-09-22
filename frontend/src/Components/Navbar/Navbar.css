@@ -2,9 +2,27 @@
 .navbar {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   padding: 10px 20px;
 }
+/* Navbar.css */
+.crd{
+  text-decoration: none;
+  text-decoration-color: black;
+  color: black;
+}
+/* Style the dropdown content */
+.dropdown-content {
+
+  position: absolute;
+  top: 100%; /* Position it below the dropdown trigger */
+right: 1rem;
+    width: 15rem;
+
+  background-color: #fff; /* Background color for the dropdown */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
 
 .navbar-logo img {
   max-height: 40px;
@@ -40,6 +58,7 @@
 }
 .navbar-dark .navbar-nav .nav-link {
   color: white !important;
+  align-items: flex-start;
 }
 .logedtext {
   display: flex;
@@ -124,6 +143,7 @@ font: 100;
   }
   .navbar-logo{
     /* width: 25px; */
+    align-items: first baseline;
   }
   .ml-bvv{
     margin-top: 3rem;

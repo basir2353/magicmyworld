@@ -6,7 +6,7 @@ import useApi from "../../hooks/useApi";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import LoadingOverlay from "../LoadingOverlay";
-import { useDropzone } from 'react-dropzone';
+import { useDropzone } from "react-dropzone";
 const RedesignComponent = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [uploadedImage, setuploadedImage] = useState(null);
@@ -36,8 +36,6 @@ const RedesignComponent = () => {
     },
     accept: "image/*", // Accept only image files
   });
-
-
 
   const [imageGridData, setImageGridData] = useState([
     {
@@ -264,18 +262,10 @@ const RedesignComponent = () => {
                       Drag and drop Your Image
                       <br />
                       or <br />
-                      <input
-                        {...getInputProps()}
-                        type="file"
-                        accept="image/*"
-                        multiple
-                        style={{ display: "none" }}
-                        onChange={handleFileUpload}
-                      />
                       <button
                         className="upload-button"
                         onClick={() =>
-                          document.querySelector('input[type="file"]').click()
+                          document.querySelector('input[type="file"]')
                         }
                       >
                         Upload Photo
@@ -345,11 +335,11 @@ const RedesignComponent = () => {
                         }}
                       >
                         <img
-                          src={"https://www.roomgpt.io/couch.svg"}
+                          src={process.env.PUBLIC_URL + "/MMH_logo-removebg.png"}
                           alt={imageData.name}
                           className="img-fluid"
                           style={{
-                            width: "2rem",
+                            width: "12rem",
                           }}
                         />
                       </div>
@@ -388,10 +378,11 @@ const ImageGrid = ({
                 src={imageData.src}
                 alt={imageData.name}
                 onClick={() => toggleImageSelection(imageData.name)}
-                className={`position-relative img-fluid ${selectedImages?.includes(imageData.name)
-                  ? "selected-image"
-                  : ""
-                  }`}
+                className={`position-relative img-fluid ${
+                  selectedImages?.includes(imageData.name)
+                    ? "selected-image"
+                    : ""
+                }`}
               />
               {selectedImages?.includes(imageData.name) && (
                 <svg
