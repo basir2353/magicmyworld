@@ -46,6 +46,7 @@ const responseMessage =async (response) => {
       
   // Store the user information for Google OAuth users
   localStorage.setItem("googleUser", JSON.stringify(user));
+   localStorage.setItem("token", result.data?.token);
 
   navigate("/");
   window.location.reload();
