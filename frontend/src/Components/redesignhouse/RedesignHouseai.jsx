@@ -200,7 +200,7 @@ const RedesignComponent = () => {
                         }}
                         className="rounded"
                       />
-                      {uploadedImage && (
+                      {selectedImage && (
                         <>
                           <button
                             className="delete-image-button"
@@ -214,7 +214,7 @@ const RedesignComponent = () => {
                             }}
                             onClick={() => {
                               setSelectedImage(null);
-                              // setuploadedImage(null);
+                              setuploadedImage(null);
                             }}
                           >
                             <svg
