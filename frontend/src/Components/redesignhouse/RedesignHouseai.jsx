@@ -1,19 +1,41 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import "./YourComponent.css";
 import { Row, Col, Button, Container } from "react-bootstrap";
 import apiClient from "../../api/apiClient";
 import useApi from "../../hooks/useApi";
-import { ToastContainer, toast } from "react-toastify"; // Import toast from react-toastify
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import LoadingOverlay from "../LoadingOverlay";
-import { useAuth } from "../Navbar/AuthContext";
+import { useDropzone } from "react-dropzone";
 const RedesignComponent = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [uploadedImage, setuploadedImage] = useState(null);
   const [selectedImages, setSelectedImages] = useState([]);
   const [selectedImagesPreview, setSelectedImagesPreview] = useState([]);
   const [selectedRoomType, setSelectedRoomType] = useState("");
-  
+
+  const [draggedImage, setDraggedImage] = useState(null);
+
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    onDrop: (acceptedFiles, e) => {
+      const file = acceptedFiles[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          // Check if the file type is an image before setting the draggedImage
+          if (file.type.startsWith("image/")) {
+            setDraggedImage(e.target.result);
+            setSelectedImage(e.target.result); // Show the dragged image
+            console.log("Dragged Image:", e.target.result);
+          } else {
+            toast.error("Invalid file type. Please upload an image.");
+          }
+        };
+        reader.readAsDataURL(file);
+      }
+    },
+    accept: "image/*", // Accept only image files
+  });
 
   const [imageGridData, setImageGridData] = useState([
     {
@@ -71,11 +93,9 @@ const RedesignComponent = () => {
     const imageGridItem = imageGridData.find((data) => data.name === imageId);
 
     if (imageIndex !== -1) {
-      // Image is already selected, remove it
       updatedSelectedImages.splice(imageIndex, 1);
       updatedSelectedImagesPreview.splice(imageIndex, 1);
     } else {
-      // Image is not selected, add it if the limit is not reached
       if (updatedSelectedImages.length < 4) {
         updatedSelectedImages.push(imageId);
         updatedSelectedImagesPreview.push(imageGridItem);
@@ -109,7 +129,7 @@ const RedesignComponent = () => {
   const handleAlert = (message) => {
     toast.error(message, {
       position: "top-right",
-      autoClose: 3000, // Close the toast after 3 seconds
+      autoClose: 3000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -117,10 +137,8 @@ const RedesignComponent = () => {
     });
   };
   const [resultData, setResultData] = useState();
- const {user,setUser,refresh,setRefresh}=useAuth()
- async function handleSubmit() {
+  async function handleSubmit() {
     if (selectedImages.length === 0) {
-      // No image is selected, show an alert or take appropriate action
       handleAlert("Please select at least one photo before rendering designs.");
       return;
     }
@@ -131,23 +149,18 @@ const RedesignComponent = () => {
     const result = await request(formdata);
     console.log(result.data);
     setResultData(result.data.result);
-setRefresh(true)
   }
   const containerStyle = {
-    // height: '12rem',
     alignItems: "center",
     border: "1px solid black",
-    // marginRight: '8.4rem',
-    // paddingTop: '31px',
     borderRadius: "10px",
     borderStyle: "dashed",
-    // width: '19rem',
   };
 
   const responsiveContainerStyle = {
-    ...containerStyle, // Copy the original styles
-    width: "80%", // Adjust the width for small screens
-    marginRight: "5.4rem", // Remove the right margin for small screens
+    ...containerStyle,
+    width: "100%",
+    marginRight: "5.4rem",
   };
   return (
     <div className="container">
@@ -179,33 +192,54 @@ setRefresh(true)
                       <img
                         src={selectedImage}
                         alt="Uploaded"
-                        style={{ width: "100%" }}
+                        style={{
+                          width: "100%",
+                          padding: "32px 10px 10px 10px",
+                        }}
                         className="rounded"
                       />
-                      {uploadedImage && (
-                        <button
-                          className="delete-image-button"
-                          style={{ position: "absolute" }}
-                          onClick={() => {
-                            setSelectedImage(null);
-                            setuploadedImage(null);
-                          }}
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            fill="currentColor"
-                            class="bi bi-trash-fill"
-                            viewBox="0 0 16 16"
+                      {selectedImage && (
+                        <>
+                          <button
+                            className="delete-image-button"
+                            style={{
+                              position: "absolute",
+                              right: "25px",
+                              top: "61px",
+                              background: "none",
+                              border: "none",
+                              color: "red",
+                            }}
+                            onClick={() => {
+                              setSelectedImage(null);
+                              setuploadedImage(null);
+                            }}
                           >
-                            <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
-                          </svg>
-                        </button>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="16"
+                              height="16"
+                              fill="currentColor"
+                              class="bi bi-trash-fill"
+                              viewBox="0 0 16 16"
+                            >
+                              <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
+                            </svg>
+                          </button>
+                          <p
+                            style={{
+                              position: "absolute",
+                              left: "34px",
+                              top: "61px",
+                            }}
+                          >
+                            Original Room
+                          </p>
+                        </>
                       )}
                     </div>
                   ) : (
-                    <div className="mb-5">
+                    <div {...getRootProps()} className="mb-5">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="30"
@@ -228,17 +262,10 @@ setRefresh(true)
                       Drag and drop Your Image
                       <br />
                       or <br />
-                      <input
-                        type="file"
-                        accept="image/*"
-                        multiple
-                        style={{ display: "none" }}
-                        onChange={handleFileUpload}
-                      />
                       <button
                         className="upload-button"
                         onClick={() =>
-                          document.querySelector('input[type="file"]').click()
+                          document.querySelector('input[type="file"]')
                         }
                       >
                         Upload Photo
@@ -308,11 +335,11 @@ setRefresh(true)
                         }}
                       >
                         <img
-                          src={"https://www.roomgpt.io/couch.svg"}
+                          src={process.env.PUBLIC_URL + "/MMH_logo-removebg.png"}
                           alt={imageData.name}
                           className="img-fluid"
                           style={{
-                            width: "2rem",
+                            width: "12rem",
                           }}
                         />
                       </div>
@@ -331,19 +358,16 @@ setRefresh(true)
         </div>
       </div>
     </div>
-
-    // <div className="container1">
-
-    // </div>
   );
 };
 export default RedesignComponent;
 
-
-const ImageGrid = ({ rows, selectedImages, toggleImageSelection, handleSubmit }) => {
-  const {user}=useAuth()
-  const isAllowed=user?.subscription.status=="active"||user?.subscription?.credits>=selectedImages.length
-  return(
+const ImageGrid = ({
+  rows,
+  selectedImages,
+  toggleImageSelection,
+  handleSubmit,
+}) => (
   <div className="image-grid">
     {rows.map((row, rowIndex) => (
       <Row key={rowIndex} className="image-row">
@@ -383,13 +407,12 @@ const ImageGrid = ({ rows, selectedImages, toggleImageSelection, handleSubmit })
 
     <Row className="render">
       <Col>
-        <Button onClick={handleSubmit} disabled={!isAllowed} className="bo">RENDER DESIGNS</Button>
-        <span className='credits' style={{color:!isAllowed?"red":""}}>
-          Cost : {selectedImages.length} Credits
-        </span>
+        <Button onClick={handleSubmit} className="bo">
+          RENDER DESIGNS
+        </Button>
+        <span className="credits">Cost : 3 Credits</span>
       </Col>
-      {!isAllowed&&"You need more credits or subscription"}
+      <ToastContainer />
     </Row>
   </div>
-)};
-
+);

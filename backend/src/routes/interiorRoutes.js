@@ -15,5 +15,5 @@ const router = express.Router();
 
 
 
-router.post('/',requireAuth,restrictTo("US"),uploadMulter.single("image"),uploadHandler, transformRoom);
+router.post('/',uploadMulter.single("image"),uploadHandler, transformRoom);
 module.exports = router;

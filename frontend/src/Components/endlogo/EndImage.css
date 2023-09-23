@@ -12,7 +12,7 @@
   width: auto;
   height: 60px;
   margin-bottom: 10px;
-  margin-top: 12rem;
+  margin-top: 10rem;
 }
 
 .lorem-text {
@@ -48,7 +48,7 @@
   }
 
   .lorem-text {
-    font-size: 16px;
-    width: 282px; /* Reduce font size for very small screens */
+    font-size: 13px;
+    
   }
 }

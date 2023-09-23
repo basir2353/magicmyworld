@@ -32,27 +32,7 @@ const userSchema = new Schema({
     type: Boolean,
     default: true,
     select: false
-  },
-  subscription: {
-    status: {
-      type: String,
-      enum: ['trial','active', 'canceled', 'expired'],
-      default: 'trial',
-    },
-    type: {
-      type: String,
-      enum: ['1-month', '6-month'],
-    },
-    expiresAt: Date,
-    autoRenew: {
-      type: Boolean,
-      default: false,
-    },
-    credits:{
-      type:Number,
-      default:5
-    }
-  },
+  }
 
 },{
   timestamps:true,
@@ -113,5 +93,58 @@ userSchema.methods.createPasswordResetToken = function() {
   return resetToken;
 };
 
+// userSchema.pre('save', function(next) {
+//   const user = this;
+//   if (!user.isModified('password')) {
+//     return next();
+//   }
+
+//   bcrypt.genSalt(10, (err, salt) => {
+//     if (err) {
+//       return next(err);
+//     }
+
+//     bcrypt.hash(user.password, salt, (err, hash) => {
+//       if (err) {
+//         return next(err);
+//       }
+//       user.password = hash;
+//       next();
+//     });
+//   });
+// });
+// userSchema.pre("findOneAndUpdate", function (next) {
+//   const user = this;
+//   if (!user._update.password) {
+//     return next();
+//   }
+
+//   bcrypt.genSalt(10, (err, salt) => {
+//     if (err) {
+//       return next(err);
+//     }
+
+//     bcrypt.hash(user._update.password, salt, (err, hash) => {
+//       if (err) {
+//         return next(err);
+//       }
+//       user._update.password = hash;
+//       next();
+//     });
+//   });
+// });
+// userSchema.methods.comparePassword =async function (candidatePassword) {
+//   const user = this;
+
+//   return new Promise((resolve) => {
+//     bcrypt.compare(candidatePassword, user.password, (err, isMatch) => {
+//       if (err || !isMatch) {
+//         return resolve(false);
+//       }
+
+//       resolve(true);
+//     });
+//   });
+// };
 
 module.exports = mongoose.model("User", userSchema);

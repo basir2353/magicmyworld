@@ -45,7 +45,6 @@ const SignupForm = () => {
     console.log(result.data);
     //  toast.success('Signup successful');
     localStorage.setItem("simpleUser", JSON.stringify(result.data?.data));
-    localStorage.setItem("token", result.data?.token);
     navigate("/");
     window.location.reload();
 
