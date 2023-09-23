@@ -9,53 +9,46 @@
 .background-gradient {
   background-color: #fbf3f8;
   width: 64%;
-  /* margin-left: 12rem; */
   border-radius: 69px;
   margin: auto;
 }
 
 .main-text {
   font-size: 12px;
-    color: rgba(230,0,126,1);
-    -webkit-background-clip: text;
-    /* font-weight: bold; */
-    text-align: center;
-    letter-spacing: 2px;
-    /* text-shadow: 0px 0px 0px #E6007E, -3px 0 0px #662483, 2px 1px 0 #eee; */
+  color: rgba(230, 0, 126, 1);
+  -webkit-background-clip: text;
+  text-align: center;
+  letter-spacing: 2px;
 }
 .main-text1 {
   font-size: 12px;
-    color: rgba(230,0,126,1);
-    -webkit-background-clip: text;
-    /* font-weight: bold; */
-    text-align: center;
-    letter-spacing: 2px;
-    
+  color: rgba(230, 0, 126, 1);
+  -webkit-background-clip: text;
+  text-align: center;
+  letter-spacing: 2px;
 }
 
 .sub-heading {
   font-weight: 300;
   font-size: 47px;
-  font-family: 'Poppins', sans-serif !important;
+  font-family: "Poppins", sans-serif !important;
   margin-right: 2rem;
   align-items: center;
 }
 
 .sub-text {
   font-size: 12px;
-  /* font-weight: bold; */
-  color: #5D5D5D;
-text-align: center;
+  color: #5d5d5d;
+  text-align: center;
 }
-
 
 .top-right-section {
   position: absolute;
-  top: 220px; 
-  right: 140px; 
-  width: 220px; 
-  height: 200px; 
-  background-color: transparent; 
+  top: 220px;
+  right: 140px;
+  width: 220px;
+  height: 200px;
+  background-color: transparent;
   border-radius: 50%;
 }
 
@@ -63,21 +56,23 @@ text-align: center;
   background: #bf8db373;
   border-radius: 100px;
   filter: blur(79px);
-  /* height: 20rem; */
   right: -4rem;
   position: absolute;
-  /* width: 20rem; */
   top: 2rem;
   height: 13rem;
   width: 14rem;
 }
 
 .log-button {
-  background: linear-gradient(90deg, rgba(230,0,126,1) 0%, rgba(102,36,131,1) 73%);
+  background: linear-gradient(
+    90deg,
+    rgba(230, 0, 126, 1) 0%,
+    rgba(102, 36, 131, 1) 73%
+  );
   border: none;
   border-radius: 25px;
   padding: 10px 20px;
-  font-family: 'Poppins', sans-serif !important;
+  font-family: "Poppins", sans-serif !important;
   color: white;
   cursor: pointer;
   margin-top: 10px;
@@ -85,11 +80,11 @@ text-align: center;
   font-weight: 100;
 }
 .log-button:hover {
-  background-color:  white;
+  background-color: white;
   text-decoration: none;
 }
- a:hover{
-color: #ffd0ef !important;
+a:hover {
+  color: #ffd0ef !important;
 }
 @media (max-width: 768px) {
   .home-container {
@@ -102,13 +97,11 @@ color: #ffd0ef !important;
     font-size: 2px;
     margin-left: 2px;
     text-align: center;
-    
   }
 
   .main-text {
     font-size: 14px;
   }
-  
 
   .sub-heading {
     font-size: 32px;
@@ -119,7 +112,7 @@ color: #ffd0ef !important;
     font-size: 14px;
     text-align: center;
   }
-  .round-background{
+  .round-background {
     display: none;
   }
   .log-button {
@@ -127,7 +120,7 @@ color: #ffd0ef !important;
   }
 }
 
-.button-container{
+.button-container {
   text-align: center;
   margin-top: 4rem;
 }

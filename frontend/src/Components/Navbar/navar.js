@@ -7,15 +7,13 @@ import "react-toastify/dist/ReactToastify.css";
 const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userName, setUserName] = useState("");
-  const [userImage, setUserImage] = useState(""); // Add a state variable for user image URL
+  const [userImage, setUserImage] = useState("");
   const [showLoggedInText, setShowLoggedInText] = useState(false);
   const [credit, setCredit] = useState(3);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false); // State for dropdown visibility
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [showLogoutButton, setShowLogoutButton] = useState(false);
   const [userEmail, setUserEmail] = useState("");
-  const roundBoxColor = isLoggedIn
-    ? "color-for-logged-in-users" // Define the CSS class for logged-in users
-    : "";
+  const roundBoxColor = isLoggedIn ? "color-for-logged-in-users" : "";
 
   useEffect(() => {
     const googleUser = localStorage.getItem("googleUser");
@@ -30,7 +28,7 @@ const Navbar = () => {
     if (googleUser) {
       const parsedGoogleUser = JSON.parse(googleUser);
       setUserName(parsedGoogleUser.given_name);
-      setUserImage(parsedGoogleUser.picture); // Set the user's image URL
+      setUserImage(parsedGoogleUser.picture);
       setUserEmail(parsedGoogleUser.email);
       setIsLoggedIn(true);
     } else if (simpleUser) {
@@ -55,12 +53,11 @@ const Navbar = () => {
   }, []);
 
   const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen); // Toggle dropdown visibility
+    setIsDropdownOpen(!isDropdownOpen);
   };
 
   function handleMessage(event) {
     if (event.data === "payment_successful") {
-      // Update the user's credit to "Unlimited" when payment is successful
       setCredit("Unlimited");
       setShowLoggedInText(true);
     }
@@ -70,15 +67,13 @@ const Navbar = () => {
     localStorage.removeItem("googleUser");
     localStorage.removeItem("simpleUser");
     setIsLoggedIn(false);
-    setCredit(3); // Reset credit to 3
-    // setRoundBoxColor(""); // Reset round box color
-    setShowLogoutButton(false); // Hide the logout button
+    setCredit(3);
+    setShowLogoutButton(false);
     toast.success("You Logged Out", {
       position: "top-right",
-      autoClose: 2000, // Close the toast after 2 seconds
+      autoClose: 2000,
       hideProgressBar: true,
     });
-  
   };
 
   return (
@@ -141,7 +136,7 @@ const Navbar = () => {
             {isLoggedIn && (
               <div className="user-dropdown">
                 <img
-                  src={userImage} // Set the user's image URL as the src
+                  src={userImage}
                   alt={userName}
                   className={`user-round-box ${roundBoxColor}`}
                   style={{
@@ -149,21 +144,43 @@ const Navbar = () => {
                     width: "48px",
                     borderRadius: "50px",
                   }}
-                  onClick={toggleDropdown} // Toggle dropdown on image click
+                  onClick={toggleDropdown}
                 />
                 {isDropdownOpen && (
                   <div className="dropdown-content absolute   bg-white rounded-lg shadow-lg">
-                    <p className="dropdown-username ml-4 mb-0 mt-2 " style={{fontSize:'19px',fontWeight:'bold'}}>{userName}</p>
-                    <p className="dropdown-email ml-4" style={{fontSize:'12px'}}>{userEmail}</p> 
-                    <hr/>
-                    <button
-                      className={` btn ml-3 `}
-                      onClick={handleLogout}
+                    <p
+                      className="dropdown-username ml-4 mb-0 mt-2 "
+                      style={{ fontSize: "19px", fontWeight: "bold" }}
                     >
-                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 h-4 w-4"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" x2="9" y1="12" y2="12"></line></svg> Log out
+                      {userName}
+                    </p>
+                    <p
+                      className="dropdown-email ml-4"
+                      style={{ fontSize: "12px" }}
+                    >
+                      {userEmail}
+                    </p>
+                    <hr />
+                    <button className={` btn ml-3 `} onClick={handleLogout}>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="mr-2 h-4 w-4"
+                      >
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" x2="9" y1="12" y2="12"></line>
+                      </svg>{" "}
+                      Log out
                     </button>
-                    </div>
-                  
+                  </div>
                 )}
               </div>
             )}

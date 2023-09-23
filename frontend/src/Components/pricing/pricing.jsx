@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 function Pricing() {
   const [paymentData, setPaymentData] = useState(null);
   const [newStringState, setNewStringState] = useState("");
-  // const [notificationMessage, setNotificationMessage] = useState("");
   const [isSubscribed9, setIsSubscribed9] = useState(
     localStorage.getItem("isSubscribed9") === "true"
   );
@@ -139,7 +138,8 @@ function Pricing() {
       const popupWindow = window.open(
         popupURL,
         "_blank",
-        `width=500,height=500,left=${(window.screen.width - 500) / 2},top=${(window.screen.height - 500) / 2
+        `width=500,height=500,left=${(window.screen.width - 500) / 2},top=${
+          (window.screen.height - 500) / 2
         }`
       );
 
@@ -160,11 +160,6 @@ function Pricing() {
 
             showNotification("Payment Successful");
             await new Promise((resolve) => setTimeout(resolve, 2000));
-
-
-            // Wait for a few seconds (you can adjust the time) before navigating
-
-            // Now, navigate after showing the success message
           }
         });
       }
@@ -177,43 +172,47 @@ function Pricing() {
     alert(message);
   }
 
-
   return (
     <div>
       <div className="container">
         <div className="row">
-          <div className="col-xl-1  col-lg-1  col-md-12 col-sm-12 col-xs-12">
-            </div>
+          <div className="col-xl-1  col-lg-1  col-md-12 col-sm-12 col-xs-12"></div>
           <div className="col-xl-10 m-auto col-lg-8  col-md-12 col-sm-12 col-xs-12">
             <div className="background-gradient1">
-              <p className="main-text main-text133"><span className="main-text1">PRI</span>CING PLAN</p>
+              <p className="main-text main-text133">
+                <span className="main-text1">PRI</span>CING PLAN
+              </p>
             </div>
             <h2 className="sub-heading1">Buy MagicMyHouse Credits</h2>
             <p className="sub-text1">
-              You have 10 credits. Join thousands of happy customers. Explore more
-              options below.
+              You have 10 credits. Join thousands of happy customers. Explore
+              more options below.
             </p>
           </div>
-          <div className="col-xl-1  col-lg-1  col-md-12 col-sm-12 col-xs-12">
-            </div>
+          <div className="col-xl-1  col-lg-1  col-md-12 col-sm-12 col-xs-12"></div>
         </div>
         <div className="row mt-5">
-          <div className="col-xl-1 col-lg-1  col-md-12 col-sm-12 col-xs-12">
-          </div>
+          <div className="col-xl-1 col-lg-1  col-md-12 col-sm-12 col-xs-12"></div>
           <div className="col-xl-5 mt-4 col-lg-5  col-md-12 col-sm-12 col-xs-12">
             <div className="">
-              <div
-                className="box1"
-
-              >
+              <div className="box1">
                 <div className="pac">1 Month Package</div>
                 <div className="price-heading">$9.99</div>
                 <div className="price-description">
                   Unlimted credit credits for <br />
-                 <span className="colorrr">      For a duration of 1 month</span>
+                  <span className="colorrr"> For a duration of 1 month</span>
                 </div>
                 {isSubscribed9 ? (
-                  <button className="pay-button" style={{ width: '18rem', textAlign: "center", paddingRight: '9rem', paddingLeft: '6rem' }} disabled>
+                  <button
+                    className="pay-button"
+                    style={{
+                      width: "18rem",
+                      textAlign: "center",
+                      paddingRight: "9rem",
+                      paddingLeft: "6rem",
+                    }}
+                    disabled
+                  >
                     Subscribed
                   </button>
                 ) : (
@@ -226,10 +225,8 @@ function Pricing() {
                     Pay
                   </button>
                 )}
-
               </div>
             </div>
-
           </div>
           <div className="col-xl-5  mt-4 col-lg-5  col-md-12 col-sm-12 col-xs-12">
             <div className="">
@@ -238,10 +235,19 @@ function Pricing() {
                 <div className="price-heading">$24.99</div>
                 <div className="price-description">
                   Unlimted credit credits for <br />
-                 <span className="colorrr">      For a duration of 6 month</span>
+                  <span className="colorrr"> For a duration of 6 month</span>
                 </div>
                 {isSubscribed24 ? (
-                  <button className="pay-button" style={{ width: '18rem', textAlign: "center", paddingRight: '9rem', paddingLeft: '6rem' }} disabled>
+                  <button
+                    className="pay-button"
+                    style={{
+                      width: "18rem",
+                      textAlign: "center",
+                      paddingRight: "9rem",
+                      paddingLeft: "6rem",
+                    }}
+                    disabled
+                  >
                     Subscribed
                   </button>
                 ) : (
@@ -254,26 +260,24 @@ function Pricing() {
                     Pay
                   </button>
                 )}
-
               </div>
             </div>
           </div>
-          <div className="col-xl-1 col-lg-1  col-md-12 col-sm-12 col-xs-12">
-          </div>
+          <div className="col-xl-1 col-lg-1  col-md-12 col-sm-12 col-xs-12"></div>
         </div>
         <div className="row mt-5">
-          <div className="col-xl-1 col-lg-1  col-md-12 col-sm-12 col-xs-12">
-          </div>
+          <div className="col-xl-1 col-lg-1  col-md-12 col-sm-12 col-xs-12"></div>
           <div className="col-xl-5 col-lg-5  col-md-12 col-sm-12 col-xs-12">
-            <div
-              className='x12'
-            >
+            <div className="x12">
               <p>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="20"
                   height="20"
-                  style={{ justifyContent: "space-between", marginRight: "10px" }}
+                  style={{
+                    justifyContent: "space-between",
+                    marginRight: "10px",
+                  }}
                   fill="#009EE2"
                   class="bi bi-check2-circle"
                   viewBox="0 0 16 16"
@@ -288,7 +292,10 @@ function Pricing() {
                   xmlns="http://www.w3.org/2000/svg"
                   width="20"
                   height="20"
-                  style={{ justifyContent: "space-between", marginRight: "10px" }}
+                  style={{
+                    justifyContent: "space-between",
+                    marginRight: "10px",
+                  }}
                   fill="#009EE2"
                   class="bi bi-check2-circle"
                   viewBox="0 0 16 16"
@@ -303,7 +310,10 @@ function Pricing() {
                   xmlns="http://www.w3.org/2000/svg"
                   width="20"
                   height="20"
-                  style={{ justifyContent: "space-between", marginRight: "10px" }}
+                  style={{
+                    justifyContent: "space-between",
+                    marginRight: "10px",
+                  }}
                   fill="#009EE2"
                   class="bi bi-check2-circle"
                   viewBox="0 0 16 16"
@@ -314,18 +324,18 @@ function Pricing() {
                 Commercial usage of photos
               </p>
             </div>
-
           </div>
           <div className="col-xl-5 col-lg-5  col-md-12 col-sm-12 col-xs-12">
-            <div
-              className='x12'
-            >
+            <div className="x12">
               <p>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="20"
                   height="20"
-                  style={{ justifyContent: "space-between", marginRight: "10px" }}
+                  style={{
+                    justifyContent: "space-between",
+                    marginRight: "10px",
+                  }}
                   fill="#009EE2"
                   class="bi bi-check2-circle"
                   viewBox="0 0 16 16"
@@ -340,7 +350,10 @@ function Pricing() {
                   xmlns="http://www.w3.org/2000/svg"
                   width="20"
                   height="20"
-                  style={{ justifyContent: "space-between", marginRight: "10px" }}
+                  style={{
+                    justifyContent: "space-between",
+                    marginRight: "10px",
+                  }}
                   fill="#009EE2"
                   class="bi bi-check2-circle"
                   viewBox="0 0 16 16"
@@ -355,7 +368,10 @@ function Pricing() {
                   xmlns="http://www.w3.org/2000/svg"
                   width="20"
                   height="20"
-                  style={{ justifyContent: "space-between", marginRight: "10px" }}
+                  style={{
+                    justifyContent: "space-between",
+                    marginRight: "10px",
+                  }}
                   fill="#009EE2"
                   class="bi bi-check2-circle"
                   viewBox="0 0 16 16"
@@ -366,34 +382,19 @@ function Pricing() {
                 Commercial usage of photos
               </p>
             </div>
-
           </div>
 
-          <div className="col-xl-1 col-lg-1  col-md-12 col-sm-12 col-xs-12">
-          </div>
-
-
-
-
+          <div className="col-xl-1 col-lg-1  col-md-12 col-sm-12 col-xs-12"></div>
         </div>
         <div className="row mt-5">
           <div className="col-xl-8 m-auto col-lg-10  col-md-12 col-sm-12 col-xs-12">
-            <div
-              className='ok123'
-            >
-              <p 
-                className="main-text" style={{marginBottom:"0"}}
-              >
-                Interested in team or bulk pricing? Email : info@magicmyhouse.com or
-                KVK : 08214009
+            <div className="ok123">
+              <p className="main-text" style={{ marginBottom: "0" }}>
+                Interested in team or bulk pricing? Email :
+                info@magicmyhouse.com or KVK : 08214009
               </p>
             </div>
           </div>
-
-
-
-
-
         </div>
         <div className="circle left-top"></div>
         <div className="circle right-top"></div>

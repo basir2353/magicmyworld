@@ -22,10 +22,9 @@ const RedesignComponent = () => {
       if (file) {
         const reader = new FileReader();
         reader.onload = (e) => {
-          // Check if the file type is an image before setting the draggedImage
           if (file.type.startsWith("image/")) {
             setDraggedImage(e.target.result);
-            setSelectedImage(e.target.result); // Show the dragged image
+            setSelectedImage(e.target.result);
             console.log("Dragged Image:", e.target.result);
           } else {
             toast.error("Invalid file type. Please upload an image.");
@@ -34,7 +33,7 @@ const RedesignComponent = () => {
         reader.readAsDataURL(file);
       }
     },
-    accept: "image/*", // Accept only image files
+    accept: "image/*",
   });
 
   const [imageGridData, setImageGridData] = useState([
@@ -335,7 +334,9 @@ const RedesignComponent = () => {
                         }}
                       >
                         <img
-                          src={process.env.PUBLIC_URL + "/MMH_logo-removebg.png"}
+                          src={
+                            process.env.PUBLIC_URL + "/MMH_logo-removebg.png"
+                          }
                           alt={imageData.name}
                           className="img-fluid"
                           style={{

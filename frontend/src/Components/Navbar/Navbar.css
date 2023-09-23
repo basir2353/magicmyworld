@@ -1,28 +1,23 @@
-/* Common styles for all screen sizes */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   padding: 10px 20px;
 }
-/* Navbar.css */
-.crd{
+.crd {
   text-decoration: none;
   text-decoration-color: black;
   color: black;
 }
-/* Style the dropdown content */
 .dropdown-content {
-
   position: absolute;
-  top: 100%; /* Position it below the dropdown trigger */
-right: 1rem;
-    width: 15rem;
+  top: 100%;
+  right: 1rem;
+  width: 15rem;
 
-  background-color: #fff; /* Background color for the dropdown */
+  background-color: #fff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-
 
 .navbar-logo img {
   max-height: 40px;
@@ -68,30 +63,34 @@ right: 1rem;
   margin-right: 1rem;
   background-color: black;
 }
-.navbar-dark .navbar-nav .nav-link1{
-  color: #CB0D7F !important;
+.navbar-dark .navbar-nav .nav-link1 {
+  color: #cb0d7f !important;
   margin-left: 1rem;
 }
 
-.margin-left{
-margin-left: 1rem;
+.margin-left {
+  margin-left: 1rem;
 }
-.navbar-dark .navbar-toggler{
+.navbar-dark .navbar-toggler {
   color: black !important;
   border-color: black !important;
 }
 .btn-login {
-  background: linear-gradient(90deg, rgba(230,0,126,1) 0%, rgba(102,36,131,1) 73%);
+  background: linear-gradient(
+    90deg,
+    rgba(230, 0, 126, 1) 0%,
+    rgba(102, 36, 131, 1) 73%
+  );
   border: none;
   border-radius: 25px;
   padding: 10px 30px !important;
   color: white;
   cursor: pinter;
   /* font-weight: bold; */
-  font-family: 'Poppins', sans-serif !important;
+  font-family: "Poppins", sans-serif !important;
   margin-right: 3rem;
-/* width: 40%; */
-font: 100;
+  /* width: 40%; */
+  font: 100;
 }
 
 .btn-login:hover {
@@ -108,9 +107,14 @@ font: 100;
   text-decoration: none;
   color: black;
 }
-
-/* Responsive styles for screens <= 768px */
 @media (max-width: 770px) {
+  .navbar {
+    z-index: 1;
+  }
+  .dropdown-content {
+    z-index: 99;
+    width: 100%;
+  }
   .navbar-logo img {
     max-height: 30px;
     margin-left: 0.5rem;
@@ -119,13 +123,11 @@ font: 100;
     display: flex;
     justify-content: center;
     border-radius: 20px;
-    /* margin-right: 1rem; */
     width: 120px;
     background-color: black;
   }
-  .loggedInText{
+  .loggedInText {
     font-size: 10px;
-
   }
   .menu-icon {
     display: flex;
@@ -141,11 +143,11 @@ font: 100;
     padding: 8px 16px;
     margin-right: 0.5rem;
   }
-  .navbar-logo{
+  .navbar-logo {
     /* width: 25px; */
     align-items: first baseline;
   }
-  .ml-bvv{
+  .ml-bvv {
     margin-top: 3rem;
   }
   .navbar-logo img {
@@ -153,39 +155,4 @@ font: 100;
     width: 75px;
     margin-left: 10px;
   }
-  /* Adjusting margins for smaller screens */
-  .el {
-    font-size: 12px;
-    width: 12px;
-    margin-right: 2rem;
-    /* position: relative; */
-    display: flexbox;
-  }
-
-  .el1 {
-    margin-left: 0.5rem;
-    display: none;
-  }
-}
-/* Add this CSS to your Navbar.css or your preferred stylesheet */
-
-
-/* Hide the drawer on larger screens */
-@media (min-width: 992px) {
-  .drawer {
-    display: none;
-    position: fixed;
-    top: 0;
-    right: -70px; /* Initially hidden to the right */
-    height: 100%;
-    width: 70px;
-    background-color: #333; /* Background color for the drawer */
-    overflow-x: hidden;
-    transition: right 0.3s; /* Transition effect to slide in/out */
-    z-index: 1; 
-  }
-  .drawer.open {
-    right: 0; /* Slide in when the "open" class is added */
-  }
-  
 }

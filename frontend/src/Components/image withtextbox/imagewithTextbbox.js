@@ -3,7 +3,11 @@ import "./ImageWithText.css";
 
 const ImageWithText = () => {
   return (
+<<<<<<< Updated upstream
     <div className="container">
+=======
+    <div className="container" style={{ marginTop: "5rem" }}>
+>>>>>>> Stashed changes
       <div className="row">
         <div className="col-xl-9 m-auto col-lg-8  col-md-12 col-sm-12 col-xs-12">
           <div className="mt-5">

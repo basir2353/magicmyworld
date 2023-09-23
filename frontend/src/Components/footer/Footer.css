@@ -1,9 +1,8 @@
-/* Default styles for the footer */
 .footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
   padding: 10px 20px;
   position: relative;
 }
@@ -15,20 +14,19 @@
   background: #bf8db373;
   border-radius: 100px;
   filter: blur(100px);
- 
+
   height: 13rem;
   width: 11rem;
-
 }
 .round-box12 {
   position: absolute;
-    left: 0rem;
-    bottom: 0rem;
-    background: #bf8db373;
-    border-radius: 100px;
-    filter: blur(100px);
-    height: 6rem;
-    width: 8rem;
+  left: 0rem;
+  bottom: 0rem;
+  background: #bf8db373;
+  border-radius: 100px;
+  filter: blur(100px);
+  height: 6rem;
+  width: 8rem;
 }
 .round-box13 {
   position: absolute;
@@ -39,7 +37,6 @@
   filter: blur(100px);
   height: 8rem;
   width: 11rem;
-  /* opacity: 5%; */
 }
 .round-box14 {
   position: absolute;
@@ -60,11 +57,9 @@
 .login-link a {
   text-decoration: none;
   color: black;
-  /* font-weight: bold; */
   margin-right: 3rem;
 }
 
-/* Responsive styles for smaller screens */
 @media screen and (max-width: 768px) {
   .footer {
     width: 100%;
@@ -74,14 +69,14 @@
 
   .copyright {
     width: 200px;
-    margin: 10px ;
+    margin: 10px;
   }
-.round-box{
-  display: none;
-}
-.round-box-none{
-  display: none;
-}
+  .round-box {
+    display: none;
+  }
+  .round-box-none {
+    display: none;
+  }
   .login-link {
     margin-top: 10px;
   }
