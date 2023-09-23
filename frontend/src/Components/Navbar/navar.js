@@ -1,16 +1,21 @@
 import React, { useState, useEffect } from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
-import { useAuth } from "./AuthContext";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userName, setUserName] = useState("");
-  const [roundBoxColor, setRoundBoxColor] = useState("");
+  const [userImage, setUserImage] = useState(""); // Add a state variable for user image URL
   const [showLoggedInText, setShowLoggedInText] = useState(false);
-  const [credit, setCredit] = useState(3); // Assuming an initial credit of 3
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [showLogoutButton, setShowLogoutButton] = useState(false); // New state variable
+  const [credit, setCredit] = useState(3);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false); // State for dropdown visibility
+  const [showLogoutButton, setShowLogoutButton] = useState(false);
+  const [userEmail, setUserEmail] = useState("");
+  const roundBoxColor = isLoggedIn
+    ? "color-for-logged-in-users" // Define the CSS class for logged-in users
+    : "";
 
   useEffect(() => {
     const googleUser = localStorage.getItem("googleUser");
@@ -25,13 +30,13 @@ const Navbar = () => {
     if (googleUser) {
       const parsedGoogleUser = JSON.parse(googleUser);
       setUserName(parsedGoogleUser.given_name);
+      setUserImage(parsedGoogleUser.picture); // Set the user's image URL
+      setUserEmail(parsedGoogleUser.email);
       setIsLoggedIn(true);
-      setRoundBoxColor("color-for-google-users");
     } else if (simpleUser) {
       const parsedSimpleUser = JSON.parse(simpleUser);
       setUserName(parsedSimpleUser.username);
       setIsLoggedIn(true);
-      setRoundBoxColor("color-for-simple-login-users");
     } else {
       setIsLoggedIn(false);
     }
@@ -49,6 +54,10 @@ const Navbar = () => {
     };
   }, []);
 
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen); // Toggle dropdown visibility
+  };
+
   function handleMessage(event) {
     if (event.data === "payment_successful") {
       // Update the user's credit to "Unlimited" when payment is successful
@@ -60,88 +69,108 @@ const Navbar = () => {
   const handleLogout = () => {
     localStorage.removeItem("googleUser");
     localStorage.removeItem("simpleUser");
-    localStorage.removeItem("token");
     setIsLoggedIn(false);
     setCredit(3); // Reset credit to 3
-    setRoundBoxColor(""); // Reset round box color
+    // setRoundBoxColor(""); // Reset round box color
     setShowLogoutButton(false); // Hide the logout button
-    alert("You Logged Out");
+    toast.success("You Logged Out", {
+      position: "top-right",
+      autoClose: 2000, // Close the toast after 2 seconds
+      hideProgressBar: true,
+    });
+  
   };
-const {user}=useAuth()
-console.log(user);
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-gray-900 p-4">
-    <Link to="/" className="navbar-logo">
-      <img
-        src={process.env.PUBLIC_URL + "/MMH_logo.png"}
-        alt="Logo"
-        className="max-h-10 ml-2 ml-md-6 max-h-md-8 md:ml-0"
-      />
-    </Link>
-    <button
-      className="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarNav"
-      aria-controls="navbarNav"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
- <i class="fa-solid fa-bars"></i>
-    </button>
-    <div className="collapse navbar-collapse" id="navbarNav">
-      <ul className="navbar-nav">
-        {isLoggedIn && (
-          <>
-            <li className="nav-item">
-              <Link to="/desiging"  className="nav-link nav-link1">
-                Redesign
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/pricing" className="nav-link nav-link1">
-                Pricing
-              </Link>
-            </li>
-          </>
-        )}
-      </ul>
-      <ul className="navbar-nav ml-auto">
-        <li className="nav-item">
-          {showLoggedInText && (
-            <div className="logedtext">
-              <div className="loggedInText px-4 py-2 text-white">
-                Your Credit: {user?.subscription.status=="active"?"Unlimited":user?.subscription?.credits}
-              </div>
-            </div>
-          )}
-        </li>
-        <li className="nav-item">
-          {!isLoggedIn && (
-            <Link to="/login" className="btn btn-login nav-link">
-              LOG IN
-            </Link>
-          )}
+      <Link to="/" className="navbar-logo">
+        <img
+          src={process.env.PUBLIC_URL + "/MMH_logo.png"}
+          alt="Logo"
+          className="max-h-10 ml-2 ml-md-6 max-h-md-8 md:ml-0"
+        />
+      </Link>
+      <button
+        className="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      <div
+        className="collapse navbar-collapse"
+        style={{ alignItems: "baseline" }}
+        id="navbarNav"
+      >
+        <ul className="navbar-nav">
           {isLoggedIn && (
             <>
-              <button
-                className={`user-round-box btn btn-login ${roundBoxColor}`}
-                style={{ backgroundColor: roundBoxColor }}
-                onClick={handleLogout}
-              >
-                {userName ? userName.charAt(0).toUpperCase() : ""}
-              </button>
-              {showLogoutButton && (
-                <button className={`user-round-box btn btn-login ${roundBoxColor}`} onClick={handleLogout}>
-                  Logout
-                </button>
-              )}
+              <li className="nav-item">
+                <Link to="/desiging" className="nav-link nav-link1">
+                  Redesign
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/pricing" className="nav-link nav-link1">
+                  Pricing
+                </Link>
+              </li>
             </>
           )}
-        </li>
-      </ul>
-    </div>
-  </nav>
+        </ul>
+        <ul className="navbar-nav ml-auto">
+          <li className="nav-item">
+            {showLoggedInText && (
+              <div className="logedtext">
+                <div className="loggedInText px-4 py-2 text-white">
+                  Your Credit: {credit}
+                </div>
+              </div>
+            )}
+          </li>
+          <li className="nav-item ml-bvv">
+            {!isLoggedIn && (
+              <Link to="/login" className="btn btn-login nav-link">
+                LOG IN
+              </Link>
+            )}
+            {isLoggedIn && (
+              <div className="user-dropdown">
+                <img
+                  src={userImage} // Set the user's image URL as the src
+                  alt={userName}
+                  className={`user-round-box ${roundBoxColor}`}
+                  style={{
+                    backgroundColor: roundBoxColor,
+                    width: "48px",
+                    borderRadius: "50px",
+                  }}
+                  onClick={toggleDropdown} // Toggle dropdown on image click
+                />
+                {isDropdownOpen && (
+                  <div className="dropdown-content absolute   bg-white rounded-lg shadow-lg">
+                    <p className="dropdown-username ml-4 mb-0 mt-2 " style={{fontSize:'19px',fontWeight:'bold'}}>{userName}</p>
+                    <p className="dropdown-email ml-4" style={{fontSize:'12px'}}>{userEmail}</p> 
+                    <hr/>
+                    <button
+                      className={` btn ml-3 `}
+                      onClick={handleLogout}
+                    >
+                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 h-4 w-4"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" x2="9" y1="12" y2="12"></line></svg> Log out
+                    </button>
+                    </div>
+                  
+                )}
+              </div>
+            )}
+          </li>
+        </ul>
+      </div>
+    </nav>
   );
 };
 

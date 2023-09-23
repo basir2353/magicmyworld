@@ -1,132 +1,86 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import { GoogleLogin } from "@react-oauth/google";
-import "./loginform.css";
+import apiClient from "../../api/apiClient";
 import jwt_decode from "jwt-decode";
-import axios from "axios";
-import apiClient, { setAuthToken } from "../../api/apiClient";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import './loginform.css';
 
 const LoginForm = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const [userImage, setUserImage] = useState(null);
 
-  const handleLogin = async () => {
-    const userCredentials = {
-      identifier: username,
-      password: password,
+  const responseMessage = async (response) => {
+    console.log(response);
+    const accessToken = response.credential;
+    const user = jwt_decode(accessToken);
+
+    const result = await apiClient.post("/auth/google", { googlePayload: user });
+
+    if (!result.ok) {
+      toast.error(result.data.message || "Google Login Failed");
+      return;
+    }
+
+    // Store the user information for Google OAuth users
+    localStorage.setItem("googleUser", JSON.stringify(user));
+
+    try {
+      const userImageResponse = await apiClient.get("/user/image");
+      setUserImage(userImageResponse.data.imageUrl);
+    } catch (error) {
+      console.error("Error fetching user image:", error);
+    }
+
+    navigate("/");
+    window.location.reload();
+  };
+
+  useEffect(() => {
+    // Fetch the user's image when the component mounts (if user is already logged in)
+    const fetchUserImage = async () => {
+      try {
+        const userImageResponse = await apiClient.get("/user/image");
+        setUserImage(userImageResponse.data.imageUrl);
+      } catch (error) {
+        console.error("Error fetching user image:", error);
+      }
     };
 
-
-      const response = await apiClient.post("/auth/login", userCredentials);
-
-      if (!response.ok) return toast.error("Invalid username or password");
-   
-        localStorage.setItem("simpleUser", JSON.stringify(response.data?.data));
-        localStorage.setItem("token", response.data?.token);
-        setAuthToken(response.data?.data.token)
-        navigate("/");
-        window.location.reload();
-
- 
-  };
-    
-const responseMessage =async (response) => {
-  console.log(response);
-  const accessToken = response.credential;
-  const user = jwt_decode(accessToken);
-
-
-
-    const result = await apiClient.post("/auth/google", {googlePayload:user});
-
-    if (!result.ok) return toast.error(result.data.message||"Google Login Failed");
- 
-      
-  // Store the user information for Google OAuth users
-  localStorage.setItem("googleUser", JSON.stringify(user));
-   localStorage.setItem("token", result.data?.token);
-
-  navigate("/");
-  window.location.reload();
-};
-
-
-  const errorMessage = (error) => {
-    console.log(error, ":error");
-  };
+    fetchUserImage();
+  }, []); 
 
   return (
     <div className="container">
-    <div className="row justify-content-center mt-5">
-      <div className="col-md-6">
-        <div className="card shadow">
+      <div className="row justify-content-center mt-5">
+     
+        <div className="col-xl-7 m-auto col-lg-8  col-md-12 col-sm-12 col-xs-12">
+          <div className="background-gradient mt-5">
+            <p className="main-text">
+              <span className="main-text1">0ver</span> 1 Million User Have used MagicMyHouse So far 
+            </p>
+          </div>
+          <h2 className="sub-heading1" style={{ textAlign: 'center' }}>
+          Redesign your House in seconds
+          </h2>
+          <p className="sub-text" >
+          Sign in below with Google to create a free account and redesign your room today. You will get 3 generations for free.
+          </p>
+          </div>
+        <div className="col-md-9 " >
           <div className="card-body">
-            <h2 className="card-title text-center">Login</h2>
-            <form>
-              <div className="form-group">
-                <label htmlFor="username">Username or Email</label>
-                <input
-                  type="text"
-                  required
-                  className="form-control"
-                  id="username"
-                  placeholder="Enter your username or email"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                />
+            <div className="mt-4">
+              <div className="row">
+                <div className="col-lg-12 col-md-12 col-sm-12 nbv">
+                  <GoogleLogin onSuccess={responseMessage} />
+                </div>
               </div>
-              <div className="form-group">
-                <label htmlFor="password">Password</label>
-                <input
-                  type="password"
-                  required
-                  className="form-control"
-                  id="password"
-                  placeholder="Enter your password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-                </div>
-              <p>Don't  have an account? <a href="/signup">Sign up</a></p>
-                
-              <button
-                type="button"
-                className=" newb1"
-                onClick={handleLogin}
-              >
-                Login
-              </button>
-              {/* <Link
-                to="/signup"
-                className="  signup-button"
-                onClick={() => {
-                  console.log("Redirect to signup");
-                }}
-              >
-                Signup
-              </Link> */}
-            </form>
-
-            {/* Google Login button */}
-              <div className="mt-4">
-                <div className="row">
-                  <div className="col-lg-12 col-md-12 col-sm-12">
-                  <GoogleLogin onSuccess={responseMessage} onError={errorMessage} />
-
-                  </div>
-                </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
   );
 };
 
 export default LoginForm;
-
-
-

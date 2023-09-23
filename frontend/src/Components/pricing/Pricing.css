@@ -10,6 +10,7 @@
 .background-gradient1 {
   background-color: #ebe1e7;
   width: 13%;
+  /* margin-left: 19rem; */
   border-radius: 69px;
   align-items: center;
   margin: auto;
@@ -60,9 +61,9 @@
   background-color: #fff;
   border-radius: 35px;
   box-shadow: 0 6px 11px 6px rgba(0, 0, 0, 0.1);
-
+  /* margin: 2rem; */
+  /* margin-right: 2rem; */
   padding: 1rem 1rem;
-  border: 1px solid grey;
 }
 
 .box2 {
@@ -72,8 +73,6 @@
   border-radius: 25px;
   box-shadow: 0 6px 11px 6px rgba(0, 0, 0, 0.1);
   padding: 1rem 1rem;
-
-  border: 1px solid grey;
 
 }
 
