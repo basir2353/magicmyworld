@@ -1,43 +1,4 @@
 .image-text-container {
-<<<<<<< Updated upstream
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 60vh;
-    position: relative;
-  }
-  
-  .center-image {
-    max-width: 60%;
-    height: auto;
-  }
-  
-  .text-box {
-    background-color: white;
-    padding: 10px;
-    border-radius: 5px;
-    margin: 10px;
-    text-align: center;
-    width: 80%; 
-  }
-  
-  .text-box-top {
-    position: absolute;
-    top: 10px; 
-  }
-  
-  .text-box-bottom {
-    position: absolute;
-    bottom: 10px; 
-  }
-  
-  
-  .center-image {
-    max-width: 100%; 
-  }
-  /* .round-box1 {
-=======
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -70,12 +31,12 @@
   bottom: 10px;
 }
 
+
 .center-image {
   max-width: 100%;
 }
 
 /* .round-box1 {
->>>>>>> Stashed changes
     background: #fffbfe;
     border-radius: 100px;
     filter: blur(100px);
@@ -85,35 +46,10 @@
     bottom: 24rem;
     left: 12rem;
   } */
-<<<<<<< Updated upstream
-  
-  
-  
-  @media (max-width: 768px) {
-    .image-text-container{
-width: 100%;
-    }
-    .text-box {
-      width: 90%; 
-    }
-  
-  
-    .text-box-top {
-      top: 5px; 
-    }
-    .round-box1{
-      display: none;
-    }
-    .text-box-bottom {
-      bottom: 5px; 
-    }
-  }
-  
-=======
 
 .comp-1 {
   display: inline-block;
-  background: #ffff;
+  background: #FFFF;
   padding: 10px;
   border-radius: 1rem;
   position: absolute;
@@ -129,11 +65,7 @@ width: 100%;
 
 .num-set {
   margin-bottom: 0px;
-  background: linear-gradient(
-    90deg,
-    rgba(230, 0, 126, 1) 0%,
-    rgba(102, 36, 131, 1) 73%
-  );
+  background: linear-gradient(90deg, rgba(230, 0, 126, 1) 0%, rgba(102, 36, 131, 1) 73%);
   color: white;
   padding: 1px 11px;
   border-radius: 50px;
@@ -141,11 +73,7 @@ width: 100%;
 
 .num-set2 {
   margin-bottom: 0px;
-  background: linear-gradient(
-    90deg,
-    rgba(230, 0, 126, 1) 0%,
-    rgba(102, 36, 131, 1) 73%
-  );
+  background: linear-gradient(90deg, rgba(230, 0, 126, 1) 0%, rgba(102, 36, 131, 1) 73%);
   color: white;
   padding: 4px 11px;
   border-radius: 50px;
@@ -153,7 +81,7 @@ width: 100%;
 
 .comp-2 {
   display: inline-block;
-  background: #ffff;
+  background: #FFFF;
   padding: 10px;
   border-radius: 1rem;
   position: absolute;
@@ -170,7 +98,7 @@ width: 100%;
 .comp-3 {
   display: inline-block;
   position: absolute;
-  background: #ffff;
+  background: #FFFF;
   padding: 10px;
   border-radius: 1rem;
   position: absolute;
@@ -187,7 +115,7 @@ width: 100%;
 @media (max-width: 768px) {
   .comp-1 {
     display: inline-block;
-    background: #ffff;
+    background: #FFFF;
     padding: 10px;
     border-radius: 1rem;
     position: absolute;
@@ -202,11 +130,7 @@ width: 100%;
 
   .num-set {
     margin-bottom: 0px;
-    background: linear-gradient(
-      90deg,
-      rgba(230, 0, 126, 1) 0%,
-      rgba(102, 36, 131, 1) 73%
-    );
+    background: linear-gradient(90deg, rgba(230, 0, 126, 1) 0%, rgba(102, 36, 131, 1) 73%);
     color: white;
     padding: 3px 11px;
     border-radius: 50px;
@@ -214,7 +138,7 @@ width: 100%;
 
   .comp-2 {
     display: inline-block;
-    background: #ffff;
+    background: #FFFF;
     padding: 10px;
     border-radius: 1rem;
     position: absolute;
@@ -229,7 +153,7 @@ width: 100%;
 
   .comp-3 {
     display: inline-block;
-    background: #ffff;
+    background: #FFFF;
     padding: 10px;
     border-radius: 1rem;
     position: absolute;
@@ -249,6 +173,7 @@ width: 100%;
   .text-box {
     width: 90%;
   }
+
 
   .text-box-top {
     top: 5px;
@@ -270,7 +195,7 @@ width: 100%;
 @media (max-width: 386px) {
   .comp-1 {
     display: inline-block;
-    background: #ffff;
+    background: #FFFF;
     padding: 10px;
     border-radius: 1rem;
     position: absolute;
@@ -289,11 +214,7 @@ width: 100%;
 
   .num-set {
     margin-bottom: 0px;
-    background: linear-gradient(
-      90deg,
-      rgba(230, 0, 126, 1) 0%,
-      rgba(102, 36, 131, 1) 73%
-    );
+    background: linear-gradient(90deg, rgba(230, 0, 126, 1) 0%, rgba(102, 36, 131, 1) 73%);
     color: white;
     font-size: 13px;
     padding: 3px 11px;
@@ -302,7 +223,7 @@ width: 100%;
 
   .comp-3 {
     display: inline-block;
-    background: #ffff;
+    background: #FFFF;
     padding: 10px;
     border-radius: 1rem;
     position: absolute;
@@ -317,7 +238,7 @@ width: 100%;
 
   .comp-2 {
     display: inline-block;
-    background: #ffff;
+    background: #FFFF;
     padding: 10px;
     border-radius: 1rem;
     position: absolute;
@@ -333,11 +254,7 @@ width: 100%;
 
   .num-set2 {
     margin-bottom: 0px;
-    background: linear-gradient(
-      90deg,
-      rgba(230, 0, 126, 1) 0%,
-      rgba(102, 36, 131, 1) 73%
-    );
+    background: linear-gradient(90deg, rgba(230, 0, 126, 1) 0%, rgba(102, 36, 131, 1) 73%);
     color: white;
     padding: 6px 11px;
     border-radius: 50px;
@@ -349,4 +266,3 @@ width: 100%;
     border: 2px solid white;
   }
 }
->>>>>>> Stashed changes
